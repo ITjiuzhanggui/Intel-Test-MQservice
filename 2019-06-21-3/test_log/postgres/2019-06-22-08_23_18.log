@@ -1,0 +1,2733 @@
+postgres/postgres.sh
+[postgres] 
+[postgres] == postgres unit test ==
+[postgres] [INFO] Test docker hub official image first:
+[postgres] 
+pgbench with BUFFER_TEST SINGLE_THREAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_WRITE
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2019-06-22 00:23:20.567 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-22 00:23:20.568 UTC [31] LOG:  could not create IPv6 socket for address "::": Address family not supported by protocol
+2019-06-22 00:23:20.571 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-22 00:23:20.587 UTC [32] LOG:  database system was shut down at 2019-06-22 00:23:20 UTC
+2019-06-22 00:23:20.592 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 7.27 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.26 s, remaining 12.41 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.43 s, remaining 13.53 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.52 s, remaining 12.30 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.72 s, remaining 13.33 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.92 s, remaining 14.09 s)
+700000 of 9800000 tuples (7%) done (elapsed 1.00 s, remaining 12.98 s)
+800000 of 9800000 tuples (8%) done (elapsed 1.20 s, remaining 13.47 s)
+900000 of 9800000 tuples (9%) done (elapsed 1.40 s, remaining 13.88 s)
+1000000 of 9800000 tuples (10%) done (elapsed 1.49 s, remaining 13.15 s)
+1100000 of 9800000 tuples (11%) done (elapsed 1.70 s, remaining 13.45 s)
+1200000 of 9800000 tuples (12%) done (elapsed 1.79 s, remaining 12.82 s)
+1300000 of 9800000 tuples (13%) done (elapsed 1.99 s, remaining 12.99 s)
+1400000 of 9800000 tuples (14%) done (elapsed 2.18 s, remaining 13.10 s)
+1500000 of 9800000 tuples (15%) done (elapsed 2.27 s, remaining 12.56 s)
+1600000 of 9800000 tuples (16%) done (elapsed 2.47 s, remaining 12.66 s)
+1700000 of 9800000 tuples (17%) done (elapsed 2.59 s, remaining 12.36 s)
+1800000 of 9800000 tuples (18%) done (elapsed 2.77 s, remaining 12.30 s)
+1900000 of 9800000 tuples (19%) done (elapsed 2.96 s, remaining 12.31 s)
+2000000 of 9800000 tuples (20%) done (elapsed 3.08 s, remaining 12.03 s)
+2100000 of 9800000 tuples (21%) done (elapsed 3.24 s, remaining 11.88 s)
+2200000 of 9800000 tuples (22%) done (elapsed 3.45 s, remaining 11.91 s)
+2300000 of 9800000 tuples (23%) done (elapsed 3.57 s, remaining 11.65 s)
+2400000 of 9800000 tuples (24%) done (elapsed 3.74 s, remaining 11.52 s)
+2500000 of 9800000 tuples (25%) done (elapsed 3.94 s, remaining 11.50 s)
+2600000 of 9800000 tuples (26%) done (elapsed 4.06 s, remaining 11.24 s)
+2700000 of 9800000 tuples (27%) done (elapsed 4.23 s, remaining 11.12 s)
+2800000 of 9800000 tuples (28%) done (elapsed 4.43 s, remaining 11.07 s)
+2900000 of 9800000 tuples (29%) done (elapsed 4.55 s, remaining 10.82 s)
+3000000 of 9800000 tuples (30%) done (elapsed 4.72 s, remaining 10.70 s)
+3100000 of 9800000 tuples (31%) done (elapsed 4.91 s, remaining 10.62 s)
+3200000 of 9800000 tuples (32%) done (elapsed 5.00 s, remaining 10.32 s)
+3300000 of 9800000 tuples (33%) done (elapsed 5.21 s, remaining 10.25 s)
+3400000 of 9800000 tuples (34%) done (elapsed 5.41 s, remaining 10.18 s)
+3500000 of 9800000 tuples (35%) done (elapsed 5.49 s, remaining 9.89 s)
+3600000 of 9800000 tuples (36%) done (elapsed 5.69 s, remaining 9.81 s)
+3700000 of 9800000 tuples (37%) done (elapsed 5.78 s, remaining 9.53 s)
+3800000 of 9800000 tuples (38%) done (elapsed 5.98 s, remaining 9.45 s)
+3900000 of 9800000 tuples (39%) done (elapsed 6.18 s, remaining 9.34 s)
+4000000 of 9800000 tuples (40%) done (elapsed 6.26 s, remaining 9.08 s)
+4100000 of 9800000 tuples (41%) done (elapsed 6.47 s, remaining 8.99 s)
+4200000 of 9800000 tuples (42%) done (elapsed 6.59 s, remaining 8.79 s)
+4300000 of 9800000 tuples (43%) done (elapsed 6.78 s, remaining 8.67 s)
+4400000 of 9800000 tuples (44%) done (elapsed 6.96 s, remaining 8.54 s)
+4500000 of 9800000 tuples (45%) done (elapsed 7.08 s, remaining 8.34 s)
+4600000 of 9800000 tuples (46%) done (elapsed 7.24 s, remaining 8.19 s)
+4700000 of 9800000 tuples (47%) done (elapsed 7.45 s, remaining 8.08 s)
+4800000 of 9800000 tuples (48%) done (elapsed 7.57 s, remaining 7.89 s)
+4900000 of 9800000 tuples (50%) done (elapsed 7.75 s, remaining 7.75 s)
+5000000 of 9800000 tuples (51%) done (elapsed 7.94 s, remaining 7.63 s)
+5100000 of 9800000 tuples (52%) done (elapsed 8.07 s, remaining 7.44 s)
+5200000 of 9800000 tuples (53%) done (elapsed 8.22 s, remaining 7.27 s)
+5300000 of 9800000 tuples (54%) done (elapsed 8.42 s, remaining 7.15 s)
+5400000 of 9800000 tuples (55%) done (elapsed 8.54 s, remaining 6.96 s)
+5500000 of 9800000 tuples (56%) done (elapsed 8.69 s, remaining 6.80 s)
+5600000 of 9800000 tuples (57%) done (elapsed 8.81 s, remaining 6.61 s)
+5700000 of 9800000 tuples (58%) done (elapsed 9.01 s, remaining 6.48 s)
+5800000 of 9800000 tuples (59%) done (elapsed 9.16 s, remaining 6.32 s)
+5900000 of 9800000 tuples (60%) done (elapsed 9.28 s, remaining 6.13 s)
+6000000 of 9800000 tuples (61%) done (elapsed 9.43 s, remaining 5.98 s)
+6100000 of 9800000 tuples (62%) done (elapsed 9.63 s, remaining 5.84 s)
+6200000 of 9800000 tuples (63%) done (elapsed 9.75 s, remaining 5.66 s)
+6300000 of 9800000 tuples (64%) done (elapsed 9.91 s, remaining 5.51 s)
+6400000 of 9800000 tuples (65%) done (elapsed 10.10 s, remaining 5.37 s)
+6500000 of 9800000 tuples (66%) done (elapsed 10.22 s, remaining 5.19 s)
+2019-06-22 00:23:41.274 UTC [33] LOG:  checkpoints are occurring too frequently (11 seconds apart)
+2019-06-22 00:23:41.274 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+6600000 of 9800000 tuples (67%) done (elapsed 10.39 s, remaining 5.04 s)
+6700000 of 9800000 tuples (68%) done (elapsed 10.49 s, remaining 4.86 s)
+6800000 of 9800000 tuples (69%) done (elapsed 10.70 s, remaining 4.72 s)
+6900000 of 9800000 tuples (70%) done (elapsed 10.91 s, remaining 4.59 s)
+7000000 of 9800000 tuples (71%) done (elapsed 11.09 s, remaining 4.44 s)
+7100000 of 9800000 tuples (72%) done (elapsed 11.18 s, remaining 4.25 s)
+7200000 of 9800000 tuples (73%) done (elapsed 11.38 s, remaining 4.11 s)
+7300000 of 9800000 tuples (74%) done (elapsed 11.59 s, remaining 3.97 s)
+7400000 of 9800000 tuples (75%) done (elapsed 11.68 s, remaining 3.79 s)
+7500000 of 9800000 tuples (76%) done (elapsed 11.88 s, remaining 3.64 s)
+7600000 of 9800000 tuples (77%) done (elapsed 12.01 s, remaining 3.48 s)
+7700000 of 9800000 tuples (78%) done (elapsed 12.15 s, remaining 3.31 s)
+7800000 of 9800000 tuples (79%) done (elapsed 12.34 s, remaining 3.16 s)
+7900000 of 9800000 tuples (80%) done (elapsed 12.47 s, remaining 3.00 s)
+8000000 of 9800000 tuples (81%) done (elapsed 12.63 s, remaining 2.84 s)
+8100000 of 9800000 tuples (82%) done (elapsed 12.74 s, remaining 2.67 s)
+8200000 of 9800000 tuples (83%) done (elapsed 12.94 s, remaining 2.53 s)
+8300000 of 9800000 tuples (84%) done (elapsed 13.13 s, remaining 2.37 s)
+8400000 of 9800000 tuples (85%) done (elapsed 13.31 s, remaining 2.22 s)
+8500000 of 9800000 tuples (86%) done (elapsed 13.40 s, remaining 2.05 s)
+8600000 of 9800000 tuples (87%) done (elapsed 13.59 s, remaining 1.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 13.71 s, remaining 1.73 s)
+8800000 of 9800000 tuples (89%) done (elapsed 13.87 s, remaining 1.58 s)
+8900000 of 9800000 tuples (90%) done (elapsed 14.04 s, remaining 1.42 s)
+9000000 of 9800000 tuples (91%) done (elapsed 14.17 s, remaining 1.26 s)
+9100000 of 9800000 tuples (92%) done (elapsed 14.32 s, remaining 1.10 s)
+9200000 of 9800000 tuples (93%) done (elapsed 14.44 s, remaining 0.94 s)
+9300000 of 9800000 tuples (94%) done (elapsed 14.63 s, remaining 0.79 s)
+9400000 of 9800000 tuples (95%) done (elapsed 14.78 s, remaining 0.63 s)
+9500000 of 9800000 tuples (96%) done (elapsed 14.90 s, remaining 0.47 s)
+9600000 of 9800000 tuples (97%) done (elapsed 15.10 s, remaining 0.31 s)
+9700000 of 9800000 tuples (98%) done (elapsed 15.26 s, remaining 0.16 s)
+9800000 of 9800000 tuples (100%) done (elapsed 15.38 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 98
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 600 s
+number of transactions actually processed: 457832
+latency average = 1.311 ms
+tps = 763.052752 (including connections establishing)
+tps = 763.056218 (excluding connections establishing)
+waiting for server to shut down...2019-06-22 00:33:57.594 UTC [31] LOG:  received fast shutdown request
+.2019-06-22 00:33:57.596 UTC [31] LOG:  aborting any active transactions
+2019-06-22 00:33:57.598 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-22 00:33:57.813 UTC [33] LOG:  shutting down
+2019-06-22 00:33:57.842 UTC [31] LOG:  database system is shut down
+pgbench with BUFFER_TEST SINGLE_THREAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_ONLY
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2019-06-22 00:33:59.843 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-22 00:33:59.843 UTC [31] LOG:  could not create IPv6 socket for address "::": Address family not supported by protocol
+2019-06-22 00:33:59.847 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-22 00:33:59.864 UTC [32] LOG:  database system was shut down at 2019-06-22 00:33:59 UTC
+2019-06-22 00:33:59.868 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 7.19 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.25 s, remaining 11.84 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.40 s, remaining 12.69 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.51 s, remaining 12.06 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.69 s, remaining 12.80 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.90 s, remaining 13.84 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.98 s, remaining 12.77 s)
+800000 of 9800000 tuples (8%) done (elapsed 1.19 s, remaining 13.34 s)
+900000 of 9800000 tuples (9%) done (elapsed 1.39 s, remaining 13.74 s)
+1000000 of 9800000 tuples (10%) done (elapsed 1.47 s, remaining 12.97 s)
+1100000 of 9800000 tuples (11%) done (elapsed 1.67 s, remaining 13.24 s)
+1200000 of 9800000 tuples (12%) done (elapsed 1.76 s, remaining 12.59 s)
+1300000 of 9800000 tuples (13%) done (elapsed 1.97 s, remaining 12.90 s)
+1400000 of 9800000 tuples (14%) done (elapsed 2.17 s, remaining 13.03 s)
+1500000 of 9800000 tuples (15%) done (elapsed 2.26 s, remaining 12.51 s)
+1600000 of 9800000 tuples (16%) done (elapsed 2.46 s, remaining 12.62 s)
+1700000 of 9800000 tuples (17%) done (elapsed 2.66 s, remaining 12.69 s)
+1800000 of 9800000 tuples (18%) done (elapsed 2.75 s, remaining 12.20 s)
+1900000 of 9800000 tuples (19%) done (elapsed 2.95 s, remaining 12.28 s)
+2000000 of 9800000 tuples (20%) done (elapsed 3.07 s, remaining 11.97 s)
+2100000 of 9800000 tuples (21%) done (elapsed 3.24 s, remaining 11.88 s)
+2200000 of 9800000 tuples (22%) done (elapsed 3.44 s, remaining 11.87 s)
+2300000 of 9800000 tuples (23%) done (elapsed 3.57 s, remaining 11.63 s)
+2400000 of 9800000 tuples (24%) done (elapsed 3.72 s, remaining 11.48 s)
+2500000 of 9800000 tuples (25%) done (elapsed 3.93 s, remaining 11.48 s)
+2600000 of 9800000 tuples (26%) done (elapsed 4.06 s, remaining 11.23 s)
+2700000 of 9800000 tuples (27%) done (elapsed 4.22 s, remaining 11.09 s)
+2800000 of 9800000 tuples (28%) done (elapsed 4.41 s, remaining 11.02 s)
+2900000 of 9800000 tuples (29%) done (elapsed 4.53 s, remaining 10.78 s)
+3000000 of 9800000 tuples (30%) done (elapsed 4.69 s, remaining 10.64 s)
+3100000 of 9800000 tuples (31%) done (elapsed 4.90 s, remaining 10.60 s)
+3200000 of 9800000 tuples (32%) done (elapsed 4.99 s, remaining 10.29 s)
+3300000 of 9800000 tuples (33%) done (elapsed 5.20 s, remaining 10.24 s)
+3400000 of 9800000 tuples (34%) done (elapsed 5.39 s, remaining 10.15 s)
+3500000 of 9800000 tuples (35%) done (elapsed 5.48 s, remaining 9.87 s)
+3600000 of 9800000 tuples (36%) done (elapsed 5.69 s, remaining 9.81 s)
+3700000 of 9800000 tuples (37%) done (elapsed 5.78 s, remaining 9.53 s)
+3800000 of 9800000 tuples (38%) done (elapsed 5.97 s, remaining 9.43 s)
+3900000 of 9800000 tuples (39%) done (elapsed 6.18 s, remaining 9.35 s)
+4000000 of 9800000 tuples (40%) done (elapsed 6.27 s, remaining 9.09 s)
+4100000 of 9800000 tuples (41%) done (elapsed 6.46 s, remaining 8.98 s)
+4200000 of 9800000 tuples (42%) done (elapsed 6.58 s, remaining 8.78 s)
+4300000 of 9800000 tuples (43%) done (elapsed 6.75 s, remaining 8.64 s)
+4400000 of 9800000 tuples (44%) done (elapsed 6.95 s, remaining 8.53 s)
+4500000 of 9800000 tuples (45%) done (elapsed 7.07 s, remaining 8.33 s)
+4600000 of 9800000 tuples (46%) done (elapsed 7.25 s, remaining 8.19 s)
+4700000 of 9800000 tuples (47%) done (elapsed 7.44 s, remaining 8.07 s)
+4800000 of 9800000 tuples (48%) done (elapsed 7.56 s, remaining 7.88 s)
+4900000 of 9800000 tuples (50%) done (elapsed 7.73 s, remaining 7.73 s)
+5000000 of 9800000 tuples (51%) done (elapsed 7.92 s, remaining 7.61 s)
+5100000 of 9800000 tuples (52%) done (elapsed 8.05 s, remaining 7.42 s)
+5200000 of 9800000 tuples (53%) done (elapsed 8.22 s, remaining 7.27 s)
+5300000 of 9800000 tuples (54%) done (elapsed 8.41 s, remaining 7.14 s)
+5400000 of 9800000 tuples (55%) done (elapsed 8.54 s, remaining 6.96 s)
+5500000 of 9800000 tuples (56%) done (elapsed 8.72 s, remaining 6.82 s)
+5600000 of 9800000 tuples (57%) done (elapsed 8.90 s, remaining 6.68 s)
+5700000 of 9800000 tuples (58%) done (elapsed 8.99 s, remaining 6.46 s)
+5800000 of 9800000 tuples (59%) done (elapsed 9.19 s, remaining 6.34 s)
+5900000 of 9800000 tuples (60%) done (elapsed 9.39 s, remaining 6.21 s)
+6000000 of 9800000 tuples (61%) done (elapsed 9.48 s, remaining 6.00 s)
+6100000 of 9800000 tuples (62%) done (elapsed 9.70 s, remaining 5.88 s)
+6200000 of 9800000 tuples (63%) done (elapsed 9.84 s, remaining 5.71 s)
+6300000 of 9800000 tuples (64%) done (elapsed 10.00 s, remaining 5.55 s)
+6400000 of 9800000 tuples (65%) done (elapsed 10.21 s, remaining 5.42 s)
+6500000 of 9800000 tuples (66%) done (elapsed 10.33 s, remaining 5.24 s)
+2019-06-22 00:34:20.674 UTC [33] LOG:  checkpoints are occurring too frequently (10 seconds apart)
+2019-06-22 00:34:20.674 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+6600000 of 9800000 tuples (67%) done (elapsed 10.53 s, remaining 5.11 s)
+6700000 of 9800000 tuples (68%) done (elapsed 10.73 s, remaining 4.97 s)
+6800000 of 9800000 tuples (69%) done (elapsed 10.86 s, remaining 4.79 s)
+6900000 of 9800000 tuples (70%) done (elapsed 11.03 s, remaining 4.63 s)
+7000000 of 9800000 tuples (71%) done (elapsed 11.21 s, remaining 4.49 s)
+7100000 of 9800000 tuples (72%) done (elapsed 11.29 s, remaining 4.29 s)
+7200000 of 9800000 tuples (73%) done (elapsed 11.50 s, remaining 4.15 s)
+7300000 of 9800000 tuples (74%) done (elapsed 11.69 s, remaining 4.00 s)
+7400000 of 9800000 tuples (75%) done (elapsed 11.77 s, remaining 3.82 s)
+7500000 of 9800000 tuples (76%) done (elapsed 11.99 s, remaining 3.68 s)
+7600000 of 9800000 tuples (77%) done (elapsed 12.08 s, remaining 3.50 s)
+7700000 of 9800000 tuples (78%) done (elapsed 12.27 s, remaining 3.35 s)
+7800000 of 9800000 tuples (79%) done (elapsed 12.48 s, remaining 3.20 s)
+7900000 of 9800000 tuples (80%) done (elapsed 12.56 s, remaining 3.02 s)
+8000000 of 9800000 tuples (81%) done (elapsed 12.75 s, remaining 2.87 s)
+8100000 of 9800000 tuples (82%) done (elapsed 12.88 s, remaining 2.70 s)
+8200000 of 9800000 tuples (83%) done (elapsed 13.03 s, remaining 2.54 s)
+8300000 of 9800000 tuples (84%) done (elapsed 13.25 s, remaining 2.39 s)
+8400000 of 9800000 tuples (85%) done (elapsed 13.37 s, remaining 2.23 s)
+8500000 of 9800000 tuples (86%) done (elapsed 13.54 s, remaining 2.07 s)
+8600000 of 9800000 tuples (87%) done (elapsed 13.74 s, remaining 1.92 s)
+8700000 of 9800000 tuples (88%) done (elapsed 13.86 s, remaining 1.75 s)
+8800000 of 9800000 tuples (89%) done (elapsed 14.02 s, remaining 1.59 s)
+8900000 of 9800000 tuples (90%) done (elapsed 14.21 s, remaining 1.44 s)
+9000000 of 9800000 tuples (91%) done (elapsed 14.33 s, remaining 1.27 s)
+9100000 of 9800000 tuples (92%) done (elapsed 14.49 s, remaining 1.11 s)
+9200000 of 9800000 tuples (93%) done (elapsed 14.60 s, remaining 0.95 s)
+9300000 of 9800000 tuples (94%) done (elapsed 14.81 s, remaining 0.80 s)
+9400000 of 9800000 tuples (95%) done (elapsed 15.02 s, remaining 0.64 s)
+9500000 of 9800000 tuples (96%) done (elapsed 15.21 s, remaining 0.48 s)
+9600000 of 9800000 tuples (97%) done (elapsed 15.30 s, remaining 0.32 s)
+9700000 of 9800000 tuples (98%) done (elapsed 15.50 s, remaining 0.16 s)
+9800000 of 9800000 tuples (100%) done (elapsed 15.62 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 98
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 600 s
+number of transactions actually processed: 5846154
+latency average = 0.103 ms
+tps = 9743.588135 (including connections establishing)
+tps = 9743.631529 (excluding connections establishing)
+waiting for server to shut down...2019-06-22 00:44:36.908 UTC [31] LOG:  received fast shutdown request
+.2019-06-22 00:44:36.911 UTC [31] LOG:  aborting any active transactions
+2019-06-22 00:44:36.913 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-22 00:44:36.914 UTC [33] LOG:  shutting down
+2019-06-22 00:44:36.936 UTC [31] LOG:  database system is shut down
+pgbench with BUFFER_TEST NORMAL_LOAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_WRITE
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2019-06-22 00:44:38.968 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-22 00:44:38.968 UTC [31] LOG:  could not create IPv6 socket for address "::": Address family not supported by protocol
+2019-06-22 00:44:38.971 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-22 00:44:38.988 UTC [32] LOG:  database system was shut down at 2019-06-22 00:44:38 UTC
+2019-06-22 00:44:38.993 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 7.21 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.26 s, remaining 12.24 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.34 s, remaining 10.66 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.52 s, remaining 12.23 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.70 s, remaining 13.04 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.82 s, remaining 12.53 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.98 s, remaining 12.73 s)
+800000 of 9800000 tuples (8%) done (elapsed 1.15 s, remaining 12.89 s)
+900000 of 9800000 tuples (9%) done (elapsed 1.26 s, remaining 12.49 s)
+1000000 of 9800000 tuples (10%) done (elapsed 1.43 s, remaining 12.57 s)
+1100000 of 9800000 tuples (11%) done (elapsed 1.64 s, remaining 12.96 s)
+1200000 of 9800000 tuples (12%) done (elapsed 1.76 s, remaining 12.61 s)
+1300000 of 9800000 tuples (13%) done (elapsed 1.93 s, remaining 12.62 s)
+1400000 of 9800000 tuples (14%) done (elapsed 2.12 s, remaining 12.71 s)
+1500000 of 9800000 tuples (15%) done (elapsed 2.24 s, remaining 12.40 s)
+1600000 of 9800000 tuples (16%) done (elapsed 2.41 s, remaining 12.36 s)
+1700000 of 9800000 tuples (17%) done (elapsed 2.61 s, remaining 12.46 s)
+1800000 of 9800000 tuples (18%) done (elapsed 2.74 s, remaining 12.18 s)
+1900000 of 9800000 tuples (19%) done (elapsed 2.91 s, remaining 12.09 s)
+2000000 of 9800000 tuples (20%) done (elapsed 3.10 s, remaining 12.09 s)
+2100000 of 9800000 tuples (21%) done (elapsed 3.18 s, remaining 11.67 s)
+2200000 of 9800000 tuples (22%) done (elapsed 3.39 s, remaining 11.69 s)
+2300000 of 9800000 tuples (23%) done (elapsed 3.52 s, remaining 11.48 s)
+2400000 of 9800000 tuples (24%) done (elapsed 3.66 s, remaining 11.29 s)
+2500000 of 9800000 tuples (25%) done (elapsed 3.86 s, remaining 11.28 s)
+2600000 of 9800000 tuples (26%) done (elapsed 3.99 s, remaining 11.05 s)
+2700000 of 9800000 tuples (27%) done (elapsed 4.14 s, remaining 10.88 s)
+2800000 of 9800000 tuples (28%) done (elapsed 4.34 s, remaining 10.85 s)
+2900000 of 9800000 tuples (29%) done (elapsed 4.46 s, remaining 10.62 s)
+3000000 of 9800000 tuples (30%) done (elapsed 4.66 s, remaining 10.55 s)
+3100000 of 9800000 tuples (31%) done (elapsed 4.87 s, remaining 10.52 s)
+3200000 of 9800000 tuples (32%) done (elapsed 4.96 s, remaining 10.23 s)
+3300000 of 9800000 tuples (33%) done (elapsed 5.15 s, remaining 10.15 s)
+3400000 of 9800000 tuples (34%) done (elapsed 5.28 s, remaining 9.95 s)
+3500000 of 9800000 tuples (35%) done (elapsed 5.44 s, remaining 9.78 s)
+3600000 of 9800000 tuples (36%) done (elapsed 5.64 s, remaining 9.71 s)
+3700000 of 9800000 tuples (37%) done (elapsed 5.75 s, remaining 9.48 s)
+3800000 of 9800000 tuples (38%) done (elapsed 5.95 s, remaining 9.39 s)
+3900000 of 9800000 tuples (39%) done (elapsed 6.18 s, remaining 9.35 s)
+4000000 of 9800000 tuples (40%) done (elapsed 6.27 s, remaining 9.10 s)
+4100000 of 9800000 tuples (41%) done (elapsed 6.46 s, remaining 8.98 s)
+4200000 of 9800000 tuples (42%) done (elapsed 6.59 s, remaining 8.79 s)
+4300000 of 9800000 tuples (43%) done (elapsed 6.78 s, remaining 8.68 s)
+4400000 of 9800000 tuples (44%) done (elapsed 6.93 s, remaining 8.50 s)
+4500000 of 9800000 tuples (45%) done (elapsed 7.06 s, remaining 8.32 s)
+4600000 of 9800000 tuples (46%) done (elapsed 7.25 s, remaining 8.20 s)
+4700000 of 9800000 tuples (47%) done (elapsed 7.41 s, remaining 8.04 s)
+4800000 of 9800000 tuples (48%) done (elapsed 7.53 s, remaining 7.85 s)
+4900000 of 9800000 tuples (50%) done (elapsed 7.73 s, remaining 7.73 s)
+5000000 of 9800000 tuples (51%) done (elapsed 7.92 s, remaining 7.61 s)
+5100000 of 9800000 tuples (52%) done (elapsed 8.05 s, remaining 7.42 s)
+5200000 of 9800000 tuples (53%) done (elapsed 8.21 s, remaining 7.26 s)
+5300000 of 9800000 tuples (54%) done (elapsed 8.40 s, remaining 7.13 s)
+5400000 of 9800000 tuples (55%) done (elapsed 8.53 s, remaining 6.95 s)
+5500000 of 9800000 tuples (56%) done (elapsed 8.67 s, remaining 6.78 s)
+5600000 of 9800000 tuples (57%) done (elapsed 8.81 s, remaining 6.61 s)
+5700000 of 9800000 tuples (58%) done (elapsed 9.00 s, remaining 6.47 s)
+5800000 of 9800000 tuples (59%) done (elapsed 9.14 s, remaining 6.31 s)
+5900000 of 9800000 tuples (60%) done (elapsed 9.27 s, remaining 6.13 s)
+6000000 of 9800000 tuples (61%) done (elapsed 9.43 s, remaining 5.97 s)
+6100000 of 9800000 tuples (62%) done (elapsed 9.63 s, remaining 5.84 s)
+6200000 of 9800000 tuples (63%) done (elapsed 9.74 s, remaining 5.65 s)
+6300000 of 9800000 tuples (64%) done (elapsed 9.92 s, remaining 5.51 s)
+6400000 of 9800000 tuples (65%) done (elapsed 10.11 s, remaining 5.37 s)
+6500000 of 9800000 tuples (66%) done (elapsed 10.19 s, remaining 5.17 s)
+2019-06-22 00:44:59.641 UTC [33] LOG:  checkpoints are occurring too frequently (10 seconds apart)
+2019-06-22 00:44:59.641 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+6600000 of 9800000 tuples (67%) done (elapsed 10.38 s, remaining 5.03 s)
+6700000 of 9800000 tuples (68%) done (elapsed 10.51 s, remaining 4.86 s)
+6800000 of 9800000 tuples (69%) done (elapsed 10.67 s, remaining 4.71 s)
+6900000 of 9800000 tuples (70%) done (elapsed 10.86 s, remaining 4.57 s)
+7000000 of 9800000 tuples (71%) done (elapsed 10.99 s, remaining 4.40 s)
+7100000 of 9800000 tuples (72%) done (elapsed 11.18 s, remaining 4.25 s)
+7200000 of 9800000 tuples (73%) done (elapsed 11.32 s, remaining 4.09 s)
+7300000 of 9800000 tuples (74%) done (elapsed 11.45 s, remaining 3.92 s)
+7400000 of 9800000 tuples (75%) done (elapsed 11.60 s, remaining 3.76 s)
+7500000 of 9800000 tuples (76%) done (elapsed 11.80 s, remaining 3.62 s)
+7600000 of 9800000 tuples (77%) done (elapsed 11.92 s, remaining 3.45 s)
+7700000 of 9800000 tuples (78%) done (elapsed 12.07 s, remaining 3.29 s)
+7800000 of 9800000 tuples (79%) done (elapsed 12.26 s, remaining 3.14 s)
+7900000 of 9800000 tuples (80%) done (elapsed 12.38 s, remaining 2.98 s)
+8000000 of 9800000 tuples (81%) done (elapsed 12.53 s, remaining 2.82 s)
+8100000 of 9800000 tuples (82%) done (elapsed 12.66 s, remaining 2.66 s)
+8200000 of 9800000 tuples (83%) done (elapsed 12.85 s, remaining 2.51 s)
+8300000 of 9800000 tuples (84%) done (elapsed 13.01 s, remaining 2.35 s)
+8400000 of 9800000 tuples (85%) done (elapsed 13.13 s, remaining 2.19 s)
+8500000 of 9800000 tuples (86%) done (elapsed 13.33 s, remaining 2.04 s)
+8600000 of 9800000 tuples (87%) done (elapsed 13.51 s, remaining 1.88 s)
+8700000 of 9800000 tuples (88%) done (elapsed 13.61 s, remaining 1.72 s)
+8800000 of 9800000 tuples (89%) done (elapsed 13.81 s, remaining 1.57 s)
+8900000 of 9800000 tuples (90%) done (elapsed 14.01 s, remaining 1.42 s)
+9000000 of 9800000 tuples (91%) done (elapsed 14.09 s, remaining 1.25 s)
+9100000 of 9800000 tuples (92%) done (elapsed 14.27 s, remaining 1.10 s)
+9200000 of 9800000 tuples (93%) done (elapsed 14.48 s, remaining 0.94 s)
+9300000 of 9800000 tuples (94%) done (elapsed 14.56 s, remaining 0.78 s)
+9400000 of 9800000 tuples (95%) done (elapsed 14.75 s, remaining 0.63 s)
+9500000 of 9800000 tuples (96%) done (elapsed 14.87 s, remaining 0.47 s)
+9600000 of 9800000 tuples (97%) done (elapsed 15.04 s, remaining 0.31 s)
+9700000 of 9800000 tuples (98%) done (elapsed 15.22 s, remaining 0.16 s)
+9800000 of 9800000 tuples (100%) done (elapsed 15.34 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 16 -c 64 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+2019-06-22 00:45:19.225 UTC [33] LOG:  checkpoints are occurring too frequently (20 seconds apart)
+2019-06-22 00:45:19.225 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:45:33.688 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:45:33.688 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:45:45.659 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 00:45:45.659 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:45:58.251 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:45:58.251 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:46:11.359 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:46:11.359 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:46:24.902 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:46:24.902 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:46:42.836 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 00:46:42.836 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:46:55.378 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:46:55.378 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:47:09.126 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:47:09.126 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:47:22.889 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:47:22.889 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:47:36.719 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:47:36.719 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:47:54.045 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 00:47:54.045 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:48:07.101 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:48:07.101 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:48:20.746 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:48:20.746 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:48:35.661 UTC [33] LOG:  checkpoints are occurring too frequently (15 seconds apart)
+2019-06-22 00:48:35.661 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:48:49.439 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:48:49.439 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:49:03.811 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:49:03.811 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:49:17.564 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:49:17.564 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:49:35.272 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 00:49:35.272 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:49:47.826 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 00:49:47.826 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:50:01.494 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:50:01.494 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:50:15.351 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:50:15.351 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:50:29.304 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:50:29.304 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:50:46.203 UTC [33] LOG:  checkpoints are occurring too frequently (17 seconds apart)
+2019-06-22 00:50:46.203 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:50:59.419 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:50:59.419 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:51:13.023 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:51:13.023 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:51:28.713 UTC [33] LOG:  checkpoints are occurring too frequently (15 seconds apart)
+2019-06-22 00:51:28.713 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:51:42.432 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:51:42.432 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:51:56.076 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:51:56.076 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:52:09.741 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:52:09.741 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:52:26.906 UTC [33] LOG:  checkpoints are occurring too frequently (17 seconds apart)
+2019-06-22 00:52:26.906 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:52:39.795 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:52:39.795 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:52:53.369 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:52:53.369 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:53:07.975 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:53:07.975 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:53:21.902 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:53:21.902 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:53:37.063 UTC [33] LOG:  checkpoints are occurring too frequently (16 seconds apart)
+2019-06-22 00:53:37.063 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:53:50.776 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:53:50.776 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:54:09.006 UTC [33] LOG:  checkpoints are occurring too frequently (19 seconds apart)
+2019-06-22 00:54:09.006 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:54:21.111 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 00:54:21.111 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:54:34.694 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:54:34.694 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:54:48.173 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 00:54:48.173 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 00:55:01.835 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 00:55:01.835 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 98
+query mode: simple
+number of clients: 64
+number of threads: 16
+duration: 600 s
+number of transactions actually processed: 4556306
+latency average = 8.442 ms
+tps = 7580.878706 (including connections establishing)
+tps = 7580.967490 (excluding connections establishing)
+waiting for server to shut down...2019-06-22 00:55:18.778 UTC [31] LOG:  received fast shutdown request
+.2019-06-22 00:55:18.781 UTC [31] LOG:  aborting any active transactions
+2019-06-22 00:55:18.783 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-22 00:55:18.786 UTC [33] LOG:  shutting down
+2019-06-22 00:55:18.814 UTC [31] LOG:  database system is shut down
+pgbench with BUFFER_TEST NORMAL_LOAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_ONLY
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2019-06-22 00:55:20.822 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-22 00:55:20.823 UTC [31] LOG:  could not create IPv6 socket for address "::": Address family not supported by protocol
+2019-06-22 00:55:20.826 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-22 00:55:20.843 UTC [32] LOG:  database system was shut down at 2019-06-22 00:55:20 UTC
+2019-06-22 00:55:20.847 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 7.26 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.26 s, remaining 12.25 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.34 s, remaining 10.66 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.53 s, remaining 12.35 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.70 s, remaining 13.06 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.83 s, remaining 12.67 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.98 s, remaining 12.77 s)
+800000 of 9800000 tuples (8%) done (elapsed 1.15 s, remaining 12.97 s)
+900000 of 9800000 tuples (9%) done (elapsed 1.27 s, remaining 12.56 s)
+1000000 of 9800000 tuples (10%) done (elapsed 1.44 s, remaining 12.63 s)
+1100000 of 9800000 tuples (11%) done (elapsed 1.65 s, remaining 13.02 s)
+1200000 of 9800000 tuples (12%) done (elapsed 1.77 s, remaining 12.66 s)
+1300000 of 9800000 tuples (13%) done (elapsed 1.93 s, remaining 12.65 s)
+1400000 of 9800000 tuples (14%) done (elapsed 2.14 s, remaining 12.82 s)
+1500000 of 9800000 tuples (15%) done (elapsed 2.26 s, remaining 12.50 s)
+1600000 of 9800000 tuples (16%) done (elapsed 2.42 s, remaining 12.42 s)
+1700000 of 9800000 tuples (17%) done (elapsed 2.62 s, remaining 12.50 s)
+1800000 of 9800000 tuples (18%) done (elapsed 2.75 s, remaining 12.22 s)
+1900000 of 9800000 tuples (19%) done (elapsed 2.92 s, remaining 12.12 s)
+2000000 of 9800000 tuples (20%) done (elapsed 3.11 s, remaining 12.14 s)
+2100000 of 9800000 tuples (21%) done (elapsed 3.20 s, remaining 11.72 s)
+2200000 of 9800000 tuples (22%) done (elapsed 3.40 s, remaining 11.75 s)
+2300000 of 9800000 tuples (23%) done (elapsed 3.60 s, remaining 11.75 s)
+2400000 of 9800000 tuples (24%) done (elapsed 3.69 s, remaining 11.36 s)
+2500000 of 9800000 tuples (25%) done (elapsed 3.89 s, remaining 11.36 s)
+2600000 of 9800000 tuples (26%) done (elapsed 4.01 s, remaining 11.11 s)
+2700000 of 9800000 tuples (27%) done (elapsed 4.15 s, remaining 10.93 s)
+2800000 of 9800000 tuples (28%) done (elapsed 4.34 s, remaining 10.84 s)
+2900000 of 9800000 tuples (29%) done (elapsed 4.46 s, remaining 10.61 s)
+3000000 of 9800000 tuples (30%) done (elapsed 4.65 s, remaining 10.53 s)
+3100000 of 9800000 tuples (31%) done (elapsed 4.73 s, remaining 10.22 s)
+3200000 of 9800000 tuples (32%) done (elapsed 4.92 s, remaining 10.14 s)
+3300000 of 9800000 tuples (33%) done (elapsed 5.09 s, remaining 10.02 s)
+3400000 of 9800000 tuples (34%) done (elapsed 5.31 s, remaining 9.99 s)
+3500000 of 9800000 tuples (35%) done (elapsed 5.39 s, remaining 9.71 s)
+3600000 of 9800000 tuples (36%) done (elapsed 5.59 s, remaining 9.62 s)
+3700000 of 9800000 tuples (37%) done (elapsed 5.81 s, remaining 9.57 s)
+3800000 of 9800000 tuples (38%) done (elapsed 5.89 s, remaining 9.29 s)
+3900000 of 9800000 tuples (39%) done (elapsed 6.09 s, remaining 9.21 s)
+4000000 of 9800000 tuples (40%) done (elapsed 6.18 s, remaining 8.96 s)
+4100000 of 9800000 tuples (41%) done (elapsed 6.37 s, remaining 8.86 s)
+4200000 of 9800000 tuples (42%) done (elapsed 6.58 s, remaining 8.77 s)
+4300000 of 9800000 tuples (43%) done (elapsed 6.70 s, remaining 8.58 s)
+4400000 of 9800000 tuples (44%) done (elapsed 6.86 s, remaining 8.42 s)
+4500000 of 9800000 tuples (45%) done (elapsed 7.00 s, remaining 8.24 s)
+4600000 of 9800000 tuples (46%) done (elapsed 7.19 s, remaining 8.13 s)
+4700000 of 9800000 tuples (47%) done (elapsed 7.34 s, remaining 7.97 s)
+4800000 of 9800000 tuples (48%) done (elapsed 7.45 s, remaining 7.76 s)
+4900000 of 9800000 tuples (50%) done (elapsed 7.61 s, remaining 7.61 s)
+5000000 of 9800000 tuples (51%) done (elapsed 7.81 s, remaining 7.50 s)
+5100000 of 9800000 tuples (52%) done (elapsed 7.93 s, remaining 7.30 s)
+5200000 of 9800000 tuples (53%) done (elapsed 8.12 s, remaining 7.18 s)
+5300000 of 9800000 tuples (54%) done (elapsed 8.30 s, remaining 7.04 s)
+5400000 of 9800000 tuples (55%) done (elapsed 8.40 s, remaining 6.84 s)
+5500000 of 9800000 tuples (56%) done (elapsed 8.58 s, remaining 6.71 s)
+5600000 of 9800000 tuples (57%) done (elapsed 8.71 s, remaining 6.53 s)
+5700000 of 9800000 tuples (58%) done (elapsed 8.87 s, remaining 6.38 s)
+5800000 of 9800000 tuples (59%) done (elapsed 9.06 s, remaining 6.25 s)
+5900000 of 9800000 tuples (60%) done (elapsed 9.18 s, remaining 6.07 s)
+6000000 of 9800000 tuples (61%) done (elapsed 9.34 s, remaining 5.91 s)
+6100000 of 9800000 tuples (62%) done (elapsed 9.56 s, remaining 5.80 s)
+6200000 of 9800000 tuples (63%) done (elapsed 9.68 s, remaining 5.62 s)
+6300000 of 9800000 tuples (64%) done (elapsed 9.85 s, remaining 5.47 s)
+6400000 of 9800000 tuples (65%) done (elapsed 10.04 s, remaining 5.33 s)
+6500000 of 9800000 tuples (66%) done (elapsed 10.17 s, remaining 5.16 s)
+2019-06-22 00:55:41.472 UTC [33] LOG:  checkpoints are occurring too frequently (10 seconds apart)
+2019-06-22 00:55:41.472 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+6600000 of 9800000 tuples (67%) done (elapsed 10.34 s, remaining 5.01 s)
+6700000 of 9800000 tuples (68%) done (elapsed 10.53 s, remaining 4.87 s)
+6800000 of 9800000 tuples (69%) done (elapsed 10.65 s, remaining 4.70 s)
+6900000 of 9800000 tuples (70%) done (elapsed 10.81 s, remaining 4.54 s)
+7000000 of 9800000 tuples (71%) done (elapsed 11.02 s, remaining 4.41 s)
+7100000 of 9800000 tuples (72%) done (elapsed 11.10 s, remaining 4.22 s)
+7200000 of 9800000 tuples (73%) done (elapsed 11.30 s, remaining 4.08 s)
+7300000 of 9800000 tuples (74%) done (elapsed 11.51 s, remaining 3.94 s)
+7400000 of 9800000 tuples (75%) done (elapsed 11.59 s, remaining 3.76 s)
+7500000 of 9800000 tuples (76%) done (elapsed 11.80 s, remaining 3.62 s)
+7600000 of 9800000 tuples (77%) done (elapsed 11.88 s, remaining 3.44 s)
+7700000 of 9800000 tuples (78%) done (elapsed 12.08 s, remaining 3.29 s)
+7800000 of 9800000 tuples (79%) done (elapsed 12.28 s, remaining 3.15 s)
+7900000 of 9800000 tuples (80%) done (elapsed 12.37 s, remaining 2.97 s)
+8000000 of 9800000 tuples (81%) done (elapsed 12.57 s, remaining 2.83 s)
+8100000 of 9800000 tuples (82%) done (elapsed 12.70 s, remaining 2.66 s)
+8200000 of 9800000 tuples (83%) done (elapsed 12.87 s, remaining 2.51 s)
+8300000 of 9800000 tuples (84%) done (elapsed 13.06 s, remaining 2.36 s)
+8400000 of 9800000 tuples (85%) done (elapsed 13.18 s, remaining 2.20 s)
+8500000 of 9800000 tuples (86%) done (elapsed 13.34 s, remaining 2.04 s)
+8600000 of 9800000 tuples (87%) done (elapsed 13.55 s, remaining 1.89 s)
+8700000 of 9800000 tuples (88%) done (elapsed 13.67 s, remaining 1.73 s)
+8800000 of 9800000 tuples (89%) done (elapsed 13.84 s, remaining 1.57 s)
+8900000 of 9800000 tuples (90%) done (elapsed 14.04 s, remaining 1.42 s)
+9000000 of 9800000 tuples (91%) done (elapsed 14.16 s, remaining 1.26 s)
+9100000 of 9800000 tuples (92%) done (elapsed 14.32 s, remaining 1.10 s)
+9200000 of 9800000 tuples (93%) done (elapsed 14.53 s, remaining 0.95 s)
+9300000 of 9800000 tuples (94%) done (elapsed 14.65 s, remaining 0.79 s)
+9400000 of 9800000 tuples (95%) done (elapsed 14.82 s, remaining 0.63 s)
+9500000 of 9800000 tuples (96%) done (elapsed 15.02 s, remaining 0.47 s)
+9600000 of 9800000 tuples (97%) done (elapsed 15.11 s, remaining 0.31 s)
+9700000 of 9800000 tuples (98%) done (elapsed 15.31 s, remaining 0.16 s)
+9800000 of 9800000 tuples (100%) done (elapsed 15.51 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 16 -c 64 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 98
+query mode: simple
+number of clients: 64
+number of threads: 16
+duration: 600 s
+number of transactions actually processed: 75289806
+latency average = 0.510 ms
+tps = 125480.192202 (including connections establishing)
+tps = 125482.162208 (excluding connections establishing)
+waiting for server to shut down....2019-06-22 01:05:57.680 UTC [31] LOG:  received fast shutdown request
+2019-06-22 01:05:57.683 UTC [31] LOG:  aborting any active transactions
+2019-06-22 01:05:57.684 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-22 01:05:57.685 UTC [33] LOG:  shutting down
+2019-06-22 01:05:57.709 UTC [31] LOG:  database system is shut down
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2019-06-22 01:05:59.712 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-22 01:05:59.713 UTC [31] LOG:  could not create IPv6 socket for address "::": Address family not supported by protocol
+2019-06-22 01:05:59.716 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-22 01:05:59.733 UTC [32] LOG:  database system was shut down at 2019-06-22 01:05:59 UTC
+2019-06-22 01:05:59.738 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 7.24 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.26 s, remaining 12.35 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.45 s, remaining 14.14 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.53 s, remaining 12.56 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.77 s, remaining 14.29 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.97 s, remaining 14.83 s)
+700000 of 9800000 tuples (7%) done (elapsed 1.10 s, remaining 14.33 s)
+800000 of 9800000 tuples (8%) done (elapsed 1.26 s, remaining 14.13 s)
+900000 of 9800000 tuples (9%) done (elapsed 1.39 s, remaining 13.72 s)
+1000000 of 9800000 tuples (10%) done (elapsed 1.53 s, remaining 13.48 s)
+1100000 of 9800000 tuples (11%) done (elapsed 1.71 s, remaining 13.54 s)
+1200000 of 9800000 tuples (12%) done (elapsed 1.84 s, remaining 13.16 s)
+1300000 of 9800000 tuples (13%) done (elapsed 1.99 s, remaining 12.99 s)
+1400000 of 9800000 tuples (14%) done (elapsed 2.16 s, remaining 12.99 s)
+1500000 of 9800000 tuples (15%) done (elapsed 2.29 s, remaining 12.70 s)
+1600000 of 9800000 tuples (16%) done (elapsed 2.45 s, remaining 12.53 s)
+1700000 of 9800000 tuples (17%) done (elapsed 2.57 s, remaining 12.24 s)
+1800000 of 9800000 tuples (18%) done (elapsed 2.75 s, remaining 12.22 s)
+1900000 of 9800000 tuples (19%) done (elapsed 2.91 s, remaining 12.12 s)
+2000000 of 9800000 tuples (20%) done (elapsed 3.03 s, remaining 11.81 s)
+2100000 of 9800000 tuples (21%) done (elapsed 3.22 s, remaining 11.82 s)
+2200000 of 9800000 tuples (22%) done (elapsed 3.42 s, remaining 11.82 s)
+2300000 of 9800000 tuples (23%) done (elapsed 3.61 s, remaining 11.77 s)
+2400000 of 9800000 tuples (24%) done (elapsed 3.69 s, remaining 11.38 s)
+2500000 of 9800000 tuples (25%) done (elapsed 3.89 s, remaining 11.37 s)
+2600000 of 9800000 tuples (26%) done (elapsed 3.98 s, remaining 11.01 s)
+2700000 of 9800000 tuples (27%) done (elapsed 4.19 s, remaining 11.02 s)
+2800000 of 9800000 tuples (28%) done (elapsed 4.39 s, remaining 10.98 s)
+2900000 of 9800000 tuples (29%) done (elapsed 4.48 s, remaining 10.65 s)
+3000000 of 9800000 tuples (30%) done (elapsed 4.69 s, remaining 10.63 s)
+3100000 of 9800000 tuples (31%) done (elapsed 4.81 s, remaining 10.40 s)
+3200000 of 9800000 tuples (32%) done (elapsed 5.00 s, remaining 10.32 s)
+3300000 of 9800000 tuples (33%) done (elapsed 5.15 s, remaining 10.15 s)
+3400000 of 9800000 tuples (34%) done (elapsed 5.26 s, remaining 9.91 s)
+3500000 of 9800000 tuples (35%) done (elapsed 5.42 s, remaining 9.76 s)
+3600000 of 9800000 tuples (36%) done (elapsed 5.61 s, remaining 9.66 s)
+3700000 of 9800000 tuples (37%) done (elapsed 5.74 s, remaining 9.46 s)
+3800000 of 9800000 tuples (38%) done (elapsed 5.89 s, remaining 9.30 s)
+3900000 of 9800000 tuples (39%) done (elapsed 6.11 s, remaining 9.24 s)
+4000000 of 9800000 tuples (40%) done (elapsed 6.21 s, remaining 9.01 s)
+4100000 of 9800000 tuples (41%) done (elapsed 6.40 s, remaining 8.90 s)
+4200000 of 9800000 tuples (42%) done (elapsed 6.59 s, remaining 8.78 s)
+4300000 of 9800000 tuples (43%) done (elapsed 6.72 s, remaining 8.59 s)
+4400000 of 9800000 tuples (44%) done (elapsed 6.88 s, remaining 8.44 s)
+4500000 of 9800000 tuples (45%) done (elapsed 7.00 s, remaining 8.25 s)
+4600000 of 9800000 tuples (46%) done (elapsed 7.14 s, remaining 8.08 s)
+4700000 of 9800000 tuples (47%) done (elapsed 7.34 s, remaining 7.97 s)
+4800000 of 9800000 tuples (48%) done (elapsed 7.47 s, remaining 7.78 s)
+4900000 of 9800000 tuples (50%) done (elapsed 7.63 s, remaining 7.63 s)
+5000000 of 9800000 tuples (51%) done (elapsed 7.82 s, remaining 7.51 s)
+5100000 of 9800000 tuples (52%) done (elapsed 7.94 s, remaining 7.32 s)
+5200000 of 9800000 tuples (53%) done (elapsed 8.16 s, remaining 7.22 s)
+5300000 of 9800000 tuples (54%) done (elapsed 8.35 s, remaining 7.09 s)
+5400000 of 9800000 tuples (55%) done (elapsed 8.47 s, remaining 6.90 s)
+5500000 of 9800000 tuples (56%) done (elapsed 8.64 s, remaining 6.76 s)
+5600000 of 9800000 tuples (57%) done (elapsed 8.83 s, remaining 6.62 s)
+5700000 of 9800000 tuples (58%) done (elapsed 8.91 s, remaining 6.41 s)
+5800000 of 9800000 tuples (59%) done (elapsed 9.12 s, remaining 6.29 s)
+5900000 of 9800000 tuples (60%) done (elapsed 9.30 s, remaining 6.15 s)
+6000000 of 9800000 tuples (61%) done (elapsed 9.39 s, remaining 5.95 s)
+6100000 of 9800000 tuples (62%) done (elapsed 9.60 s, remaining 5.82 s)
+6200000 of 9800000 tuples (63%) done (elapsed 9.68 s, remaining 5.62 s)
+6300000 of 9800000 tuples (64%) done (elapsed 9.90 s, remaining 5.50 s)
+6400000 of 9800000 tuples (65%) done (elapsed 10.10 s, remaining 5.37 s)
+6500000 of 9800000 tuples (66%) done (elapsed 10.19 s, remaining 5.17 s)
+2019-06-22 01:06:20.376 UTC [33] LOG:  checkpoints are occurring too frequently (11 seconds apart)
+2019-06-22 01:06:20.376 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+6600000 of 9800000 tuples (67%) done (elapsed 10.39 s, remaining 5.04 s)
+6700000 of 9800000 tuples (68%) done (elapsed 10.60 s, remaining 4.90 s)
+6800000 of 9800000 tuples (69%) done (elapsed 10.68 s, remaining 4.71 s)
+6900000 of 9800000 tuples (70%) done (elapsed 10.88 s, remaining 4.57 s)
+7000000 of 9800000 tuples (71%) done (elapsed 11.01 s, remaining 4.40 s)
+7100000 of 9800000 tuples (72%) done (elapsed 11.19 s, remaining 4.26 s)
+7200000 of 9800000 tuples (73%) done (elapsed 11.35 s, remaining 4.10 s)
+7300000 of 9800000 tuples (74%) done (elapsed 11.46 s, remaining 3.93 s)
+7400000 of 9800000 tuples (75%) done (elapsed 11.61 s, remaining 3.77 s)
+7500000 of 9800000 tuples (76%) done (elapsed 11.80 s, remaining 3.62 s)
+7600000 of 9800000 tuples (77%) done (elapsed 11.93 s, remaining 3.45 s)
+7700000 of 9800000 tuples (78%) done (elapsed 12.08 s, remaining 3.29 s)
+7800000 of 9800000 tuples (79%) done (elapsed 12.28 s, remaining 3.15 s)
+7900000 of 9800000 tuples (80%) done (elapsed 12.38 s, remaining 2.98 s)
+8000000 of 9800000 tuples (81%) done (elapsed 12.56 s, remaining 2.83 s)
+8100000 of 9800000 tuples (82%) done (elapsed 12.67 s, remaining 2.66 s)
+8200000 of 9800000 tuples (83%) done (elapsed 12.85 s, remaining 2.51 s)
+8300000 of 9800000 tuples (84%) done (elapsed 13.04 s, remaining 2.36 s)
+8400000 of 9800000 tuples (85%) done (elapsed 13.22 s, remaining 2.20 s)
+8500000 of 9800000 tuples (86%) done (elapsed 13.31 s, remaining 2.04 s)
+8600000 of 9800000 tuples (87%) done (elapsed 13.52 s, remaining 1.89 s)
+8700000 of 9800000 tuples (88%) done (elapsed 13.60 s, remaining 1.72 s)
+8800000 of 9800000 tuples (89%) done (elapsed 13.80 s, remaining 1.57 s)
+8900000 of 9800000 tuples (90%) done (elapsed 14.00 s, remaining 1.42 s)
+9000000 of 9800000 tuples (91%) done (elapsed 14.09 s, remaining 1.25 s)
+9100000 of 9800000 tuples (92%) done (elapsed 14.29 s, remaining 1.10 s)
+9200000 of 9800000 tuples (93%) done (elapsed 14.41 s, remaining 0.94 s)
+9300000 of 9800000 tuples (94%) done (elapsed 14.58 s, remaining 0.78 s)
+9400000 of 9800000 tuples (95%) done (elapsed 14.78 s, remaining 0.63 s)
+9500000 of 9800000 tuples (96%) done (elapsed 14.91 s, remaining 0.47 s)
+9600000 of 9800000 tuples (97%) done (elapsed 15.07 s, remaining 0.31 s)
+9700000 of 9800000 tuples (98%) done (elapsed 15.26 s, remaining 0.16 s)
+9800000 of 9800000 tuples (100%) done (elapsed 15.39 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 32 -c 256 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+2019-06-22 01:06:37.934 UTC [185] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.936 UTC [188] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.938 UTC [192] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.940 UTC [196] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.942 UTC [200] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.945 UTC [205] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.947 UTC [209] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.955 UTC [213] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.957 UTC [218] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.959 UTC [223] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.961 UTC [228] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.963 UTC [233] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.965 UTC [239] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.968 UTC [245] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.971 UTC [251] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.973 UTC [258] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.976 UTC [264] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.979 UTC [271] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.983 UTC [278] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.990 UTC [286] FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.991 UTC [285] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:37.992 UTC [284] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:06:39.887 UTC [33] LOG:  checkpoints are occurring too frequently (19 seconds apart)
+2019-06-22 01:06:39.887 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:06:56.395 UTC [33] LOG:  checkpoints are occurring too frequently (17 seconds apart)
+2019-06-22 01:06:56.395 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:07:06.684 UTC [33] LOG:  checkpoints are occurring too frequently (10 seconds apart)
+2019-06-22 01:07:06.684 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:07:19.000 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 01:07:19.000 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:07:31.914 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:07:31.914 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:07:45.309 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:07:45.309 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:07:58.816 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:07:58.816 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:08:15.217 UTC [33] LOG:  checkpoints are occurring too frequently (17 seconds apart)
+2019-06-22 01:08:15.217 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:08:28.711 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:08:28.711 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:08:42.096 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:08:42.096 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:08:55.551 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:08:55.551 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:09:13.174 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 01:09:13.174 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:09:25.277 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 01:09:25.277 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:09:38.668 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:09:38.668 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:09:51.910 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:09:51.910 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:10:05.225 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:10:05.225 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:10:22.957 UTC [33] LOG:  checkpoints are occurring too frequently (17 seconds apart)
+2019-06-22 01:10:22.957 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:10:35.084 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:10:35.084 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:10:48.594 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:10:48.594 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:11:01.987 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:11:01.987 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:11:15.511 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:11:15.511 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:11:33.075 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 01:11:33.075 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:11:45.286 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 01:11:45.286 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:11:58.731 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:11:58.731 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:12:12.108 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:12:12.108 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:12:25.435 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:12:25.435 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:12:43.255 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 01:12:43.255 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:12:55.306 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 01:12:55.306 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:13:08.644 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:13:08.644 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:13:21.963 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:13:21.963 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:13:35.409 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:13:35.409 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:13:52.780 UTC [33] LOG:  checkpoints are occurring too frequently (17 seconds apart)
+2019-06-22 01:13:52.780 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:14:05.029 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:14:05.029 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:14:18.249 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:14:18.249 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:14:31.582 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:14:31.582 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:14:44.855 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:14:44.855 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:15:02.323 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 01:15:02.323 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:15:14.381 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 01:15:14.381 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:15:27.717 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:15:27.717 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:15:41.039 UTC [33] LOG:  checkpoints are occurring too frequently (14 seconds apart)
+2019-06-22 01:15:41.039 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:15:54.430 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:15:54.430 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:16:12.089 UTC [33] LOG:  checkpoints are occurring too frequently (18 seconds apart)
+2019-06-22 01:16:12.089 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:16:24.151 UTC [33] LOG:  checkpoints are occurring too frequently (12 seconds apart)
+2019-06-22 01:16:24.151 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+2019-06-22 01:16:37.441 UTC [33] LOG:  checkpoints are occurring too frequently (13 seconds apart)
+2019-06-22 01:16:37.441 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 98
+query mode: simple
+number of clients: 256
+number of threads: 32
+duration: 600 s
+number of transactions actually processed: 4671847
+latency average = 32.880 ms
+tps = 7785.861158 (including connections establishing)
+tps = 7785.916448 (excluding connections establishing)
+2019-06-22 01:16:38.069 UTC [31] LOG:  received fast shutdown request
+waiting for server to shut down....2019-06-22 01:16:38.071 UTC [31] LOG:  aborting any active transactions
+2019-06-22 01:16:38.073 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-22 01:16:38.317 UTC [33] LOG:  shutting down
+2019-06-22 01:16:38.346 UTC [31] LOG:  database system is shut down
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2019-06-22 01:16:40.371 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-22 01:16:40.372 UTC [31] LOG:  could not create IPv6 socket for address "::": Address family not supported by protocol
+2019-06-22 01:16:40.375 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-22 01:16:40.392 UTC [32] LOG:  database system was shut down at 2019-06-22 01:16:40 UTC
+2019-06-22 01:16:40.397 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 9800000 tuples (1%) done (elapsed 0.08 s, remaining 7.29 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.26 s, remaining 12.34 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.34 s, remaining 10.69 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.52 s, remaining 12.26 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.71 s, remaining 13.25 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.92 s, remaining 14.05 s)
+700000 of 9800000 tuples (7%) done (elapsed 1.01 s, remaining 13.12 s)
+800000 of 9800000 tuples (8%) done (elapsed 1.19 s, remaining 13.38 s)
+900000 of 9800000 tuples (9%) done (elapsed 1.30 s, remaining 12.84 s)
+1000000 of 9800000 tuples (10%) done (elapsed 1.45 s, remaining 12.77 s)
+1100000 of 9800000 tuples (11%) done (elapsed 1.65 s, remaining 13.03 s)
+1200000 of 9800000 tuples (12%) done (elapsed 1.77 s, remaining 12.67 s)
+1300000 of 9800000 tuples (13%) done (elapsed 1.93 s, remaining 12.60 s)
+1400000 of 9800000 tuples (14%) done (elapsed 2.11 s, remaining 12.68 s)
+1500000 of 9800000 tuples (15%) done (elapsed 2.24 s, remaining 12.39 s)
+1600000 of 9800000 tuples (16%) done (elapsed 2.39 s, remaining 12.25 s)
+1700000 of 9800000 tuples (17%) done (elapsed 2.58 s, remaining 12.31 s)
+1800000 of 9800000 tuples (18%) done (elapsed 2.69 s, remaining 11.97 s)
+1900000 of 9800000 tuples (19%) done (elapsed 2.86 s, remaining 11.89 s)
+2000000 of 9800000 tuples (20%) done (elapsed 2.97 s, remaining 11.58 s)
+2100000 of 9800000 tuples (21%) done (elapsed 3.17 s, remaining 11.64 s)
+2200000 of 9800000 tuples (22%) done (elapsed 3.36 s, remaining 11.59 s)
+2300000 of 9800000 tuples (23%) done (elapsed 3.47 s, remaining 11.33 s)
+2400000 of 9800000 tuples (24%) done (elapsed 3.64 s, remaining 11.22 s)
+2500000 of 9800000 tuples (25%) done (elapsed 3.84 s, remaining 11.20 s)
+2600000 of 9800000 tuples (26%) done (elapsed 3.96 s, remaining 10.96 s)
+2700000 of 9800000 tuples (27%) done (elapsed 4.12 s, remaining 10.82 s)
+2800000 of 9800000 tuples (28%) done (elapsed 4.32 s, remaining 10.81 s)
+2900000 of 9800000 tuples (29%) done (elapsed 4.44 s, remaining 10.57 s)
+3000000 of 9800000 tuples (30%) done (elapsed 4.61 s, remaining 10.46 s)
+3100000 of 9800000 tuples (31%) done (elapsed 4.72 s, remaining 10.19 s)
+3200000 of 9800000 tuples (32%) done (elapsed 4.90 s, remaining 10.10 s)
+3300000 of 9800000 tuples (33%) done (elapsed 5.09 s, remaining 10.03 s)
+3400000 of 9800000 tuples (34%) done (elapsed 5.21 s, remaining 9.82 s)
+3500000 of 9800000 tuples (35%) done (elapsed 5.38 s, remaining 9.68 s)
+3600000 of 9800000 tuples (36%) done (elapsed 5.56 s, remaining 9.57 s)
+3700000 of 9800000 tuples (37%) done (elapsed 5.69 s, remaining 9.37 s)
+3800000 of 9800000 tuples (38%) done (elapsed 5.86 s, remaining 9.25 s)
+3900000 of 9800000 tuples (39%) done (elapsed 6.07 s, remaining 9.19 s)
+4000000 of 9800000 tuples (40%) done (elapsed 6.20 s, remaining 8.99 s)
+4100000 of 9800000 tuples (41%) done (elapsed 6.36 s, remaining 8.85 s)
+4200000 of 9800000 tuples (42%) done (elapsed 6.56 s, remaining 8.75 s)
+4300000 of 9800000 tuples (43%) done (elapsed 6.69 s, remaining 8.55 s)
+4400000 of 9800000 tuples (44%) done (elapsed 6.86 s, remaining 8.42 s)
+4500000 of 9800000 tuples (45%) done (elapsed 7.06 s, remaining 8.31 s)
+4600000 of 9800000 tuples (46%) done (elapsed 7.15 s, remaining 8.08 s)
+4700000 of 9800000 tuples (47%) done (elapsed 7.34 s, remaining 7.97 s)
+4800000 of 9800000 tuples (48%) done (elapsed 7.47 s, remaining 7.78 s)
+4900000 of 9800000 tuples (50%) done (elapsed 7.62 s, remaining 7.62 s)
+5000000 of 9800000 tuples (51%) done (elapsed 7.82 s, remaining 7.50 s)
+5100000 of 9800000 tuples (52%) done (elapsed 7.93 s, remaining 7.31 s)
+5200000 of 9800000 tuples (53%) done (elapsed 8.14 s, remaining 7.20 s)
+5300000 of 9800000 tuples (54%) done (elapsed 8.33 s, remaining 7.07 s)
+5400000 of 9800000 tuples (55%) done (elapsed 8.42 s, remaining 6.86 s)
+5500000 of 9800000 tuples (56%) done (elapsed 8.61 s, remaining 6.73 s)
+5600000 of 9800000 tuples (57%) done (elapsed 8.73 s, remaining 6.55 s)
+5700000 of 9800000 tuples (58%) done (elapsed 8.90 s, remaining 6.40 s)
+5800000 of 9800000 tuples (59%) done (elapsed 9.11 s, remaining 6.28 s)
+5900000 of 9800000 tuples (60%) done (elapsed 9.23 s, remaining 6.10 s)
+6000000 of 9800000 tuples (61%) done (elapsed 9.39 s, remaining 5.95 s)
+6100000 of 9800000 tuples (62%) done (elapsed 9.58 s, remaining 5.81 s)
+6200000 of 9800000 tuples (63%) done (elapsed 9.71 s, remaining 5.64 s)
+6300000 of 9800000 tuples (64%) done (elapsed 9.88 s, remaining 5.49 s)
+6400000 of 9800000 tuples (65%) done (elapsed 10.08 s, remaining 5.35 s)
+6500000 of 9800000 tuples (66%) done (elapsed 10.19 s, remaining 5.17 s)
+2019-06-22 01:17:01.057 UTC [33] LOG:  checkpoints are occurring too frequently (11 seconds apart)
+2019-06-22 01:17:01.057 UTC [33] HINT:  Consider increasing the configuration parameter "max_wal_size".
+6600000 of 9800000 tuples (67%) done (elapsed 10.39 s, remaining 5.04 s)
+6700000 of 9800000 tuples (68%) done (elapsed 10.56 s, remaining 4.89 s)
+6800000 of 9800000 tuples (69%) done (elapsed 10.65 s, remaining 4.70 s)
+6900000 of 9800000 tuples (70%) done (elapsed 10.85 s, remaining 4.56 s)
+7000000 of 9800000 tuples (71%) done (elapsed 11.05 s, remaining 4.42 s)
+7100000 of 9800000 tuples (72%) done (elapsed 11.14 s, remaining 4.24 s)
+7200000 of 9800000 tuples (73%) done (elapsed 11.34 s, remaining 4.10 s)
+7300000 of 9800000 tuples (74%) done (elapsed 11.56 s, remaining 3.96 s)
+7400000 of 9800000 tuples (75%) done (elapsed 11.64 s, remaining 3.78 s)
+7500000 of 9800000 tuples (76%) done (elapsed 11.85 s, remaining 3.63 s)
+7600000 of 9800000 tuples (77%) done (elapsed 11.93 s, remaining 3.45 s)
+7700000 of 9800000 tuples (78%) done (elapsed 12.13 s, remaining 3.31 s)
+7800000 of 9800000 tuples (79%) done (elapsed 12.34 s, remaining 3.16 s)
+7900000 of 9800000 tuples (80%) done (elapsed 12.42 s, remaining 2.99 s)
+8000000 of 9800000 tuples (81%) done (elapsed 12.62 s, remaining 2.84 s)
+8100000 of 9800000 tuples (82%) done (elapsed 12.75 s, remaining 2.68 s)
+8200000 of 9800000 tuples (83%) done (elapsed 12.92 s, remaining 2.52 s)
+8300000 of 9800000 tuples (84%) done (elapsed 13.11 s, remaining 2.37 s)
+8400000 of 9800000 tuples (85%) done (elapsed 13.23 s, remaining 2.21 s)
+8500000 of 9800000 tuples (86%) done (elapsed 13.40 s, remaining 2.05 s)
+8600000 of 9800000 tuples (87%) done (elapsed 13.60 s, remaining 1.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 13.73 s, remaining 1.74 s)
+8800000 of 9800000 tuples (89%) done (elapsed 13.89 s, remaining 1.58 s)
+8900000 of 9800000 tuples (90%) done (elapsed 14.08 s, remaining 1.42 s)
+9000000 of 9800000 tuples (91%) done (elapsed 14.21 s, remaining 1.26 s)
+9100000 of 9800000 tuples (92%) done (elapsed 14.37 s, remaining 1.11 s)
+9200000 of 9800000 tuples (93%) done (elapsed 14.49 s, remaining 0.94 s)
+9300000 of 9800000 tuples (94%) done (elapsed 14.69 s, remaining 0.79 s)
+9400000 of 9800000 tuples (95%) done (elapsed 14.84 s, remaining 0.63 s)
+9500000 of 9800000 tuples (96%) done (elapsed 14.95 s, remaining 0.47 s)
+9600000 of 9800000 tuples (97%) done (elapsed 15.16 s, remaining 0.32 s)
+9700000 of 9800000 tuples (98%) done (elapsed 15.32 s, remaining 0.16 s)
+9800000 of 9800000 tuples (100%) done (elapsed 15.44 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 32 -c 256 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+2019-06-22 01:17:17.696 UTC [185] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.697 UTC [188] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.699 UTC [191] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.701 UTC [195] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.704 UTC [199] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.707 UTC [204] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.709 UTC [209] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.724 UTC [214] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.727 UTC [219] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.729 UTC [223] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.731 UTC [228] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.734 UTC [233] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.737 UTC [238] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.741 UTC [244] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.744 UTC [250] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.747 UTC [256] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.751 UTC [262] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.754 UTC [269] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.759 UTC [276] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+2019-06-22 01:17:17.765 UTC [282] FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+transaction type: <builtin: select only>
+scaling factor: 98
+query mode: simple
+number of clients: 256
+number of threads: 32
+duration: 600 s
+number of transactions actually processed: 78076798
+latency average = 1.967 ms
+tps = 130121.287233 (including connections establishing)
+tps = 130122.602455 (excluding connections establishing)
+waiting for server to shut down...2019-06-22 01:27:18.009 UTC [31] LOG:  received fast shutdown request
+.2019-06-22 01:27:18.012 UTC [31] LOG:  aborting any active transactions
+2019-06-22 01:27:18.014 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-22 01:27:18.015 UTC [33] LOG:  shutting down
+2019-06-22 01:27:18.039 UTC [31] LOG:  database system is shut down
+Default-Node-Server
+[postgres] [INFO] Test clear docker image:
+[postgres] 
+pgbench with BUFFER_TEST SINGLE_THREAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_WRITE
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+server starting
+LOG:  could not create IPv6 socket: Address family not supported by protocol
+LOG:  database system was shut down at 2019-06-22 01:27:19 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 6.57 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.14 s, remaining 6.74 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.22 s, remaining 7.05 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.30 s, remaining 6.97 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.37 s, remaining 6.86 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.45 s, remaining 6.87 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.52 s, remaining 6.75 s)
+800000 of 9800000 tuples (8%) done (elapsed 0.59 s, remaining 6.65 s)
+900000 of 9800000 tuples (9%) done (elapsed 0.67 s, remaining 6.61 s)
+1000000 of 9800000 tuples (10%) done (elapsed 0.74 s, remaining 6.50 s)
+1100000 of 9800000 tuples (11%) done (elapsed 0.82 s, remaining 6.48 s)
+1200000 of 9800000 tuples (12%) done (elapsed 0.89 s, remaining 6.40 s)
+1300000 of 9800000 tuples (13%) done (elapsed 0.97 s, remaining 6.33 s)
+1400000 of 9800000 tuples (14%) done (elapsed 1.04 s, remaining 6.25 s)
+1500000 of 9800000 tuples (15%) done (elapsed 1.12 s, remaining 6.21 s)
+1600000 of 9800000 tuples (16%) done (elapsed 1.20 s, remaining 6.15 s)
+1700000 of 9800000 tuples (17%) done (elapsed 1.27 s, remaining 6.07 s)
+1800000 of 9800000 tuples (18%) done (elapsed 1.35 s, remaining 5.99 s)
+1900000 of 9800000 tuples (19%) done (elapsed 1.42 s, remaining 5.92 s)
+2000000 of 9800000 tuples (20%) done (elapsed 1.50 s, remaining 5.86 s)
+2100000 of 9800000 tuples (21%) done (elapsed 1.58 s, remaining 5.79 s)
+2200000 of 9800000 tuples (22%) done (elapsed 1.65 s, remaining 5.71 s)
+2300000 of 9800000 tuples (23%) done (elapsed 1.73 s, remaining 5.64 s)
+2400000 of 9800000 tuples (24%) done (elapsed 1.80 s, remaining 5.56 s)
+2500000 of 9800000 tuples (25%) done (elapsed 1.88 s, remaining 5.48 s)
+2600000 of 9800000 tuples (26%) done (elapsed 1.95 s, remaining 5.41 s)
+2700000 of 9800000 tuples (27%) done (elapsed 2.03 s, remaining 5.34 s)
+2800000 of 9800000 tuples (28%) done (elapsed 2.11 s, remaining 5.27 s)
+2900000 of 9800000 tuples (29%) done (elapsed 2.18 s, remaining 5.19 s)
+3000000 of 9800000 tuples (30%) done (elapsed 2.26 s, remaining 5.11 s)
+3100000 of 9800000 tuples (31%) done (elapsed 2.33 s, remaining 5.04 s)
+3200000 of 9800000 tuples (32%) done (elapsed 2.41 s, remaining 4.96 s)
+3300000 of 9800000 tuples (33%) done (elapsed 2.48 s, remaining 4.89 s)
+3400000 of 9800000 tuples (34%) done (elapsed 2.56 s, remaining 4.81 s)
+3500000 of 9800000 tuples (35%) done (elapsed 2.64 s, remaining 4.75 s)
+3600000 of 9800000 tuples (36%) done (elapsed 2.71 s, remaining 4.67 s)
+3700000 of 9800000 tuples (37%) done (elapsed 2.79 s, remaining 4.59 s)
+3800000 of 9800000 tuples (38%) done (elapsed 2.86 s, remaining 4.52 s)
+3900000 of 9800000 tuples (39%) done (elapsed 2.94 s, remaining 4.44 s)
+4000000 of 9800000 tuples (40%) done (elapsed 3.01 s, remaining 4.37 s)
+4100000 of 9800000 tuples (41%) done (elapsed 3.09 s, remaining 4.29 s)
+4200000 of 9800000 tuples (42%) done (elapsed 3.17 s, remaining 4.23 s)
+4300000 of 9800000 tuples (43%) done (elapsed 3.25 s, remaining 4.15 s)
+4400000 of 9800000 tuples (44%) done (elapsed 3.32 s, remaining 4.08 s)
+4500000 of 9800000 tuples (45%) done (elapsed 3.40 s, remaining 4.00 s)
+4600000 of 9800000 tuples (46%) done (elapsed 3.47 s, remaining 3.92 s)
+4700000 of 9800000 tuples (47%) done (elapsed 3.55 s, remaining 3.85 s)
+4800000 of 9800000 tuples (48%) done (elapsed 3.62 s, remaining 3.77 s)
+4900000 of 9800000 tuples (50%) done (elapsed 3.69 s, remaining 3.69 s)
+5000000 of 9800000 tuples (51%) done (elapsed 3.77 s, remaining 3.62 s)
+5100000 of 9800000 tuples (52%) done (elapsed 3.85 s, remaining 3.55 s)
+5200000 of 9800000 tuples (53%) done (elapsed 3.92 s, remaining 3.47 s)
+5300000 of 9800000 tuples (54%) done (elapsed 4.00 s, remaining 3.39 s)
+5400000 of 9800000 tuples (55%) done (elapsed 4.07 s, remaining 3.32 s)
+5500000 of 9800000 tuples (56%) done (elapsed 4.14 s, remaining 3.24 s)
+5600000 of 9800000 tuples (57%) done (elapsed 4.22 s, remaining 3.16 s)
+5700000 of 9800000 tuples (58%) done (elapsed 4.29 s, remaining 3.09 s)
+5800000 of 9800000 tuples (59%) done (elapsed 4.37 s, remaining 3.01 s)
+5900000 of 9800000 tuples (60%) done (elapsed 4.45 s, remaining 2.94 s)
+6000000 of 9800000 tuples (61%) done (elapsed 4.52 s, remaining 2.86 s)
+6100000 of 9800000 tuples (62%) done (elapsed 4.60 s, remaining 2.79 s)
+6200000 of 9800000 tuples (63%) done (elapsed 4.67 s, remaining 2.71 s)
+6300000 of 9800000 tuples (64%) done (elapsed 4.74 s, remaining 2.64 s)
+6400000 of 9800000 tuples (65%) done (elapsed 4.82 s, remaining 2.56 s)
+6500000 of 9800000 tuples (66%) done (elapsed 4.89 s, remaining 2.48 s)
+6600000 of 9800000 tuples (67%) done (elapsed 4.97 s, remaining 2.41 s)
+6700000 of 9800000 tuples (68%) done (elapsed 5.05 s, remaining 2.33 s)
+6800000 of 9800000 tuples (69%) done (elapsed 5.12 s, remaining 2.26 s)
+6900000 of 9800000 tuples (70%) done (elapsed 5.19 s, remaining 2.18 s)
+7000000 of 9800000 tuples (71%) done (elapsed 5.27 s, remaining 2.11 s)
+7100000 of 9800000 tuples (72%) done (elapsed 5.34 s, remaining 2.03 s)
+7200000 of 9800000 tuples (73%) done (elapsed 5.42 s, remaining 1.96 s)
+7300000 of 9800000 tuples (74%) done (elapsed 5.49 s, remaining 1.88 s)
+7400000 of 9800000 tuples (75%) done (elapsed 5.56 s, remaining 1.80 s)
+7500000 of 9800000 tuples (76%) done (elapsed 5.64 s, remaining 1.73 s)
+7600000 of 9800000 tuples (77%) done (elapsed 5.71 s, remaining 1.65 s)
+7700000 of 9800000 tuples (78%) done (elapsed 5.79 s, remaining 1.58 s)
+7800000 of 9800000 tuples (79%) done (elapsed 5.86 s, remaining 1.50 s)
+7900000 of 9800000 tuples (80%) done (elapsed 5.93 s, remaining 1.43 s)
+8000000 of 9800000 tuples (81%) done (elapsed 6.01 s, remaining 1.35 s)
+8100000 of 9800000 tuples (82%) done (elapsed 6.08 s, remaining 1.28 s)
+8200000 of 9800000 tuples (83%) done (elapsed 6.16 s, remaining 1.20 s)
+8300000 of 9800000 tuples (84%) done (elapsed 6.23 s, remaining 1.13 s)
+8400000 of 9800000 tuples (85%) done (elapsed 6.31 s, remaining 1.05 s)
+8500000 of 9800000 tuples (86%) done (elapsed 6.38 s, remaining 0.98 s)
+8600000 of 9800000 tuples (87%) done (elapsed 6.45 s, remaining 0.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 6.53 s, remaining 0.83 s)
+8800000 of 9800000 tuples (89%) done (elapsed 6.60 s, remaining 0.75 s)
+8900000 of 9800000 tuples (90%) done (elapsed 6.67 s, remaining 0.67 s)
+9000000 of 9800000 tuples (91%) done (elapsed 6.75 s, remaining 0.60 s)
+9100000 of 9800000 tuples (92%) done (elapsed 6.82 s, remaining 0.52 s)
+9200000 of 9800000 tuples (93%) done (elapsed 6.90 s, remaining 0.45 s)
+9300000 of 9800000 tuples (94%) done (elapsed 6.97 s, remaining 0.37 s)
+9400000 of 9800000 tuples (95%) done (elapsed 7.05 s, remaining 0.30 s)
+9500000 of 9800000 tuples (96%) done (elapsed 7.12 s, remaining 0.22 s)
+9600000 of 9800000 tuples (97%) done (elapsed 7.21 s, remaining 0.15 s)
+9700000 of 9800000 tuples (98%) done (elapsed 7.30 s, remaining 0.08 s)
+9800000 of 9800000 tuples (100%) done (elapsed 7.37 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 98
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 600 s
+number of transactions actually processed: 455809
+latency average = 1.316 ms
+tps = 759.680669 (including connections establishing)
+tps = 759.683413 (excluding connections establishing)
+waiting for server to shut down....LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST SINGLE_THREAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_ONLY
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+server starting
+LOG:  could not create IPv6 socket: Address family not supported by protocol
+LOG:  database system was shut down at 2019-06-22 01:37:58 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 6.60 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.14 s, remaining 6.75 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.22 s, remaining 6.96 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.29 s, remaining 6.88 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.36 s, remaining 6.79 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.44 s, remaining 6.80 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.51 s, remaining 6.69 s)
+800000 of 9800000 tuples (8%) done (elapsed 0.59 s, remaining 6.59 s)
+900000 of 9800000 tuples (9%) done (elapsed 0.66 s, remaining 6.57 s)
+1000000 of 9800000 tuples (10%) done (elapsed 0.73 s, remaining 6.47 s)
+1100000 of 9800000 tuples (11%) done (elapsed 0.82 s, remaining 6.45 s)
+1200000 of 9800000 tuples (12%) done (elapsed 0.89 s, remaining 6.37 s)
+1300000 of 9800000 tuples (13%) done (elapsed 0.96 s, remaining 6.30 s)
+1400000 of 9800000 tuples (14%) done (elapsed 1.04 s, remaining 6.22 s)
+1500000 of 9800000 tuples (15%) done (elapsed 1.11 s, remaining 6.15 s)
+1600000 of 9800000 tuples (16%) done (elapsed 1.19 s, remaining 6.11 s)
+1700000 of 9800000 tuples (17%) done (elapsed 1.27 s, remaining 6.03 s)
+1800000 of 9800000 tuples (18%) done (elapsed 1.34 s, remaining 5.95 s)
+1900000 of 9800000 tuples (19%) done (elapsed 1.41 s, remaining 5.88 s)
+2000000 of 9800000 tuples (20%) done (elapsed 1.49 s, remaining 5.83 s)
+2100000 of 9800000 tuples (21%) done (elapsed 1.57 s, remaining 5.75 s)
+2200000 of 9800000 tuples (22%) done (elapsed 1.64 s, remaining 5.68 s)
+2300000 of 9800000 tuples (23%) done (elapsed 1.72 s, remaining 5.60 s)
+2400000 of 9800000 tuples (24%) done (elapsed 1.79 s, remaining 5.52 s)
+2500000 of 9800000 tuples (25%) done (elapsed 1.87 s, remaining 5.46 s)
+2600000 of 9800000 tuples (26%) done (elapsed 1.95 s, remaining 5.39 s)
+2700000 of 9800000 tuples (27%) done (elapsed 2.02 s, remaining 5.31 s)
+2800000 of 9800000 tuples (28%) done (elapsed 2.09 s, remaining 5.23 s)
+2900000 of 9800000 tuples (29%) done (elapsed 2.17 s, remaining 5.17 s)
+3000000 of 9800000 tuples (30%) done (elapsed 2.25 s, remaining 5.09 s)
+3100000 of 9800000 tuples (31%) done (elapsed 2.32 s, remaining 5.02 s)
+3200000 of 9800000 tuples (32%) done (elapsed 2.40 s, remaining 4.94 s)
+3300000 of 9800000 tuples (33%) done (elapsed 2.48 s, remaining 4.88 s)
+3400000 of 9800000 tuples (34%) done (elapsed 2.55 s, remaining 4.80 s)
+3500000 of 9800000 tuples (35%) done (elapsed 2.63 s, remaining 4.73 s)
+3600000 of 9800000 tuples (36%) done (elapsed 2.70 s, remaining 4.65 s)
+3700000 of 9800000 tuples (37%) done (elapsed 2.78 s, remaining 4.58 s)
+3800000 of 9800000 tuples (38%) done (elapsed 2.86 s, remaining 4.51 s)
+3900000 of 9800000 tuples (39%) done (elapsed 2.93 s, remaining 4.43 s)
+4000000 of 9800000 tuples (40%) done (elapsed 3.00 s, remaining 4.36 s)
+4100000 of 9800000 tuples (41%) done (elapsed 3.08 s, remaining 4.28 s)
+4200000 of 9800000 tuples (42%) done (elapsed 3.15 s, remaining 4.20 s)
+4300000 of 9800000 tuples (43%) done (elapsed 3.23 s, remaining 4.13 s)
+4400000 of 9800000 tuples (44%) done (elapsed 3.31 s, remaining 4.06 s)
+4500000 of 9800000 tuples (45%) done (elapsed 3.38 s, remaining 3.98 s)
+4600000 of 9800000 tuples (46%) done (elapsed 3.46 s, remaining 3.91 s)
+4700000 of 9800000 tuples (47%) done (elapsed 3.53 s, remaining 3.83 s)
+4800000 of 9800000 tuples (48%) done (elapsed 3.60 s, remaining 3.75 s)
+4900000 of 9800000 tuples (50%) done (elapsed 3.68 s, remaining 3.68 s)
+5000000 of 9800000 tuples (51%) done (elapsed 3.76 s, remaining 3.61 s)
+5100000 of 9800000 tuples (52%) done (elapsed 3.83 s, remaining 3.53 s)
+5200000 of 9800000 tuples (53%) done (elapsed 3.91 s, remaining 3.46 s)
+5300000 of 9800000 tuples (54%) done (elapsed 3.98 s, remaining 3.38 s)
+5400000 of 9800000 tuples (55%) done (elapsed 4.06 s, remaining 3.31 s)
+5500000 of 9800000 tuples (56%) done (elapsed 4.13 s, remaining 3.23 s)
+5600000 of 9800000 tuples (57%) done (elapsed 4.21 s, remaining 3.15 s)
+5700000 of 9800000 tuples (58%) done (elapsed 4.28 s, remaining 3.08 s)
+5800000 of 9800000 tuples (59%) done (elapsed 4.36 s, remaining 3.01 s)
+5900000 of 9800000 tuples (60%) done (elapsed 4.44 s, remaining 2.93 s)
+6000000 of 9800000 tuples (61%) done (elapsed 4.51 s, remaining 2.86 s)
+6100000 of 9800000 tuples (62%) done (elapsed 4.59 s, remaining 2.78 s)
+6200000 of 9800000 tuples (63%) done (elapsed 4.66 s, remaining 2.71 s)
+6300000 of 9800000 tuples (64%) done (elapsed 4.74 s, remaining 2.63 s)
+6400000 of 9800000 tuples (65%) done (elapsed 4.81 s, remaining 2.56 s)
+6500000 of 9800000 tuples (66%) done (elapsed 4.89 s, remaining 2.48 s)
+6600000 of 9800000 tuples (67%) done (elapsed 4.96 s, remaining 2.41 s)
+6700000 of 9800000 tuples (68%) done (elapsed 5.04 s, remaining 2.33 s)
+6800000 of 9800000 tuples (69%) done (elapsed 5.11 s, remaining 2.26 s)
+6900000 of 9800000 tuples (70%) done (elapsed 5.19 s, remaining 2.18 s)
+7000000 of 9800000 tuples (71%) done (elapsed 5.26 s, remaining 2.10 s)
+7100000 of 9800000 tuples (72%) done (elapsed 5.34 s, remaining 2.03 s)
+7200000 of 9800000 tuples (73%) done (elapsed 5.41 s, remaining 1.96 s)
+7300000 of 9800000 tuples (74%) done (elapsed 5.49 s, remaining 1.88 s)
+7400000 of 9800000 tuples (75%) done (elapsed 5.56 s, remaining 1.80 s)
+7500000 of 9800000 tuples (76%) done (elapsed 5.64 s, remaining 1.73 s)
+7600000 of 9800000 tuples (77%) done (elapsed 5.72 s, remaining 1.65 s)
+7700000 of 9800000 tuples (78%) done (elapsed 5.79 s, remaining 1.58 s)
+7800000 of 9800000 tuples (79%) done (elapsed 5.86 s, remaining 1.50 s)
+7900000 of 9800000 tuples (80%) done (elapsed 5.94 s, remaining 1.43 s)
+8000000 of 9800000 tuples (81%) done (elapsed 6.01 s, remaining 1.35 s)
+8100000 of 9800000 tuples (82%) done (elapsed 6.08 s, remaining 1.28 s)
+8200000 of 9800000 tuples (83%) done (elapsed 6.16 s, remaining 1.20 s)
+8300000 of 9800000 tuples (84%) done (elapsed 6.24 s, remaining 1.13 s)
+8400000 of 9800000 tuples (85%) done (elapsed 6.31 s, remaining 1.05 s)
+8500000 of 9800000 tuples (86%) done (elapsed 6.38 s, remaining 0.98 s)
+8600000 of 9800000 tuples (87%) done (elapsed 6.46 s, remaining 0.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 6.54 s, remaining 0.83 s)
+8800000 of 9800000 tuples (89%) done (elapsed 6.61 s, remaining 0.75 s)
+8900000 of 9800000 tuples (90%) done (elapsed 6.68 s, remaining 0.68 s)
+9000000 of 9800000 tuples (91%) done (elapsed 6.76 s, remaining 0.60 s)
+9100000 of 9800000 tuples (92%) done (elapsed 6.83 s, remaining 0.53 s)
+9200000 of 9800000 tuples (93%) done (elapsed 6.91 s, remaining 0.45 s)
+9300000 of 9800000 tuples (94%) done (elapsed 6.99 s, remaining 0.38 s)
+9400000 of 9800000 tuples (95%) done (elapsed 7.06 s, remaining 0.30 s)
+9500000 of 9800000 tuples (96%) done (elapsed 7.13 s, remaining 0.23 s)
+9600000 of 9800000 tuples (97%) done (elapsed 7.21 s, remaining 0.15 s)
+9700000 of 9800000 tuples (98%) done (elapsed 7.28 s, remaining 0.08 s)
+9800000 of 9800000 tuples (100%) done (elapsed 7.36 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 98
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 600 s
+number of transactions actually processed: 6076475
+latency average = 0.099 ms
+tps = 10127.455700 (including connections establishing)
+tps = 10127.489779 (excluding connections establishing)
+waiting for server to shut down....LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST NORMAL_LOAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_WRITE
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+server starting
+LOG:  could not create IPv6 socket: Address family not supported by protocol
+LOG:  database system was shut down at 2019-06-22 01:48:32 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 6.62 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.14 s, remaining 6.80 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.21 s, remaining 6.80 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.29 s, remaining 6.92 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.37 s, remaining 6.82 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.44 s, remaining 6.74 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.52 s, remaining 6.75 s)
+800000 of 9800000 tuples (8%) done (elapsed 0.59 s, remaining 6.65 s)
+900000 of 9800000 tuples (9%) done (elapsed 0.66 s, remaining 6.56 s)
+1000000 of 9800000 tuples (10%) done (elapsed 0.74 s, remaining 6.51 s)
+1100000 of 9800000 tuples (11%) done (elapsed 0.81 s, remaining 6.45 s)
+1200000 of 9800000 tuples (12%) done (elapsed 0.89 s, remaining 6.37 s)
+1300000 of 9800000 tuples (13%) done (elapsed 0.96 s, remaining 6.31 s)
+1400000 of 9800000 tuples (14%) done (elapsed 1.05 s, remaining 6.27 s)
+1500000 of 9800000 tuples (15%) done (elapsed 1.12 s, remaining 6.20 s)
+1600000 of 9800000 tuples (16%) done (elapsed 1.19 s, remaining 6.12 s)
+1700000 of 9800000 tuples (17%) done (elapsed 1.27 s, remaining 6.05 s)
+1800000 of 9800000 tuples (18%) done (elapsed 1.34 s, remaining 5.97 s)
+1900000 of 9800000 tuples (19%) done (elapsed 1.42 s, remaining 5.90 s)
+2000000 of 9800000 tuples (20%) done (elapsed 1.49 s, remaining 5.83 s)
+2100000 of 9800000 tuples (21%) done (elapsed 1.57 s, remaining 5.75 s)
+2200000 of 9800000 tuples (22%) done (elapsed 1.65 s, remaining 5.70 s)
+2300000 of 9800000 tuples (23%) done (elapsed 1.72 s, remaining 5.62 s)
+2400000 of 9800000 tuples (24%) done (elapsed 1.80 s, remaining 5.55 s)
+2500000 of 9800000 tuples (25%) done (elapsed 1.87 s, remaining 5.47 s)
+2600000 of 9800000 tuples (26%) done (elapsed 1.95 s, remaining 5.39 s)
+2700000 of 9800000 tuples (27%) done (elapsed 2.03 s, remaining 5.33 s)
+2800000 of 9800000 tuples (28%) done (elapsed 2.10 s, remaining 5.26 s)
+2900000 of 9800000 tuples (29%) done (elapsed 2.18 s, remaining 5.18 s)
+3000000 of 9800000 tuples (30%) done (elapsed 2.26 s, remaining 5.12 s)
+3100000 of 9800000 tuples (31%) done (elapsed 2.33 s, remaining 5.04 s)
+3200000 of 9800000 tuples (32%) done (elapsed 2.41 s, remaining 4.97 s)
+3300000 of 9800000 tuples (33%) done (elapsed 2.48 s, remaining 4.89 s)
+3400000 of 9800000 tuples (34%) done (elapsed 2.56 s, remaining 4.81 s)
+3500000 of 9800000 tuples (35%) done (elapsed 2.63 s, remaining 4.74 s)
+3600000 of 9800000 tuples (36%) done (elapsed 2.71 s, remaining 4.66 s)
+3700000 of 9800000 tuples (37%) done (elapsed 2.78 s, remaining 4.58 s)
+3800000 of 9800000 tuples (38%) done (elapsed 2.86 s, remaining 4.52 s)
+3900000 of 9800000 tuples (39%) done (elapsed 2.93 s, remaining 4.44 s)
+4000000 of 9800000 tuples (40%) done (elapsed 3.01 s, remaining 4.36 s)
+4100000 of 9800000 tuples (41%) done (elapsed 3.08 s, remaining 4.29 s)
+4200000 of 9800000 tuples (42%) done (elapsed 3.16 s, remaining 4.21 s)
+4300000 of 9800000 tuples (43%) done (elapsed 3.23 s, remaining 4.13 s)
+4400000 of 9800000 tuples (44%) done (elapsed 3.31 s, remaining 4.06 s)
+4500000 of 9800000 tuples (45%) done (elapsed 3.38 s, remaining 3.98 s)
+4600000 of 9800000 tuples (46%) done (elapsed 3.46 s, remaining 3.91 s)
+4700000 of 9800000 tuples (47%) done (elapsed 3.53 s, remaining 3.84 s)
+4800000 of 9800000 tuples (48%) done (elapsed 3.61 s, remaining 3.76 s)
+4900000 of 9800000 tuples (50%) done (elapsed 3.68 s, remaining 3.68 s)
+5000000 of 9800000 tuples (51%) done (elapsed 3.76 s, remaining 3.61 s)
+5100000 of 9800000 tuples (52%) done (elapsed 3.83 s, remaining 3.53 s)
+5200000 of 9800000 tuples (53%) done (elapsed 3.91 s, remaining 3.46 s)
+5300000 of 9800000 tuples (54%) done (elapsed 3.98 s, remaining 3.38 s)
+5400000 of 9800000 tuples (55%) done (elapsed 4.06 s, remaining 3.31 s)
+5500000 of 9800000 tuples (56%) done (elapsed 4.13 s, remaining 3.23 s)
+5600000 of 9800000 tuples (57%) done (elapsed 4.21 s, remaining 3.15 s)
+5700000 of 9800000 tuples (58%) done (elapsed 4.29 s, remaining 3.08 s)
+5800000 of 9800000 tuples (59%) done (elapsed 4.36 s, remaining 3.01 s)
+5900000 of 9800000 tuples (60%) done (elapsed 4.43 s, remaining 2.93 s)
+6000000 of 9800000 tuples (61%) done (elapsed 4.51 s, remaining 2.86 s)
+6100000 of 9800000 tuples (62%) done (elapsed 4.58 s, remaining 2.78 s)
+6200000 of 9800000 tuples (63%) done (elapsed 4.66 s, remaining 2.70 s)
+6300000 of 9800000 tuples (64%) done (elapsed 4.73 s, remaining 2.63 s)
+6400000 of 9800000 tuples (65%) done (elapsed 4.80 s, remaining 2.55 s)
+6500000 of 9800000 tuples (66%) done (elapsed 4.88 s, remaining 2.48 s)
+6600000 of 9800000 tuples (67%) done (elapsed 4.96 s, remaining 2.40 s)
+6700000 of 9800000 tuples (68%) done (elapsed 5.03 s, remaining 2.33 s)
+6800000 of 9800000 tuples (69%) done (elapsed 5.11 s, remaining 2.25 s)
+6900000 of 9800000 tuples (70%) done (elapsed 5.18 s, remaining 2.18 s)
+7000000 of 9800000 tuples (71%) done (elapsed 5.25 s, remaining 2.10 s)
+7100000 of 9800000 tuples (72%) done (elapsed 5.33 s, remaining 2.03 s)
+7200000 of 9800000 tuples (73%) done (elapsed 5.40 s, remaining 1.95 s)
+7300000 of 9800000 tuples (74%) done (elapsed 5.47 s, remaining 1.87 s)
+7400000 of 9800000 tuples (75%) done (elapsed 5.55 s, remaining 1.80 s)
+7500000 of 9800000 tuples (76%) done (elapsed 5.62 s, remaining 1.72 s)
+7600000 of 9800000 tuples (77%) done (elapsed 5.69 s, remaining 1.65 s)
+7700000 of 9800000 tuples (78%) done (elapsed 5.77 s, remaining 1.57 s)
+7800000 of 9800000 tuples (79%) done (elapsed 5.85 s, remaining 1.50 s)
+7900000 of 9800000 tuples (80%) done (elapsed 5.92 s, remaining 1.42 s)
+8000000 of 9800000 tuples (81%) done (elapsed 6.00 s, remaining 1.35 s)
+8100000 of 9800000 tuples (82%) done (elapsed 6.07 s, remaining 1.27 s)
+8200000 of 9800000 tuples (83%) done (elapsed 6.15 s, remaining 1.20 s)
+8300000 of 9800000 tuples (84%) done (elapsed 6.22 s, remaining 1.12 s)
+8400000 of 9800000 tuples (85%) done (elapsed 6.29 s, remaining 1.05 s)
+8500000 of 9800000 tuples (86%) done (elapsed 6.37 s, remaining 0.97 s)
+8600000 of 9800000 tuples (87%) done (elapsed 6.44 s, remaining 0.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 6.52 s, remaining 0.82 s)
+8800000 of 9800000 tuples (89%) done (elapsed 6.60 s, remaining 0.75 s)
+8900000 of 9800000 tuples (90%) done (elapsed 6.67 s, remaining 0.67 s)
+9000000 of 9800000 tuples (91%) done (elapsed 6.75 s, remaining 0.60 s)
+9100000 of 9800000 tuples (92%) done (elapsed 6.82 s, remaining 0.52 s)
+9200000 of 9800000 tuples (93%) done (elapsed 6.90 s, remaining 0.45 s)
+9300000 of 9800000 tuples (94%) done (elapsed 6.97 s, remaining 0.37 s)
+9400000 of 9800000 tuples (95%) done (elapsed 7.05 s, remaining 0.30 s)
+9500000 of 9800000 tuples (96%) done (elapsed 7.12 s, remaining 0.22 s)
+9600000 of 9800000 tuples (97%) done (elapsed 7.20 s, remaining 0.15 s)
+9700000 of 9800000 tuples (98%) done (elapsed 7.27 s, remaining 0.07 s)
+9800000 of 9800000 tuples (100%) done (elapsed 7.35 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 16 -c 64 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+LOG:  checkpoints are occurring too frequently (25 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (11 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (10 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (10 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (10 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (11 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (11 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (12 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (7 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 98
+query mode: simple
+number of clients: 64
+number of threads: 16
+duration: 600 s
+number of transactions actually processed: 3704052
+latency average = 10.368 ms
+tps = 6173.010894 (including connections establishing)
+tps = 6173.052239 (excluding connections establishing)
+waiting for server to shut down...LOG:  received fast shutdown request
+.LOG:  aborting any active transactions
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST NORMAL_LOAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_ONLY
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+server starting
+LOG:  could not create IPv6 socket: Address family not supported by protocol
+LOG:  database system was shut down at 2019-06-22 01:59:05 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 6.63 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.14 s, remaining 6.78 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.22 s, remaining 6.86 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.30 s, remaining 6.97 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.37 s, remaining 6.87 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.44 s, remaining 6.79 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.52 s, remaining 6.70 s)
+800000 of 9800000 tuples (8%) done (elapsed 0.59 s, remaining 6.61 s)
+900000 of 9800000 tuples (9%) done (elapsed 0.66 s, remaining 6.53 s)
+1000000 of 9800000 tuples (10%) done (elapsed 0.74 s, remaining 6.49 s)
+1100000 of 9800000 tuples (11%) done (elapsed 0.81 s, remaining 6.42 s)
+1200000 of 9800000 tuples (12%) done (elapsed 0.89 s, remaining 6.35 s)
+1300000 of 9800000 tuples (13%) done (elapsed 0.96 s, remaining 6.28 s)
+1400000 of 9800000 tuples (14%) done (elapsed 1.03 s, remaining 6.21 s)
+1500000 of 9800000 tuples (15%) done (elapsed 1.11 s, remaining 6.14 s)
+1600000 of 9800000 tuples (16%) done (elapsed 1.19 s, remaining 6.10 s)
+1700000 of 9800000 tuples (17%) done (elapsed 1.27 s, remaining 6.03 s)
+1800000 of 9800000 tuples (18%) done (elapsed 1.34 s, remaining 5.96 s)
+1900000 of 9800000 tuples (19%) done (elapsed 1.42 s, remaining 5.89 s)
+2000000 of 9800000 tuples (20%) done (elapsed 1.49 s, remaining 5.81 s)
+2100000 of 9800000 tuples (21%) done (elapsed 1.57 s, remaining 5.74 s)
+2200000 of 9800000 tuples (22%) done (elapsed 1.64 s, remaining 5.67 s)
+2300000 of 9800000 tuples (23%) done (elapsed 1.71 s, remaining 5.59 s)
+2400000 of 9800000 tuples (24%) done (elapsed 1.79 s, remaining 5.52 s)
+2500000 of 9800000 tuples (25%) done (elapsed 1.86 s, remaining 5.44 s)
+2600000 of 9800000 tuples (26%) done (elapsed 1.94 s, remaining 5.38 s)
+2700000 of 9800000 tuples (27%) done (elapsed 2.02 s, remaining 5.31 s)
+2800000 of 9800000 tuples (28%) done (elapsed 2.09 s, remaining 5.23 s)
+2900000 of 9800000 tuples (29%) done (elapsed 2.17 s, remaining 5.16 s)
+3000000 of 9800000 tuples (30%) done (elapsed 2.24 s, remaining 5.08 s)
+3100000 of 9800000 tuples (31%) done (elapsed 2.33 s, remaining 5.03 s)
+3200000 of 9800000 tuples (32%) done (elapsed 2.40 s, remaining 4.95 s)
+3300000 of 9800000 tuples (33%) done (elapsed 2.48 s, remaining 4.88 s)
+3400000 of 9800000 tuples (34%) done (elapsed 2.56 s, remaining 4.81 s)
+3500000 of 9800000 tuples (35%) done (elapsed 2.63 s, remaining 4.74 s)
+3600000 of 9800000 tuples (36%) done (elapsed 2.71 s, remaining 4.66 s)
+3700000 of 9800000 tuples (37%) done (elapsed 2.78 s, remaining 4.59 s)
+3800000 of 9800000 tuples (38%) done (elapsed 2.86 s, remaining 4.51 s)
+3900000 of 9800000 tuples (39%) done (elapsed 2.94 s, remaining 4.44 s)
+4000000 of 9800000 tuples (40%) done (elapsed 3.01 s, remaining 4.37 s)
+4100000 of 9800000 tuples (41%) done (elapsed 3.09 s, remaining 4.29 s)
+4200000 of 9800000 tuples (42%) done (elapsed 3.16 s, remaining 4.21 s)
+4300000 of 9800000 tuples (43%) done (elapsed 3.24 s, remaining 4.14 s)
+4400000 of 9800000 tuples (44%) done (elapsed 3.32 s, remaining 4.07 s)
+4500000 of 9800000 tuples (45%) done (elapsed 3.39 s, remaining 3.99 s)
+4600000 of 9800000 tuples (46%) done (elapsed 3.47 s, remaining 3.92 s)
+4700000 of 9800000 tuples (47%) done (elapsed 3.54 s, remaining 3.84 s)
+4800000 of 9800000 tuples (48%) done (elapsed 3.62 s, remaining 3.77 s)
+4900000 of 9800000 tuples (50%) done (elapsed 3.69 s, remaining 3.69 s)
+5000000 of 9800000 tuples (51%) done (elapsed 3.77 s, remaining 3.62 s)
+5100000 of 9800000 tuples (52%) done (elapsed 3.84 s, remaining 3.54 s)
+5200000 of 9800000 tuples (53%) done (elapsed 3.92 s, remaining 3.47 s)
+5300000 of 9800000 tuples (54%) done (elapsed 3.99 s, remaining 3.39 s)
+5400000 of 9800000 tuples (55%) done (elapsed 4.07 s, remaining 3.32 s)
+5500000 of 9800000 tuples (56%) done (elapsed 4.15 s, remaining 3.24 s)
+5600000 of 9800000 tuples (57%) done (elapsed 4.22 s, remaining 3.17 s)
+5700000 of 9800000 tuples (58%) done (elapsed 4.30 s, remaining 3.09 s)
+5800000 of 9800000 tuples (59%) done (elapsed 4.37 s, remaining 3.01 s)
+5900000 of 9800000 tuples (60%) done (elapsed 4.45 s, remaining 2.94 s)
+6000000 of 9800000 tuples (61%) done (elapsed 4.53 s, remaining 2.87 s)
+6100000 of 9800000 tuples (62%) done (elapsed 4.60 s, remaining 2.79 s)
+6200000 of 9800000 tuples (63%) done (elapsed 4.67 s, remaining 2.71 s)
+6300000 of 9800000 tuples (64%) done (elapsed 4.75 s, remaining 2.64 s)
+6400000 of 9800000 tuples (65%) done (elapsed 4.82 s, remaining 2.56 s)
+6500000 of 9800000 tuples (66%) done (elapsed 4.90 s, remaining 2.49 s)
+6600000 of 9800000 tuples (67%) done (elapsed 4.98 s, remaining 2.41 s)
+6700000 of 9800000 tuples (68%) done (elapsed 5.05 s, remaining 2.34 s)
+6800000 of 9800000 tuples (69%) done (elapsed 5.13 s, remaining 2.26 s)
+6900000 of 9800000 tuples (70%) done (elapsed 5.20 s, remaining 2.19 s)
+7000000 of 9800000 tuples (71%) done (elapsed 5.28 s, remaining 2.11 s)
+7100000 of 9800000 tuples (72%) done (elapsed 5.36 s, remaining 2.04 s)
+7200000 of 9800000 tuples (73%) done (elapsed 5.43 s, remaining 1.96 s)
+7300000 of 9800000 tuples (74%) done (elapsed 5.51 s, remaining 1.89 s)
+7400000 of 9800000 tuples (75%) done (elapsed 5.58 s, remaining 1.81 s)
+7500000 of 9800000 tuples (76%) done (elapsed 5.66 s, remaining 1.73 s)
+7600000 of 9800000 tuples (77%) done (elapsed 5.74 s, remaining 1.66 s)
+7700000 of 9800000 tuples (78%) done (elapsed 5.81 s, remaining 1.58 s)
+7800000 of 9800000 tuples (79%) done (elapsed 5.88 s, remaining 1.51 s)
+7900000 of 9800000 tuples (80%) done (elapsed 5.96 s, remaining 1.43 s)
+8000000 of 9800000 tuples (81%) done (elapsed 6.03 s, remaining 1.36 s)
+8100000 of 9800000 tuples (82%) done (elapsed 6.11 s, remaining 1.28 s)
+8200000 of 9800000 tuples (83%) done (elapsed 6.18 s, remaining 1.21 s)
+8300000 of 9800000 tuples (84%) done (elapsed 6.26 s, remaining 1.13 s)
+8400000 of 9800000 tuples (85%) done (elapsed 6.33 s, remaining 1.06 s)
+8500000 of 9800000 tuples (86%) done (elapsed 6.41 s, remaining 0.98 s)
+8600000 of 9800000 tuples (87%) done (elapsed 6.48 s, remaining 0.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 6.55 s, remaining 0.83 s)
+8800000 of 9800000 tuples (89%) done (elapsed 6.63 s, remaining 0.75 s)
+8900000 of 9800000 tuples (90%) done (elapsed 6.71 s, remaining 0.68 s)
+9000000 of 9800000 tuples (91%) done (elapsed 6.78 s, remaining 0.60 s)
+9100000 of 9800000 tuples (92%) done (elapsed 6.85 s, remaining 0.53 s)
+9200000 of 9800000 tuples (93%) done (elapsed 6.93 s, remaining 0.45 s)
+9300000 of 9800000 tuples (94%) done (elapsed 7.00 s, remaining 0.38 s)
+9400000 of 9800000 tuples (95%) done (elapsed 7.07 s, remaining 0.30 s)
+9500000 of 9800000 tuples (96%) done (elapsed 7.15 s, remaining 0.23 s)
+9600000 of 9800000 tuples (97%) done (elapsed 7.22 s, remaining 0.15 s)
+9700000 of 9800000 tuples (98%) done (elapsed 7.30 s, remaining 0.08 s)
+9800000 of 9800000 tuples (100%) done (elapsed 7.37 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 16 -c 64 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 98
+query mode: simple
+number of clients: 64
+number of threads: 16
+duration: 600 s
+number of transactions actually processed: 78272022
+latency average = 0.491 ms
+tps = 130449.928948 (including connections establishing)
+tps = 130450.825006 (excluding connections establishing)
+waiting for server to shut down....LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+server starting
+LOG:  could not create IPv6 socket: Address family not supported by protocol
+LOG:  database system was shut down at 2019-06-22 02:09:45 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 6.66 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.14 s, remaining 6.85 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.22 s, remaining 7.03 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.30 s, remaining 6.93 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.37 s, remaining 6.83 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.45 s, remaining 6.84 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.52 s, remaining 6.74 s)
+800000 of 9800000 tuples (8%) done (elapsed 0.59 s, remaining 6.64 s)
+900000 of 9800000 tuples (9%) done (elapsed 0.67 s, remaining 6.61 s)
+1000000 of 9800000 tuples (10%) done (elapsed 0.74 s, remaining 6.55 s)
+1100000 of 9800000 tuples (11%) done (elapsed 0.82 s, remaining 6.47 s)
+1200000 of 9800000 tuples (12%) done (elapsed 0.89 s, remaining 6.40 s)
+1300000 of 9800000 tuples (13%) done (elapsed 0.97 s, remaining 6.32 s)
+1400000 of 9800000 tuples (14%) done (elapsed 1.05 s, remaining 6.28 s)
+1500000 of 9800000 tuples (15%) done (elapsed 1.12 s, remaining 6.20 s)
+1600000 of 9800000 tuples (16%) done (elapsed 1.20 s, remaining 6.13 s)
+1700000 of 9800000 tuples (17%) done (elapsed 1.27 s, remaining 6.05 s)
+1800000 of 9800000 tuples (18%) done (elapsed 1.34 s, remaining 5.97 s)
+1900000 of 9800000 tuples (19%) done (elapsed 1.42 s, remaining 5.92 s)
+2000000 of 9800000 tuples (20%) done (elapsed 1.50 s, remaining 5.84 s)
+2100000 of 9800000 tuples (21%) done (elapsed 1.57 s, remaining 5.76 s)
+2200000 of 9800000 tuples (22%) done (elapsed 1.65 s, remaining 5.69 s)
+2300000 of 9800000 tuples (23%) done (elapsed 1.72 s, remaining 5.61 s)
+2400000 of 9800000 tuples (24%) done (elapsed 1.80 s, remaining 5.55 s)
+2500000 of 9800000 tuples (25%) done (elapsed 1.88 s, remaining 5.48 s)
+2600000 of 9800000 tuples (26%) done (elapsed 1.95 s, remaining 5.40 s)
+2700000 of 9800000 tuples (27%) done (elapsed 2.02 s, remaining 5.32 s)
+2800000 of 9800000 tuples (28%) done (elapsed 2.11 s, remaining 5.27 s)
+2900000 of 9800000 tuples (29%) done (elapsed 2.18 s, remaining 5.20 s)
+3000000 of 9800000 tuples (30%) done (elapsed 2.26 s, remaining 5.13 s)
+3100000 of 9800000 tuples (31%) done (elapsed 2.35 s, remaining 5.07 s)
+3200000 of 9800000 tuples (32%) done (elapsed 2.42 s, remaining 5.00 s)
+3300000 of 9800000 tuples (33%) done (elapsed 2.50 s, remaining 4.92 s)
+3400000 of 9800000 tuples (34%) done (elapsed 2.58 s, remaining 4.85 s)
+3500000 of 9800000 tuples (35%) done (elapsed 2.66 s, remaining 4.79 s)
+3600000 of 9800000 tuples (36%) done (elapsed 2.74 s, remaining 4.72 s)
+3700000 of 9800000 tuples (37%) done (elapsed 2.82 s, remaining 4.64 s)
+3800000 of 9800000 tuples (38%) done (elapsed 2.89 s, remaining 4.57 s)
+3900000 of 9800000 tuples (39%) done (elapsed 2.97 s, remaining 4.50 s)
+4000000 of 9800000 tuples (40%) done (elapsed 3.05 s, remaining 4.42 s)
+4100000 of 9800000 tuples (41%) done (elapsed 3.12 s, remaining 4.34 s)
+4200000 of 9800000 tuples (42%) done (elapsed 3.20 s, remaining 4.26 s)
+4300000 of 9800000 tuples (43%) done (elapsed 3.27 s, remaining 4.18 s)
+4400000 of 9800000 tuples (44%) done (elapsed 3.34 s, remaining 4.10 s)
+4500000 of 9800000 tuples (45%) done (elapsed 3.42 s, remaining 4.03 s)
+4600000 of 9800000 tuples (46%) done (elapsed 3.50 s, remaining 3.95 s)
+4700000 of 9800000 tuples (47%) done (elapsed 3.57 s, remaining 3.88 s)
+4800000 of 9800000 tuples (48%) done (elapsed 3.65 s, remaining 3.80 s)
+4900000 of 9800000 tuples (50%) done (elapsed 3.72 s, remaining 3.72 s)
+5000000 of 9800000 tuples (51%) done (elapsed 3.79 s, remaining 3.64 s)
+5100000 of 9800000 tuples (52%) done (elapsed 3.87 s, remaining 3.56 s)
+5200000 of 9800000 tuples (53%) done (elapsed 3.94 s, remaining 3.49 s)
+5300000 of 9800000 tuples (54%) done (elapsed 4.02 s, remaining 3.41 s)
+5400000 of 9800000 tuples (55%) done (elapsed 4.10 s, remaining 3.34 s)
+5500000 of 9800000 tuples (56%) done (elapsed 4.17 s, remaining 3.26 s)
+5600000 of 9800000 tuples (57%) done (elapsed 4.24 s, remaining 3.18 s)
+5700000 of 9800000 tuples (58%) done (elapsed 4.32 s, remaining 3.11 s)
+5800000 of 9800000 tuples (59%) done (elapsed 4.39 s, remaining 3.03 s)
+5900000 of 9800000 tuples (60%) done (elapsed 4.47 s, remaining 2.95 s)
+6000000 of 9800000 tuples (61%) done (elapsed 4.54 s, remaining 2.88 s)
+6100000 of 9800000 tuples (62%) done (elapsed 4.61 s, remaining 2.80 s)
+6200000 of 9800000 tuples (63%) done (elapsed 4.69 s, remaining 2.73 s)
+6300000 of 9800000 tuples (64%) done (elapsed 4.77 s, remaining 2.65 s)
+6400000 of 9800000 tuples (65%) done (elapsed 4.84 s, remaining 2.57 s)
+6500000 of 9800000 tuples (66%) done (elapsed 4.92 s, remaining 2.50 s)
+6600000 of 9800000 tuples (67%) done (elapsed 4.99 s, remaining 2.42 s)
+6700000 of 9800000 tuples (68%) done (elapsed 5.06 s, remaining 2.34 s)
+6800000 of 9800000 tuples (69%) done (elapsed 5.14 s, remaining 2.27 s)
+6900000 of 9800000 tuples (70%) done (elapsed 5.21 s, remaining 2.19 s)
+7000000 of 9800000 tuples (71%) done (elapsed 5.29 s, remaining 2.12 s)
+7100000 of 9800000 tuples (72%) done (elapsed 5.36 s, remaining 2.04 s)
+7200000 of 9800000 tuples (73%) done (elapsed 5.44 s, remaining 1.96 s)
+7300000 of 9800000 tuples (74%) done (elapsed 5.51 s, remaining 1.89 s)
+7400000 of 9800000 tuples (75%) done (elapsed 5.59 s, remaining 1.81 s)
+7500000 of 9800000 tuples (76%) done (elapsed 5.66 s, remaining 1.74 s)
+7600000 of 9800000 tuples (77%) done (elapsed 5.73 s, remaining 1.66 s)
+7700000 of 9800000 tuples (78%) done (elapsed 5.81 s, remaining 1.58 s)
+7800000 of 9800000 tuples (79%) done (elapsed 5.88 s, remaining 1.51 s)
+7900000 of 9800000 tuples (80%) done (elapsed 5.95 s, remaining 1.43 s)
+8000000 of 9800000 tuples (81%) done (elapsed 6.04 s, remaining 1.36 s)
+8100000 of 9800000 tuples (82%) done (elapsed 6.11 s, remaining 1.28 s)
+8200000 of 9800000 tuples (83%) done (elapsed 6.18 s, remaining 1.21 s)
+8300000 of 9800000 tuples (84%) done (elapsed 6.26 s, remaining 1.13 s)
+8400000 of 9800000 tuples (85%) done (elapsed 6.33 s, remaining 1.05 s)
+8500000 of 9800000 tuples (86%) done (elapsed 6.40 s, remaining 0.98 s)
+8600000 of 9800000 tuples (87%) done (elapsed 6.48 s, remaining 0.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 6.55 s, remaining 0.83 s)
+8800000 of 9800000 tuples (89%) done (elapsed 6.62 s, remaining 0.75 s)
+8900000 of 9800000 tuples (90%) done (elapsed 6.70 s, remaining 0.68 s)
+9000000 of 9800000 tuples (91%) done (elapsed 6.77 s, remaining 0.60 s)
+9100000 of 9800000 tuples (92%) done (elapsed 6.85 s, remaining 0.53 s)
+9200000 of 9800000 tuples (93%) done (elapsed 6.92 s, remaining 0.45 s)
+9300000 of 9800000 tuples (94%) done (elapsed 7.00 s, remaining 0.38 s)
+9400000 of 9800000 tuples (95%) done (elapsed 7.07 s, remaining 0.30 s)
+9500000 of 9800000 tuples (96%) done (elapsed 7.14 s, remaining 0.23 s)
+9600000 of 9800000 tuples (97%) done (elapsed 7.22 s, remaining 0.15 s)
+9700000 of 9800000 tuples (98%) done (elapsed 7.29 s, remaining 0.08 s)
+9800000 of 9800000 tuples (100%) done (elapsed 7.36 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 32 -c 256 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+LOG:  checkpoints are occurring too frequently (25 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (10 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (9 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (8 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 98
+query mode: simple
+number of clients: 256
+number of threads: 32
+duration: 600 s
+number of transactions actually processed: 3895002
+latency average = 39.497 ms
+tps = 6481.468870 (including connections establishing)
+tps = 6481.495018 (excluding connections establishing)
+waiting for server to shut down....LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+server starting
+LOG:  could not create IPv6 socket: Address family not supported by protocol
+LOG:  database system was shut down at 2019-06-22 02:20:20 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=32891816 NUM_CPU_CORES=16
+BUFFER_TEST Selected
+SCALING_FACTOR=98
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 9800000 tuples (1%) done (elapsed 0.07 s, remaining 6.63 s)
+200000 of 9800000 tuples (2%) done (elapsed 0.14 s, remaining 6.80 s)
+300000 of 9800000 tuples (3%) done (elapsed 0.21 s, remaining 6.78 s)
+400000 of 9800000 tuples (4%) done (elapsed 0.30 s, remaining 6.94 s)
+500000 of 9800000 tuples (5%) done (elapsed 0.37 s, remaining 6.83 s)
+600000 of 9800000 tuples (6%) done (elapsed 0.44 s, remaining 6.74 s)
+700000 of 9800000 tuples (7%) done (elapsed 0.52 s, remaining 6.74 s)
+800000 of 9800000 tuples (8%) done (elapsed 0.59 s, remaining 6.64 s)
+900000 of 9800000 tuples (9%) done (elapsed 0.66 s, remaining 6.55 s)
+1000000 of 9800000 tuples (10%) done (elapsed 0.74 s, remaining 6.50 s)
+1100000 of 9800000 tuples (11%) done (elapsed 0.81 s, remaining 6.44 s)
+1200000 of 9800000 tuples (12%) done (elapsed 0.89 s, remaining 6.37 s)
+1300000 of 9800000 tuples (13%) done (elapsed 0.96 s, remaining 6.30 s)
+1400000 of 9800000 tuples (14%) done (elapsed 1.04 s, remaining 6.23 s)
+1500000 of 9800000 tuples (15%) done (elapsed 1.12 s, remaining 6.20 s)
+1600000 of 9800000 tuples (16%) done (elapsed 1.19 s, remaining 6.12 s)
+1700000 of 9800000 tuples (17%) done (elapsed 1.27 s, remaining 6.05 s)
+1800000 of 9800000 tuples (18%) done (elapsed 1.34 s, remaining 5.97 s)
+1900000 of 9800000 tuples (19%) done (elapsed 1.42 s, remaining 5.90 s)
+2000000 of 9800000 tuples (20%) done (elapsed 1.49 s, remaining 5.82 s)
+2100000 of 9800000 tuples (21%) done (elapsed 1.57 s, remaining 5.75 s)
+2200000 of 9800000 tuples (22%) done (elapsed 1.65 s, remaining 5.70 s)
+2300000 of 9800000 tuples (23%) done (elapsed 1.72 s, remaining 5.62 s)
+2400000 of 9800000 tuples (24%) done (elapsed 1.80 s, remaining 5.55 s)
+2500000 of 9800000 tuples (25%) done (elapsed 1.87 s, remaining 5.47 s)
+2600000 of 9800000 tuples (26%) done (elapsed 1.95 s, remaining 5.40 s)
+2700000 of 9800000 tuples (27%) done (elapsed 2.02 s, remaining 5.32 s)
+2800000 of 9800000 tuples (28%) done (elapsed 2.10 s, remaining 5.25 s)
+2900000 of 9800000 tuples (29%) done (elapsed 2.18 s, remaining 5.20 s)
+3000000 of 9800000 tuples (30%) done (elapsed 2.26 s, remaining 5.12 s)
+3100000 of 9800000 tuples (31%) done (elapsed 2.33 s, remaining 5.04 s)
+3200000 of 9800000 tuples (32%) done (elapsed 2.41 s, remaining 4.97 s)
+3300000 of 9800000 tuples (33%) done (elapsed 2.48 s, remaining 4.89 s)
+3400000 of 9800000 tuples (34%) done (elapsed 2.56 s, remaining 4.83 s)
+3500000 of 9800000 tuples (35%) done (elapsed 2.64 s, remaining 4.75 s)
+3600000 of 9800000 tuples (36%) done (elapsed 2.71 s, remaining 4.67 s)
+3700000 of 9800000 tuples (37%) done (elapsed 2.79 s, remaining 4.60 s)
+3800000 of 9800000 tuples (38%) done (elapsed 2.86 s, remaining 4.52 s)
+3900000 of 9800000 tuples (39%) done (elapsed 2.94 s, remaining 4.45 s)
+4000000 of 9800000 tuples (40%) done (elapsed 3.02 s, remaining 4.38 s)
+4100000 of 9800000 tuples (41%) done (elapsed 3.09 s, remaining 4.30 s)
+4200000 of 9800000 tuples (42%) done (elapsed 3.17 s, remaining 4.22 s)
+4300000 of 9800000 tuples (43%) done (elapsed 3.25 s, remaining 4.15 s)
+4400000 of 9800000 tuples (44%) done (elapsed 3.32 s, remaining 4.08 s)
+4500000 of 9800000 tuples (45%) done (elapsed 3.40 s, remaining 4.00 s)
+4600000 of 9800000 tuples (46%) done (elapsed 3.47 s, remaining 3.92 s)
+4700000 of 9800000 tuples (47%) done (elapsed 3.55 s, remaining 3.85 s)
+4800000 of 9800000 tuples (48%) done (elapsed 3.63 s, remaining 3.78 s)
+4900000 of 9800000 tuples (50%) done (elapsed 3.70 s, remaining 3.70 s)
+5000000 of 9800000 tuples (51%) done (elapsed 3.78 s, remaining 3.62 s)
+5100000 of 9800000 tuples (52%) done (elapsed 3.85 s, remaining 3.55 s)
+5200000 of 9800000 tuples (53%) done (elapsed 3.92 s, remaining 3.47 s)
+5300000 of 9800000 tuples (54%) done (elapsed 4.00 s, remaining 3.40 s)
+5400000 of 9800000 tuples (55%) done (elapsed 4.08 s, remaining 3.33 s)
+5500000 of 9800000 tuples (56%) done (elapsed 4.16 s, remaining 3.25 s)
+5600000 of 9800000 tuples (57%) done (elapsed 4.23 s, remaining 3.17 s)
+5700000 of 9800000 tuples (58%) done (elapsed 4.30 s, remaining 3.10 s)
+5800000 of 9800000 tuples (59%) done (elapsed 4.39 s, remaining 3.02 s)
+5900000 of 9800000 tuples (60%) done (elapsed 4.46 s, remaining 2.95 s)
+6000000 of 9800000 tuples (61%) done (elapsed 4.53 s, remaining 2.87 s)
+6100000 of 9800000 tuples (62%) done (elapsed 4.61 s, remaining 2.80 s)
+6200000 of 9800000 tuples (63%) done (elapsed 4.68 s, remaining 2.72 s)
+6300000 of 9800000 tuples (64%) done (elapsed 4.76 s, remaining 2.64 s)
+6400000 of 9800000 tuples (65%) done (elapsed 4.84 s, remaining 2.57 s)
+6500000 of 9800000 tuples (66%) done (elapsed 4.91 s, remaining 2.49 s)
+6600000 of 9800000 tuples (67%) done (elapsed 4.99 s, remaining 2.42 s)
+6700000 of 9800000 tuples (68%) done (elapsed 5.06 s, remaining 2.34 s)
+6800000 of 9800000 tuples (69%) done (elapsed 5.14 s, remaining 2.27 s)
+6900000 of 9800000 tuples (70%) done (elapsed 5.21 s, remaining 2.19 s)
+7000000 of 9800000 tuples (71%) done (elapsed 5.29 s, remaining 2.11 s)
+7100000 of 9800000 tuples (72%) done (elapsed 5.37 s, remaining 2.04 s)
+7200000 of 9800000 tuples (73%) done (elapsed 5.44 s, remaining 1.96 s)
+7300000 of 9800000 tuples (74%) done (elapsed 5.51 s, remaining 1.89 s)
+7400000 of 9800000 tuples (75%) done (elapsed 5.59 s, remaining 1.81 s)
+7500000 of 9800000 tuples (76%) done (elapsed 5.66 s, remaining 1.74 s)
+7600000 of 9800000 tuples (77%) done (elapsed 5.74 s, remaining 1.66 s)
+7700000 of 9800000 tuples (78%) done (elapsed 5.82 s, remaining 1.59 s)
+7800000 of 9800000 tuples (79%) done (elapsed 5.89 s, remaining 1.51 s)
+7900000 of 9800000 tuples (80%) done (elapsed 5.97 s, remaining 1.43 s)
+8000000 of 9800000 tuples (81%) done (elapsed 6.04 s, remaining 1.36 s)
+8100000 of 9800000 tuples (82%) done (elapsed 6.11 s, remaining 1.28 s)
+8200000 of 9800000 tuples (83%) done (elapsed 6.19 s, remaining 1.21 s)
+8300000 of 9800000 tuples (84%) done (elapsed 6.26 s, remaining 1.13 s)
+8400000 of 9800000 tuples (85%) done (elapsed 6.33 s, remaining 1.06 s)
+8500000 of 9800000 tuples (86%) done (elapsed 6.41 s, remaining 0.98 s)
+8600000 of 9800000 tuples (87%) done (elapsed 6.48 s, remaining 0.90 s)
+8700000 of 9800000 tuples (88%) done (elapsed 6.56 s, remaining 0.83 s)
+8800000 of 9800000 tuples (89%) done (elapsed 6.63 s, remaining 0.75 s)
+8900000 of 9800000 tuples (90%) done (elapsed 6.71 s, remaining 0.68 s)
+9000000 of 9800000 tuples (91%) done (elapsed 6.78 s, remaining 0.60 s)
+9100000 of 9800000 tuples (92%) done (elapsed 6.86 s, remaining 0.53 s)
+9200000 of 9800000 tuples (93%) done (elapsed 6.93 s, remaining 0.45 s)
+9300000 of 9800000 tuples (94%) done (elapsed 7.00 s, remaining 0.38 s)
+9400000 of 9800000 tuples (95%) done (elapsed 7.08 s, remaining 0.30 s)
+9500000 of 9800000 tuples (96%) done (elapsed 7.15 s, remaining 0.23 s)
+9600000 of 9800000 tuples (97%) done (elapsed 7.23 s, remaining 0.15 s)
+9700000 of 9800000 tuples (98%) done (elapsed 7.30 s, remaining 0.08 s)
+9800000 of 9800000 tuples (100%) done (elapsed 7.38 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 32 -c 256 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+FATAL:  sorry, too many clients already
+connection to database "pgbench" failed:
+FATAL:  sorry, too many clients already
+transaction type: <builtin: select only>
+scaling factor: 98
+query mode: simple
+number of clients: 256
+number of threads: 32
+duration: 600 s
+number of transactions actually processed: 79503632
+latency average = 1.932 ms
+tps = 132498.982304 (including connections establishing)
+tps = 132499.505105 (excluding connections establishing)
+waiting for server to shut down....LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+LOG:  database system is shut down
+ done
+server stopped
+Clr-Node-Server

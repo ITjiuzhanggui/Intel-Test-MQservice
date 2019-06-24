@@ -1,0 +1,122 @@
+nginx/nginx.sh
+[nginx] 
+[nginx] == nginx unit test ==
+httpd
+[nginx] [INFO] Test docker hub official image first:
+[nginx] 
+301419bc4c13980aff8576b1d65c9ef3ac1886a9ee527c99916e99bc0b151762
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        nginx/1.17.0
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /
+Document Length:        612 bytes
+
+Concurrency Level:      50
+Time taken for tests:   4.653 seconds
+Complete requests:      100000
+Failed requests:        0
+Keep-Alive requests:    99024
+Total transferred:      84995120 bytes
+HTML transferred:       61200000 bytes
+Requests per second:    21492.34 [#/sec] (mean)
+Time per request:       2.326 [ms] (mean)
+Time per request:       0.047 [ms] (mean, across all concurrent requests)
+Transfer rate:          17839.30 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       2
+Processing:     0    2   0.9      2      57
+Waiting:        0    2   0.9      2      57
+Total:          0    2   0.9      2      57
+
+Percentage of the requests served within a certain time (ms)
+  50%      2
+  66%      2
+  75%      3
+  80%      3
+  90%      3
+  95%      3
+  98%      4
+  99%      4
+ 100%     57 (longest request)
+nginx-server
+Default-Nginx-Server
+[nginx] [INFO] Test clear docker image:
+[nginx] 
+7b35498fc29ec662aa48c73c10c368b15de1f432f6356681b533527f72b9541a
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        nginx/1.14.2
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /
+Document Length:        794 bytes
+
+Concurrency Level:      50
+Time taken for tests:   1.386 seconds
+Complete requests:      100000
+Failed requests:        0
+Keep-Alive requests:    99028
+Total transferred:      103195140 bytes
+HTML transferred:       79400000 bytes
+Requests per second:    72172.25 [#/sec] (mean)
+Time per request:       0.693 [ms] (mean)
+Time per request:       0.014 [ms] (mean, across all concurrent requests)
+Transfer rate:          72732.68 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       2
+Processing:     0    1   0.6      1      45
+Waiting:        0    1   0.6      1      45
+Total:          0    1   0.7      1      46
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      1
+  75%      1
+  80%      1
+  90%      1
+  95%      1
+  98%      1
+  99%      1
+ 100%     46 (longest request)
+nginx-server
+Clr-Nginx-Server

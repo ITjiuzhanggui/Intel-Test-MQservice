@@ -1,0 +1,921 @@
+postgres/postgres.sh
+[postgres]
+[postgres] == postgres unit test ==
+[postgres] [INFO] Test docker hub official image first:
+[postgres]
+pgbench with BUFFER_TEST SINGLE_THREAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_WRITE
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2019-06-19 14:18:52.329 UTC [30] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-19 14:18:52.329 UTC [30] LOG:  listening on IPv6 address "::", port 5432
+2019-06-19 14:18:52.332 UTC [30] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-19 14:18:52.345 UTC [31] LOG:  database system was shut down at 2019-06-19 14:18:51 UTC
+2019-06-19 14:18:52.357 UTC [30] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 600000 tuples (16%) done (elapsed 0.11 s, remaining 0.56 s)
+200000 of 600000 tuples (33%) done (elapsed 0.42 s, remaining 0.84 s)
+300000 of 600000 tuples (50%) done (elapsed 0.73 s, remaining 0.73 s)
+400000 of 600000 tuples (66%) done (elapsed 0.95 s, remaining 0.47 s)
+500000 of 600000 tuples (83%) done (elapsed 1.25 s, remaining 0.25 s)
+600000 of 600000 tuples (100%) done (elapsed 1.46 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 6
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 71251
+latency average = 0.842 ms
+tps = 1187.511041 (including connections establishing)
+tps = 1187.593526 (excluding connections establishing)
+2019-06-19 14:20:06.420 UTC [30] LOG:  received fast shutdown request
+2019-06-19 14:20:06.422 UTC [30] LOG:  aborting any active transactions
+2019-06-19 14:20:06.424 UTC [30] LOG:  background worker "logical replication launcher" (PID 36) exited with exit code 1
+2019-06-19 14:20:06.424 UTC [32] LOG:  shutting down
+waiting for server to shut down....2019-06-19 14:20:06.441 UTC [30] LOG:  database system is shut down
+pgbench with BUFFER_TEST SINGLE_THREAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_ONLY
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2019-06-19 14:20:48.658 UTC [30] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-19 14:20:48.658 UTC [30] LOG:  listening on IPv6 address "::", port 5432
+2019-06-19 14:20:48.661 UTC [30] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-19 14:20:48.674 UTC [31] LOG:  database system was shut down at 2019-06-19 14:20:47 UTC
+2019-06-19 14:20:48.686 UTC [30] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 600000 tuples (16%) done (elapsed 0.11 s, remaining 0.56 s)
+200000 of 600000 tuples (33%) done (elapsed 0.42 s, remaining 0.85 s)
+300000 of 600000 tuples (50%) done (elapsed 0.74 s, remaining 0.74 s)
+400000 of 600000 tuples (66%) done (elapsed 0.95 s, remaining 0.48 s)
+500000 of 600000 tuples (83%) done (elapsed 1.26 s, remaining 0.25 s)
+600000 of 600000 tuples (100%) done (elapsed 1.47 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 6
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 1962853
+latency average = 0.031 ms
+tps = 32714.193627 (including connections establishing)
+tps = 32716.556699 (excluding connections establishing)
+2019-06-19 14:22:02.765 UTC [30] LOG:  received fast shutdown request
+2019-06-19 14:22:02.766 UTC [30] LOG:  aborting any active transactions
+2019-06-19 14:22:02.769 UTC [30] LOG:  background worker "logical replication launcher" (PID 36) exited with exit code 1
+2019-06-19 14:22:02.769 UTC [32] LOG:  shutting down
+waiting for server to shut down....2019-06-19 14:22:02.785 UTC [30] LOG:  database system is shut down
+pgbench with BUFFER_TEST NORMAL_LOAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_WRITE
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2019-06-19 14:22:45.047 UTC [30] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-19 14:22:45.047 UTC [30] LOG:  listening on IPv6 address "::", port 5432
+2019-06-19 14:22:45.051 UTC [30] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-19 14:22:45.064 UTC [31] LOG:  database system was shut down at 2019-06-19 14:22:43 UTC
+2019-06-19 14:22:45.076 UTC [30] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 600000 tuples (16%) done (elapsed 0.11 s, remaining 0.55 s)
+200000 of 600000 tuples (33%) done (elapsed 0.42 s, remaining 0.83 s)
+300000 of 600000 tuples (50%) done (elapsed 0.73 s, remaining 0.73 s)
+400000 of 600000 tuples (66%) done (elapsed 0.95 s, remaining 0.47 s)
+500000 of 600000 tuples (83%) done (elapsed 1.25 s, remaining 0.25 s)
+600000 of 600000 tuples (100%) done (elapsed 1.46 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 1 -c 4 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 6
+query mode: simple
+number of clients: 4
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 91005
+latency average = 2.637 ms
+tps = 1516.618164 (including connections establishing)
+tps = 1516.697848 (excluding connections establishing)
+2019-06-19 14:23:59.178 UTC [30] LOG:  received fast shutdown request
+2019-06-19 14:23:59.182 UTC [30] LOG:  aborting any active transactions
+2019-06-19 14:23:59.185 UTC [30] LOG:  background worker "logical replication launcher" (PID 36) exited with exit code 1
+2019-06-19 14:23:59.185 UTC [32] LOG:  shutting down
+waiting for server to shut down....2019-06-19 14:23:59.213 UTC [30] LOG:  database system is shut down
+pgbench with BUFFER_TEST NORMAL_LOAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_ONLY
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2019-06-19 14:24:43.138 UTC [31] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-19 14:24:43.138 UTC [31] LOG:  listening on IPv6 address "::", port 5432
+2019-06-19 14:24:43.156 UTC [31] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-19 14:24:43.189 UTC [32] LOG:  database system was shut down at 2019-06-19 14:24:40 UTC
+2019-06-19 14:24:43.210 UTC [31] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 600000 tuples (16%) done (elapsed 0.12 s, remaining 0.60 s)
+200000 of 600000 tuples (33%) done (elapsed 0.42 s, remaining 0.85 s)
+300000 of 600000 tuples (50%) done (elapsed 0.73 s, remaining 0.73 s)
+400000 of 600000 tuples (66%) done (elapsed 0.93 s, remaining 0.46 s)
+500000 of 600000 tuples (83%) done (elapsed 1.24 s, remaining 0.25 s)
+600000 of 600000 tuples (100%) done (elapsed 1.45 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 1 -c 4 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 6
+query mode: simple
+number of clients: 4
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 1671260
+latency average = 0.144 ms
+tps = 27854.239997 (including connections establishing)
+tps = 27855.682996 (excluding connections establishing)
+2019-06-19 14:25:57.313 UTC [31] LOG:  received fast shutdown request
+2019-06-19 14:25:57.315 UTC [31] LOG:  aborting any active transactions
+2019-06-19 14:25:57.317 UTC [31] LOG:  background worker "logical replication launcher" (PID 37) exited with exit code 1
+2019-06-19 14:25:57.317 UTC [33] LOG:  shutting down
+waiting for server to shut down....2019-06-19 14:25:57.333 UTC [31] LOG:  database system is shut down
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2019-06-19 14:26:39.262 UTC [30] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-19 14:26:39.262 UTC [30] LOG:  listening on IPv6 address "::", port 5432
+2019-06-19 14:26:39.266 UTC [30] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-19 14:26:39.278 UTC [31] LOG:  database system was shut down at 2019-06-19 14:26:37 UTC
+2019-06-19 14:26:39.291 UTC [30] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 600000 tuples (16%) done (elapsed 0.13 s, remaining 0.67 s)
+200000 of 600000 tuples (33%) done (elapsed 0.43 s, remaining 0.85 s)
+300000 of 600000 tuples (50%) done (elapsed 0.74 s, remaining 0.74 s)
+400000 of 600000 tuples (66%) done (elapsed 0.95 s, remaining 0.48 s)
+500000 of 600000 tuples (83%) done (elapsed 1.25 s, remaining 0.25 s)
+600000 of 600000 tuples (100%) done (elapsed 1.47 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 2 -c 16 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 6
+query mode: simple
+number of clients: 16
+number of threads: 2
+duration: 60 s
+number of transactions actually processed: 159563
+latency average = 6.020 ms
+tps = 2658.016315 (including connections establishing)
+tps = 2658.220026 (excluding connections establishing)
+2019-06-19 14:27:53.380 UTC [30] LOG:  received fast shutdown request
+2019-06-19 14:27:53.382 UTC [30] LOG:  aborting any active transactions
+2019-06-19 14:27:53.385 UTC [30] LOG:  background worker "logical replication launcher" (PID 36) exited with exit code 1
+2019-06-19 14:27:53.385 UTC [32] LOG:  shutting down
+waiting for server to shut down....2019-06-19 14:27:53.403 UTC [30] LOG:  database system is shut down
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/postgresql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+posgresql user mode
+HOME=/var/lib/postgresql
+PGDATA=/var/lib/postgresql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    ./pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2019-06-19 14:28:35.438 UTC [30] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2019-06-19 14:28:35.438 UTC [30] LOG:  listening on IPv6 address "::", port 5432
+2019-06-19 14:28:35.442 UTC [30] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2019-06-19 14:28:35.455 UTC [31] LOG:  database system was shut down at 2019-06-19 14:28:34 UTC
+2019-06-19 14:28:35.469 UTC [30] LOG:  database system is ready to accept connections
+ done
+server started
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+dropping old tables...
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+creating tables...
+generating data...
+100000 of 600000 tuples (16%) done (elapsed 0.13 s, remaining 0.66 s)
+200000 of 600000 tuples (33%) done (elapsed 0.42 s, remaining 0.84 s)
+300000 of 600000 tuples (50%) done (elapsed 0.73 s, remaining 0.73 s)
+400000 of 600000 tuples (66%) done (elapsed 0.95 s, remaining 0.47 s)
+500000 of 600000 tuples (83%) done (elapsed 1.24 s, remaining 0.25 s)
+600000 of 600000 tuples (100%) done (elapsed 1.48 s, remaining 0.00 s)
+vacuuming...
+creating primary keys...
+done.
+PGBENCH_ARGS=-j 2 -c 16 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 6
+query mode: simple
+number of clients: 16
+number of threads: 2
+duration: 60 s
+number of transactions actually processed: 1669926
+latency average = 0.575 ms
+tps = 27820.684135 (including connections establishing)
+tps = 27823.368883 (excluding connections establishing)
+2019-06-19 14:29:49.568 UTC [30] LOG:  received fast shutdown request
+2019-06-19 14:29:49.570 UTC [30] LOG:  aborting any active transactions
+2019-06-19 14:29:49.572 UTC [30] LOG:  background worker "logical replication launcher" (PID 36) exited with exit code 1
+2019-06-19 14:29:49.572 UTC [32] LOG:  shutting down
+waiting for server to shut down....2019-06-19 14:29:49.589 UTC [30] LOG:  database system is shut down
+Default-Node-Server
+[postgres] [INFO] Test clear docker image:
+[postgres]
+pgbench with BUFFER_TEST SINGLE_THREAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_WRITE
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+server starting
+LOG:  database system was shut down at 2019-06-19 14:29:53 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 600000 tuples (16%) done (elapsed 0.09 s, remaining 0.45 s)
+200000 of 600000 tuples (33%) done (elapsed 0.22 s, remaining 0.44 s)
+300000 of 600000 tuples (50%) done (elapsed 0.36 s, remaining 0.36 s)
+400000 of 600000 tuples (66%) done (elapsed 0.50 s, remaining 0.25 s)
+500000 of 600000 tuples (83%) done (elapsed 0.64 s, remaining 0.13 s)
+600000 of 600000 tuples (100%) done (elapsed 0.78 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 6
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 74479
+latency average = 0.806 ms
+tps = 1241.294013 (including connections establishing)
+tps = 1241.377473 (excluding connections establishing)
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+waiting for server to shut down....LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST SINGLE_THREAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST SINGLE_THREAD READ_ONLY
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+server starting
+LOG:  database system was shut down at 2019-06-19 14:31:13 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 600000 tuples (16%) done (elapsed 0.09 s, remaining 0.46 s)
+200000 of 600000 tuples (33%) done (elapsed 0.22 s, remaining 0.44 s)
+300000 of 600000 tuples (50%) done (elapsed 0.36 s, remaining 0.36 s)
+400000 of 600000 tuples (66%) done (elapsed 0.49 s, remaining 0.25 s)
+500000 of 600000 tuples (83%) done (elapsed 0.63 s, remaining 0.13 s)
+600000 of 600000 tuples (100%) done (elapsed 0.77 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-c 1 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 6
+query mode: simple
+number of clients: 1
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 1860572
+latency average = 0.032 ms
+tps = 31009.517829 (including connections establishing)
+tps = 31011.581131 (excluding connections establishing)
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+waiting for server to shut down....LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST NORMAL_LOAD READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_WRITE
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+server starting
+LOG:  database system was shut down at 2019-06-19 14:32:35 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 600000 tuples (16%) done (elapsed 0.09 s, remaining 0.46 s)
+200000 of 600000 tuples (33%) done (elapsed 0.22 s, remaining 0.45 s)
+300000 of 600000 tuples (50%) done (elapsed 0.36 s, remaining 0.36 s)
+400000 of 600000 tuples (66%) done (elapsed 0.50 s, remaining 0.25 s)
+500000 of 600000 tuples (83%) done (elapsed 0.64 s, remaining 0.13 s)
+600000 of 600000 tuples (100%) done (elapsed 0.78 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 1 -c 4 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 6
+query mode: simple
+number of clients: 4
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 123312
+latency average = 1.946 ms
+tps = 2055.029946 (including connections establishing)
+tps = 2055.139391 (excluding connections establishing)
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+waiting for server to shut down....LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST NORMAL_LOAD READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST NORMAL_LOAD READ_ONLY
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ...
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+server starting
+LOG:  database system was shut down at 2019-06-19 14:33:55 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 600000 tuples (16%) done (elapsed 0.09 s, remaining 0.47 s)
+200000 of 600000 tuples (33%) done (elapsed 0.22 s, remaining 0.44 s)
+300000 of 600000 tuples (50%) done (elapsed 0.36 s, remaining 0.36 s)
+400000 of 600000 tuples (66%) done (elapsed 0.51 s, remaining 0.25 s)
+500000 of 600000 tuples (83%) done (elapsed 0.65 s, remaining 0.13 s)
+600000 of 600000 tuples (100%) done (elapsed 0.79 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 1 -c 4 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 6
+query mode: simple
+number of clients: 4
+number of threads: 1
+duration: 60 s
+number of transactions actually processed: 1559276
+latency average = 0.154 ms
+tps = 25987.846707 (including connections establishing)
+tps = 25989.210053 (excluding connections establishing)
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+waiting for server to shut down...LOG:  shutting down
+.LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_WRITE
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ...
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+server starting
+LOG:  database system was shut down at 2019-06-19 14:35:14 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 600000 tuples (16%) done (elapsed 0.09 s, remaining 0.45 s)
+200000 of 600000 tuples (33%) done (elapsed 0.22 s, remaining 0.44 s)
+300000 of 600000 tuples (50%) done (elapsed 0.36 s, remaining 0.36 s)
+400000 of 600000 tuples (66%) done (elapsed 0.49 s, remaining 0.25 s)
+500000 of 600000 tuples (83%) done (elapsed 0.63 s, remaining 0.13 s)
+600000 of 600000 tuples (100%) done (elapsed 0.77 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 2 -c 16 PGBENCH_MORE_ARGS=
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 6
+query mode: simple
+number of clients: 16
+number of threads: 2
+duration: 60 s
+number of transactions actually processed: 136498
+latency average = 7.035 ms
+tps = 2274.202914 (including connections establishing)
+tps = 2274.371897 (excluding connections establishing)
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+waiting for server to shut down...LOG:  shutting down
+.LOG:  database system is shut down
+ done
+server stopped
+pgbench with BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+pgbench_entry
+PGDATA=/var/lib/pgsql/data
+POSTGRES_INITDB_WALDIR=
+input parameters: BUFFER_TEST HEAVY_CONTENTION READ_ONLY
+posgresql user mode
+HOME=/
+PGDATA=/var/lib/pgsql/data
+/
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the option -A, or
+--auth-local and --auth-host, the next time you run initdb.
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+server starting
+LOG:  database system was shut down at 2019-06-19 14:36:34 UTC
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+SYS_MEMORY=2038428 NUM_CPU_CORES=1
+BUFFER_TEST Selected
+SCALING_FACTOR=6
+NOTICE:  table "pgbench_history" does not exist, skipping
+NOTICE:  table "pgbench_tellers" does not exist, skipping
+NOTICE:  table "pgbench_accounts" does not exist, skipping
+NOTICE:  table "pgbench_branches" does not exist, skipping
+creating tables...
+100000 of 600000 tuples (16%) done (elapsed 0.09 s, remaining 0.46 s)
+200000 of 600000 tuples (33%) done (elapsed 0.22 s, remaining 0.44 s)
+300000 of 600000 tuples (50%) done (elapsed 0.36 s, remaining 0.36 s)
+400000 of 600000 tuples (66%) done (elapsed 0.51 s, remaining 0.25 s)
+500000 of 600000 tuples (83%) done (elapsed 0.65 s, remaining 0.13 s)
+600000 of 600000 tuples (100%) done (elapsed 0.79 s, remaining 0.00 s)
+vacuum...
+set primary keys...
+done.
+PGBENCH_ARGS=-j 2 -c 16 PGBENCH_MORE_ARGS=-S
+starting vacuum...end.
+transaction type: <builtin: select only>
+scaling factor: 6
+query mode: simple
+number of clients: 16
+number of threads: 2
+duration: 60 s
+number of transactions actually processed: 1442341
+latency average = 0.666 ms
+tps = 24035.096542 (including connections establishing)
+tps = 24037.384503 (excluding connections establishing)
+LOG:  received fast shutdown request
+LOG:  aborting any active transactions
+LOG:  shutting down
+waiting for server to shut down....LOG:  database system is shut down
+ done
+server stopped
+Clr-Node-Server

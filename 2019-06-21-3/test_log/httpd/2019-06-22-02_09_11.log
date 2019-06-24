@@ -1,0 +1,128 @@
+httpd/httpd.sh
+[httpd] 
+[httpd] == httpd unit test ==
+httpd
+[httpd] [INFO] Test docker hub official image first:
+[httpd] 
+965d8906db37333c4c9728632c3468af60fbc45b508f75988e574401dad17bf4
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        Apache/2.4.39
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /
+Document Length:        45 bytes
+
+Concurrency Level:      50
+Time taken for tests:   3.022 seconds
+Complete requests:      100000
+Failed requests:        53
+   (Connect: 0, Receive: 0, Length: 53, Exceptions: 0)
+Keep-Alive requests:    99007
+Total transferred:      32441449 bytes
+HTML transferred:       4497615 bytes
+Requests per second:    33085.93 [#/sec] (mean)
+Time per request:       1.511 [ms] (mean)
+Time per request:       0.030 [ms] (mean, across all concurrent requests)
+Transfer rate:          10481.99 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       2
+Processing:     0    2   1.1      1      38
+Waiting:        0    1   1.1      1      38
+Total:          0    2   1.1      1      39
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      2
+  75%      2
+  80%      2
+  90%      3
+  95%      3
+  98%      4
+  99%      4
+ 100%     39 (longest request)
+httpd-server
+Default-Httpd-Server
+[httpd] [INFO] Test clear docker image:
+[httpd] 
+11f7bb40d8ad21c6e44d619df730ab073caa1c0af7fe27fc31c6ac7c5436a1a6
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        Apache/2.4.39
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /
+Document Length:        45 bytes
+
+Concurrency Level:      50
+Time taken for tests:   3.009 seconds
+Complete requests:      100000
+Failed requests:        65
+   (Connect: 0, Receive: 0, Length: 65, Exceptions: 0)
+Keep-Alive requests:    99000
+Total transferred:      32465074 bytes
+HTML transferred:       4497075 bytes
+Requests per second:    33230.64 [#/sec] (mean)
+Time per request:       1.505 [ms] (mean)
+Time per request:       0.030 [ms] (mean, across all concurrent requests)
+Transfer rate:          10535.50 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       2
+Processing:     0    2   0.9      1      40
+Waiting:        0    1   0.9      1      40
+Total:          0    2   1.0      1      41
+WARNING: The median and mean for the processing time are not within a normal deviation
+        These results are probably not that reliable.
+WARNING: The median and mean for the total time are not within a normal deviation
+        These results are probably not that reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      2
+  75%      2
+  80%      2
+  90%      3
+  95%      3
+  98%      3
+  99%      3
+ 100%     41 (longest request)
+httpd-server
+Clr-Httpd-Server

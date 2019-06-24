@@ -1,0 +1,127 @@
+./update.sh "golang httpd mariadb memcached nginx node openjdk perl php postgres python rabbitmq redis ruby tensorflow"
+[update] 
+[update] == Updating the container images: golang httpd mariadb memcached nginx node openjdk perl php postgres python rabbitmq redis ruby tensorflow ==
+Using default tag: latest
+latest: Pulling from library/clearlinux
+Digest: sha256:b8e5d3b2576eb6d868f8d52e401f678c873264d349e469637f98ee2adf7b33d4
+Status: Image is up to date for clearlinux:latest
+Using default tag: latest
+latest: Pulling from library/golang
+Digest: sha256:35200a727dc44175d9221a6ece398eed7e4b8e17cb7f0d72b20bf2d5cf9dc00d
+Status: Image is up to date for golang:latest
+Using default tag: latest
+latest: Pulling from clearlinux/golang
+Digest: sha256:984d94d2713a6ebc72283cea81ba0703fec9bc231d02330e9c49fc16f497b0d4
+Status: Image is up to date for clearlinux/golang:latest
+Using default tag: latest
+latest: Pulling from library/httpd
+Digest: sha256:a129c3a747fe9e406bf91d4d1fb2d4ed7b51d7a1f523fcf372c18c3c35981d12
+Status: Image is up to date for httpd:latest
+Using default tag: latest
+latest: Pulling from clearlinux/httpd
+Digest: sha256:3ff8bf364d1cb7267291b124710773775a5a72e87532d52736eab75c35216d4f
+Status: Image is up to date for clearlinux/httpd:latest
+Using default tag: latest
+latest: Pulling from library/mariadb
+Digest: sha256:29e6b7cff37f102aea741de2005f5b007031a003223e010c9b78a34f91ec069d
+Status: Image is up to date for mariadb:latest
+Using default tag: latest
+latest: Pulling from clearlinux/mariadb
+Digest: sha256:99f0994c4cf691c79f565307b994c5777bb2eb55bfdbb0b453619db1a829f36d
+Status: Image is up to date for clearlinux/mariadb:latest
+Using default tag: latest
+latest: Pulling from library/memcached
+Digest: sha256:5d1d9bdd12197ead02a0744d5950ba6f31d0d2fa50076dc8babbc8d8b9abe567
+Status: Image is up to date for memcached:latest
+Using default tag: latest
+latest: Pulling from clearlinux/memcached
+Digest: sha256:f17c6128d878f9624b52d04d87c9071ca2b7084757155d9dba47474208bd35d7
+Status: Image is up to date for clearlinux/memcached:latest
+Using default tag: latest
+latest: Pulling from library/nginx
+Digest: sha256:bdbf36b7f1f77ffe7bd2a32e59235dff6ecf131e3b6b5b96061c652f30685f3a
+Status: Image is up to date for nginx:latest
+Using default tag: latest
+latest: Pulling from clearlinux/nginx
+Digest: sha256:b03f9cdc28c6acbc1f45335bdc1091f7c7237b2bc69bd4b9de4db120be7ba999
+Status: Image is up to date for clearlinux/nginx:latest
+Using default tag: latest
+latest: Pulling from library/node
+Digest: sha256:ff37127378242accaa80c6c3426d02d3f749c7b220401f791eda5c954a60ed75
+Status: Image is up to date for node:latest
+Using default tag: latest
+latest: Pulling from clearlinux/node
+Digest: sha256:f24a8d24e95a1d31329e0679db5d25ec0eb6d6542e5ffedf414ea9ce96f7d16d
+Status: Image is up to date for clearlinux/node:latest
+Using default tag: latest
+latest: Pulling from library/openjdk
+Digest: sha256:c02e6a597468013bc87238c2b68766de6a63d35678575525c13978b2bfce2012
+Status: Image is up to date for openjdk:latest
+Using default tag: latest
+latest: Pulling from clearlinux/openjdk
+Digest: sha256:06225f2c348f23f5aafe4a9f7d6f84a4c20cadb306f1ebd410fbe915cf92e744
+Status: Image is up to date for clearlinux/openjdk:latest
+Using default tag: latest
+latest: Pulling from library/perl
+Digest: sha256:09658d759eaf5d117da54bc72e2b11a4a03c578cc638008fa83d26fe18b74b26
+Status: Image is up to date for perl:latest
+Using default tag: latest
+latest: Pulling from clearlinux/perl
+Digest: sha256:181d018cfd81abcb8a9218aa381679a5d01e48a18b5a623394b3c916fff97c0b
+Status: Image is up to date for clearlinux/perl:latest
+Using default tag: latest
+latest: Pulling from library/php
+Digest: sha256:d442f7c42e4d2a6b0e1292cf9af7d085d0a7feabba72c276f01014672dc1b869
+Status: Image is up to date for php:latest
+Using default tag: latest
+latest: Pulling from clearlinux/php
+Digest: sha256:8d45e8e2059e43cba7202a9e3670de3b3287440c83c9abaca9851169cc19e418
+Status: Image is up to date for clearlinux/php:latest
+Using default tag: latest
+latest: Pulling from library/postgres
+Digest: sha256:1518027f4aaee49b836c5cf4ece1b4a16bdcd820af873402e19e1cc181c1aff2
+Status: Image is up to date for postgres:latest
+Using default tag: latest
+latest: Pulling from clearlinux/postgres
+Digest: sha256:830359ffbd605ae352396a90554d9b032e247de387b26fef3b2099ef9038c88b
+Status: Image is up to date for clearlinux/postgres:latest
+Using default tag: latest
+latest: Pulling from library/python
+Digest: sha256:9e0b4f32487ca1863b45383420b8db77990debae748e2e875d2f86fa9510d4a5
+Status: Image is up to date for python:latest
+Using default tag: latest
+latest: Pulling from clearlinux/python
+Digest: sha256:97c654e647fad2e18b245f5923ed88f2a0c2a4c45284b1fd3f7069efc7cb24dc
+Status: Image is up to date for clearlinux/python:latest
+Using default tag: latest
+latest: Pulling from library/rabbitmq
+Digest: sha256:db558ab49aa234c3ea6c365a4e244126a832ad050c525992ecb53176549d9c7f
+Status: Image is up to date for rabbitmq:latest
+Using default tag: latest
+latest: Pulling from clearlinux/rabbitmq
+Digest: sha256:fdb48b00b66f21e530ab8571816ef178ae615c5c5e3e3e62665f9710a7d39695
+Status: Image is up to date for clearlinux/rabbitmq:latest
+Using default tag: latest
+latest: Pulling from library/redis
+Digest: sha256:ca2d9251c2818df48c6598e01a5bdeab46040dc7ab236abe075d7c7343465177
+Status: Image is up to date for redis:latest
+Using default tag: latest
+latest: Pulling from clearlinux/redis
+Digest: sha256:71621f20677ce89368eb901003189b713c6b045ea8c35019b18011ccec46b4c2
+Status: Image is up to date for clearlinux/redis:latest
+Using default tag: latest
+latest: Pulling from library/ruby
+Digest: sha256:90e8ee6a35bdecdb67cb1d5f0333c79604eab86b7a5a6ad2417378a216f7a316
+Status: Image is up to date for ruby:latest
+Using default tag: latest
+latest: Pulling from clearlinux/ruby
+Digest: sha256:c61283bb9ae8589cff46c438d09134c51f9a2856b433707855349b5329246576
+Status: Image is up to date for clearlinux/ruby:latest
+Using default tag: latest
+latest: Pulling from tensorflow/tensorflow
+Digest: sha256:87463fd80faa6e7979b78d2f1a26d62262210653eb166b638069ed06ae68dacb
+Status: Image is up to date for tensorflow/tensorflow:latest
+Using default tag: latest
+latest: Pulling from clearlinux/tensorflow
+Digest: sha256:eea629418dc79080fe6048958c60d3252f45ccd084eff830c48cd1f8cb242e17
+Status: Image is up to date for clearlinux/tensorflow:latest

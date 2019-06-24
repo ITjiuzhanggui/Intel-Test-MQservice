@@ -1,0 +1,269 @@
+./status.sh "golang httpd mariadb memcached nginx node openjdk perl php postgres python rabbitmq redis ruby tensorflow"
+[status] 
+[status] == Get general information of container images ==
+[status] [INFO] Base clearlinux image version:
+[status] 
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux          latest              12ad91977e2b        3 days ago          155MB
+Installed version: 29940
+Version URL:       https://cdn.download.clearlinux.org/update
+Content URL:       https://cdn.download.clearlinux.org/update
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+golang              latest              9fe4cdc1f173        9 days ago          774MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/golang   latest              6b62611dece9        9 hours ago         821MB
+clearlinux/golang   <none>              5d17805d2096        17 hours ago        821MB
+default base layer Size:               101.000000 MB
+default microservice added layer Size: 674.010000 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 749.000000 MB
+golang image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/golang version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+httpd               latest              e77c77f17b46        10 days ago         140MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/httpd    latest              6d14ac6965fc        11 hours ago        124MB
+clearlinux/httpd    <none>              2f13bc5e7936        17 hours ago        124MB
+default base layer Size:               55.300000 MB
+default microservice added layer Size: 85.000133 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 51.700129 MB
+httpd image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/httpd version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mariadb             latest              f1e4084965e5        46 hours ago        356MB
+REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/mariadb   latest              96e104c0fed7        8 hours ago         685MB
+clearlinux/mariadb   <none>              fc56caa6c43c        26 hours ago        685MB
+default base layer Size:               63.200000 MB
+default microservice added layer Size: 292.722025 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 613.012690 MB
+mariadb image base version:
+Ubuntu 18.04.2 LTS \n \l
+
+clearlinux/mariadb version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+memcached           latest              de8ed9aa9b7e        10 days ago         67.5MB
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/memcached   latest              814edffd5195        7 hours ago         79.7MB
+clearlinux/memcached   <none>              a92109a24943        25 hours ago        79.7MB
+default base layer Size:               55.300000 MB
+default microservice added layer Size: 12.230158 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 7.680488 MB
+memcached image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/memcached version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              719cd2e3ed04        10 days ago         109MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/nginx    latest              63b88f294bb8        7 hours ago         79.9MB
+clearlinux/nginx    <none>              2a92ee496eec        25 hours ago        79.9MB
+default base layer Size:               55.300000 MB
+default microservice added layer Size: 54.000022 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 7.840501 MB
+nginx image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/nginx version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+node                latest              b074182f4154        10 days ago         906MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/node     latest              36f83453e033        7 hours ago         247MB
+clearlinux/node     <none>              88d772835192        25 hours ago        247MB
+default base layer Size:               101.000000 MB
+default microservice added layer Size: 805.723116 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 175.000000 MB
+node image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/node version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+openjdk             8-jre-stretch       ad64853179c1        10 days ago         246MB
+openjdk             latest              ef36deb98f03        3 weeks ago         470MB
+REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/openjdk   latest              41000674534b        6 hours ago         757MB
+clearlinux/openjdk   <none>              cb263a68fc4c        24 hours ago        757MB
+clearlinux/openjdk   <none>              5b42c028be45        2 days ago          757MB
+default base layer Size:               118.000000 MB
+default microservice added layer Size: 351.600000 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 685.000000 MB
+openjdk image base version:
+\S
+Kernel \r on an \m
+
+clearlinux/openjdk version:
+VERSION_ID=30010
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+perl                latest              84486f2c05a0        10 days ago         889MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/perl     latest              2e0a5a29053b        6 hours ago         473MB
+clearlinux/perl     <none>              0502dd682414        24 hours ago        473MB
+default base layer Size:               101.000000 MB
+default microservice added layer Size: 788.810000 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 401.000000 MB
+perl image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/perl version:
+VERSION_ID=30020
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+php                 latest              f0357c41bff5        3 days ago          367MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/php      latest              d2d238a99668        6 hours ago         249MB
+clearlinux/php      <none>              6787c4ec5b7d        24 hours ago        249MB
+default base layer Size:               55.300000 MB
+default microservice added layer Size: 311.007153 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 177.000000 MB
+php image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/php version:
+VERSION_ID=30020
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+postgres            latest              4e045cb8eecd        10 days ago         312MB
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/postgres   latest              5c4a23f7ac00        6 hours ago         117MB
+clearlinux/postgres   <none>              0d6a79075cae        24 hours ago        117MB
+default base layer Size:               55.300000 MB
+default microservice added layer Size: 257.207224 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 44.905180 MB
+postgres image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/postgres version:
+VERSION_ID=30020
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+python              latest              34a518642c76        10 days ago         929MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/python   latest              9a7a1d133615        6 hours ago         219MB
+clearlinux/python   <none>              792271ea7059        24 hours ago        219MB
+default base layer Size:               101.000000 MB
+default microservice added layer Size: 828.470032 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 147.000000 MB
+python image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/python version:
+VERSION_ID=30020
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+rabbitmq            latest              35d90e3cc645        2 days ago          156MB
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/rabbitmq   latest              61de0a18473b        5 hours ago         3.14GB
+default base layer Size:               63.200000 MB
+default microservice added layer Size: 92.912973 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 3070.012340 MB
+rabbitmq image base version:
+Ubuntu 18.04.2 LTS \n \l
+
+clearlinux/rabbitmq version:
+VERSION_ID=30020
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+redis               latest              3c41ce05add9        10 days ago         95MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/redis    latest              b9bb53d4097d        5 hours ago         79.5MB
+clearlinux/redis    <none>              6699511696d5        23 hours ago        79.5MB
+default base layer Size:               55.300000 MB
+default microservice added layer Size: 39.729374 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 7.450794 MB
+redis image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/redis version:
+VERSION_ID=30020
+
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ruby                latest              877a53569182        10 days ago         870MB
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/ruby     latest              cdeef2db1389        5 hours ago         193MB
+clearlinux/ruby     <none>              ecea570daa2a        23 hours ago        193MB
+default base layer Size:               101.000000 MB
+default microservice added layer Size: 769.310045 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 121.000000 MB
+ruby image base version:
+Debian GNU/Linux 9 \n \l
+
+clearlinux/ruby version:
+VERSION_ID=30020
+
+
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+tensorflow/tensorflow   latest              7f03c4ff368a        25 hours ago        1.17GB
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+clearlinux/tensorflow   latest              77f19820782a        4 hours ago         3.37GB
+clearlinux/tensorflow   <none>              cd63bc1f4113        22 hours ago        3.37GB
+default base layer Size:               63.200000 MB
+default microservice added layer Size: 1108.991307 MB
+clearlinux base layer Size:               72.000000 MB
+clearlinux update layer Size:             0.000000 MB
+clearlinux microservice added layer Size: 3300.000000 MB
+tensorflow image base version:
+Ubuntu 18.04.2 LTS \n \l
+
+clearlinux/tensorflow version:
+VERSION_ID=30020
+
+
