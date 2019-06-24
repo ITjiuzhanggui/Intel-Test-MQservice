@@ -1,605 +1,0 @@
-node/node.sh
-[node] 
-[node] == node unit test ==
-[node] [INFO] Test docker hub official image first:
-[node] 
-Get:1 http://security.debian.org/debian-security stretch/updates InRelease [94.3 kB]
-Ign:2 http://deb.debian.org/debian stretch InRelease
-Get:3 http://deb.debian.org/debian stretch-updates InRelease [91.0 kB]
-Get:4 http://security.debian.org/debian-security stretch/updates/main amd64 Packages [499 kB]
-Get:5 http://deb.debian.org/debian stretch Release [118 kB]
-Get:6 http://deb.debian.org/debian stretch-updates/main amd64 Packages [27.2 kB]
-Get:7 http://deb.debian.org/debian stretch Release.gpg [2434 B]
-Get:8 http://deb.debian.org/debian stretch/main amd64 Packages [7082 kB]
-Fetched 7914 kB in 3s (2290 kB/s)
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
-Reading package lists...
-Building dependency tree...
-Reading state information...
-unzip is already the newest version (6.0-21+deb9u1).
-wget is already the newest version (1.18-5+deb9u3).
-0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
---2019-06-21 19:49:49--  http://phoronix-test-suite.com/benchmark-files/benchmark-octane-20181001.zip
-Resolving phoronix-test-suite.com (phoronix-test-suite.com)... 162.252.83.89
-Connecting to phoronix-test-suite.com (phoronix-test-suite.com)|162.252.83.89|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1986184 (1.9M) [application/zip]
-Saving to: 'benchmark-octane-20181001.zip'
-
-     0K .......... .......... .......... .......... ..........  2%  123K 15s
-    50K .......... .......... .......... .......... ..........  5%  246K 11s
-   100K .......... .......... .......... .......... ..........  7% 26.2M 7s
-   150K .......... .......... .......... .......... .......... 10% 21.0M 5s
-   200K .......... .......... .......... .......... .......... 12%  249K 6s
-   250K .......... .......... .......... .......... .......... 15% 19.6M 4s
-   300K .......... .......... .......... .......... .......... 18% 18.3M 4s
-   350K .......... .......... .......... .......... .......... 20% 20.7M 3s
-   400K .......... .......... .......... .......... .......... 23%  257K 3s
-   450K .......... .......... .......... .......... .......... 25% 19.7M 3s
-   500K .......... .......... .......... .......... .......... 28% 18.3M 3s
-   550K .......... .......... .......... .......... .......... 30% 19.5M 2s
-   600K .......... .......... .......... .......... .......... 33% 19.7M 2s
-   650K .......... .......... .......... .......... .......... 36% 31.1M 2s
-   700K .......... .......... .......... .......... .......... 38% 28.6M 2s
-   750K .......... .......... .......... .......... .......... 41% 28.5M 1s
-   800K .......... .......... .......... .......... .......... 43% 30.7M 1s
-   850K .......... .......... .......... .......... .......... 46%  268K 1s
-   900K .......... .......... .......... .......... .......... 48% 33.4M 1s
-   950K .......... .......... .......... .......... .......... 51% 29.5M 1s
-  1000K .......... .......... .......... .......... .......... 54% 28.4M 1s
-  1050K .......... .......... .......... .......... .......... 56% 34.8M 1s
-  1100K .......... .......... .......... .......... .......... 59% 42.5M 1s
-  1150K .......... .......... .......... .......... .......... 61% 38.2M 1s
-  1200K .......... .......... .......... .......... .......... 64% 34.4M 1s
-  1250K .......... .......... .......... .......... .......... 67% 43.6M 1s
-  1300K .......... .......... .......... .......... .......... 69% 41.7M 1s
-  1350K .......... .......... .......... .......... .......... 72% 50.2M 0s
-  1400K .......... .......... .......... .......... .......... 74% 52.6M 0s
-  1450K .......... .......... .......... .......... .......... 77% 43.6M 0s
-  1500K .......... .......... .......... .......... .......... 79% 63.5M 0s
-  1550K .......... .......... .......... .......... .......... 82% 41.2M 0s
-  1600K .......... .......... .......... .......... .......... 85%  103M 0s
-  1650K .......... .......... .......... .......... .......... 87% 57.4M 0s
-  1700K .......... .......... .......... .......... .......... 90% 62.4M 0s
-  1750K .......... .......... .......... .......... .......... 92%  272K 0s
-  1800K .......... .......... .......... .......... .......... 95% 63.1M 0s
-  1850K .......... .......... .......... .......... .......... 97% 63.4M 0s
-  1900K .......... .......... .......... .........            100% 71.2M=1.4s
-
-2019-06-21 19:49:51 (1.33 MB/s) - 'benchmark-octane-20181001.zip' saved [1986184/1986184]
-
-Archive:  benchmark-octane-20181001.zip
-ecbfa1b33ddc294401f97f2cf87c94434fefb097
-   creating: benchmark-octane-master/
- extracting: benchmark-octane-master/.gitignore  
-  inflating: benchmark-octane-master/README.md  
-   creating: benchmark-octane-master/bin/
- extracting: benchmark-octane-master/bin/benchmark-octane  
- extracting: benchmark-octane-master/index.js  
-   creating: benchmark-octane-master/lib/
-  inflating: benchmark-octane-master/lib/octane.js  
-   creating: benchmark-octane-master/lib/octane/
-  inflating: benchmark-octane-master/lib/octane/base.js  
-  inflating: benchmark-octane-master/lib/octane/box2d.js  
-  inflating: benchmark-octane-master/lib/octane/code-load.js  
-  inflating: benchmark-octane-master/lib/octane/crypto.js  
-   creating: benchmark-octane-master/lib/octane/css/
-  inflating: benchmark-octane-master/lib/octane/css/bootstrap-responsive.css  
-  inflating: benchmark-octane-master/lib/octane/css/bootstrap.css  
-  inflating: benchmark-octane-master/lib/octane/css/docs.css  
-  inflating: benchmark-octane-master/lib/octane/deltablue.js  
-  inflating: benchmark-octane-master/lib/octane/earley-boyer.js  
-  inflating: benchmark-octane-master/lib/octane/gbemu-part1.js  
-  inflating: benchmark-octane-master/lib/octane/gbemu-part2.js  
-   creating: benchmark-octane-master/lib/octane/ico/
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-114-precomposed.png  
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-144-precomposed.png  
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-57-precomposed.png  
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-72-precomposed.png  
-  inflating: benchmark-octane-master/lib/octane/ico/favicon.ico  
-  inflating: benchmark-octane-master/lib/octane/index.html  
-   creating: benchmark-octane-master/lib/octane/js/
-  inflating: benchmark-octane-master/lib/octane/js/bootstrap-collapse.js  
-  inflating: benchmark-octane-master/lib/octane/js/bootstrap-transition.js  
-  inflating: benchmark-octane-master/lib/octane/js/jquery.js  
-  inflating: benchmark-octane-master/lib/octane/mandreel.js  
-  inflating: benchmark-octane-master/lib/octane/navier-stokes.js  
-  inflating: benchmark-octane-master/lib/octane/pdfjs.js  
-  inflating: benchmark-octane-master/lib/octane/raytrace.js  
-  inflating: benchmark-octane-master/lib/octane/regexp.js  
-  inflating: benchmark-octane-master/lib/octane/richards.js  
-  inflating: benchmark-octane-master/lib/octane/run.js  
-  inflating: benchmark-octane-master/lib/octane/splay.js  
-  inflating: benchmark-octane-master/lib/octane/typescript-compiler.js  
-  inflating: benchmark-octane-master/lib/octane/typescript-input.js  
-  inflating: benchmark-octane-master/lib/octane/typescript.js  
-  inflating: benchmark-octane-master/lib/octane/zlib-data.js  
-  inflating: benchmark-octane-master/lib/octane/zlib.js  
-  inflating: benchmark-octane-master/package.json  
-  inflating: benchmark-octane-master/run.js  
-    hostname     : 51f1fa669557
-    node version : v12.4.0
-      V8 version : 7.4.288.27-node.18
- platform & arch : linux x64
-
- config : {
-  target_defaults: {
-    cflags: [],
-    default_configuration: [32m'Release'[39m,
-    defines: [],
-    include_dirs: [],
-    libraries: []
-  },
-  variables: {
-    asan: [33m0[39m,
-    build_v8_with_gn: [33mfalse[39m,
-    coverage: [33mfalse[39m,
-    debug_nghttp2: [33mfalse[39m,
-    enable_lto: [33mfalse[39m,
-    enable_pgo_generate: [33mfalse[39m,
-    enable_pgo_use: [33mfalse[39m,
-    force_dynamic_crt: [33m0[39m,
-    gas_version: [32m'2.27'[39m,
-    host_arch: [32m'x64'[39m,
-    icu_data_in: [32m'../../deps/icu-small/source/data/in/icudt64l.dat'[39m,
-    icu_endianness: [32m'l'[39m,
-    icu_gyp_path: [32m'tools/icu/icu-generic.gyp'[39m,
-    icu_locales: [32m'en,root'[39m,
-    icu_path: [32m'deps/icu-small'[39m,
-    icu_small: [33mtrue[39m,
-    icu_ver_major: [32m'64'[39m,
-    llvm_version: [33m0[39m,
-    node_byteorder: [32m'little'[39m,
-    node_code_cache_path: [32m'yes'[39m,
-    node_debug_lib: [33mfalse[39m,
-    node_enable_d8: [33mfalse[39m,
-    node_enable_v8_vtunejit: [33mfalse[39m,
-    node_install_npm: [33mtrue[39m,
-    node_module_version: [33m72[39m,
-    node_no_browser_globals: [33mfalse[39m,
-    node_prefix: [32m'/'[39m,
-    node_release_urlbase: [32m'https://nodejs.org/download/release/'[39m,
-    node_report: [33mtrue[39m,
-    node_shared: [33mfalse[39m,
-    node_shared_cares: [33mfalse[39m,
-    node_shared_http_parser: [33mfalse[39m,
-    node_shared_libuv: [33mfalse[39m,
-    node_shared_nghttp2: [33mfalse[39m,
-    node_shared_openssl: [33mfalse[39m,
-    node_shared_zlib: [33mfalse[39m,
-    node_tag: [32m''[39m,
-    node_target_type: [32m'executable'[39m,
-    node_use_bundled_v8: [33mtrue[39m,
-    node_use_dtrace: [33mfalse[39m,
-    node_use_etw: [33mfalse[39m,
-    node_use_large_pages: [33mfalse[39m,
-    node_use_node_snapshot: [33mfalse[39m,
-    node_use_openssl: [33mtrue[39m,
-    node_use_v8_platform: [33mtrue[39m,
-    node_with_ltcg: [33mfalse[39m,
-    node_without_node_options: [33mfalse[39m,
-    openssl_fips: [32m''[39m,
-    openssl_is_fips: [33mfalse[39m,
-    shlib_suffix: [32m'so.72'[39m,
-    target_arch: [32m'x64'[39m,
-    v8_enable_gdbjit: [33m0[39m,
-    v8_enable_i18n_support: [33m1[39m,
-    v8_enable_inspector: [33m1[39m,
-    v8_no_strict_aliasing: [33m1[39m,
-    v8_optimized_debug: [33m1[39m,
-    v8_promise_internal_field_count: [33m1[39m,
-    v8_random_seed: [33m0[39m,
-    v8_trace_maps: [33m0[39m,
-    v8_use_siphash: [33m1[39m,
-    v8_use_snapshot: [33m1[39m,
-    want_separate_host_toolset: [33m0[39m
-  }
-}
-
-Richards            : 23448
-DeltaBlue           : 53873
-Crypto              : 27071
-RayTrace            : 56313
-EarleyBoyer         : 36062
-RegExp              : 5390
-Splay               : 18792
-SplayLatency        : 36094
-NavierStokes        : 24832
-PdfJS               : 25161
-Mandreel            : 28614
-MandreelLatency     : 33684
-Gameboy             : 33147
-CodeLoad            : 22411
-Box2D               : 41832
-zlib                : 54714
-Typescript          : 36399
-----
-Score (version 9): 29456
- duration  33.24553736  seconds
-(node:202) [DEP0016] DeprecationWarning: 'GLOBAL' is deprecated, use 'global'
-Default-Node-Server
-[node] [INFO] Test clear docker image:
-[node] 
-Set upstream mirror to https://cdn-alt.download.clearlinux.org/update
-Installed version: 30010
-Version URL:       https://cdn-alt.download.clearlinux.org/update
-Content URL:       https://cdn-alt.download.clearlinux.org/update
-Loading required manifests...
-Downloading packs (1.14 Mb) for:
- - wget
- - openssl
- - unzip
-	...1%
-	...2%
-	...4%
-	...5%
-	...7%
-	...8%
-	...10%
-	...11%
-	...12%
-	...14%
-	...15%
-	...17%
-	...18%
-	...20%
-	...21%
-	...22%
-	...24%
-	...25%
-	...27%
-	...28%
-	...30%
-	...31%
-	...33%
-	...34%
-	...35%
-	...37%
-	...38%
-	...40%
-	...41%
-	...43%
-	...44%
-	...45%
-	...47%
-	...48%
-	...50%
-	...51%
-	...53%
-	...54%
-	...56%
-	...57%
-	...58%
-	...60%
-	...61%
-	...63%
-	...64%
-	...66%
-	...67%
-	...68%
-	...70%
-	...71%
-	...73%
-	...74%
-	...76%
-	...77%
-	...79%
-	...80%
-	...81%
-	...83%
-	...84%
-	...86%
-	...87%
-	...89%
-	...90%
-	...91%
-	...93%
-	...94%
-	...96%
-	...97%
-	...100%
-
-Finishing packs extraction...
-No extra files need to be downloaded
-Installing bundle(s) files...
-	...0%
-	...1%
-	...2%
-	...3%
-	...4%
-	...5%
-	...6%
-	...7%
-	...8%
-	...9%
-	...10%
-	...11%
-	...12%
-	...13%
-	...14%
-	...15%
-	...16%
-	...17%
-	...18%
-	...19%
-	...20%
-	...21%
-	...22%
-	...23%
-	...24%
-	...25%
-	...26%
-	...27%
-	...28%
-	...29%
-	...30%
-	...31%
-	...32%
-	...33%
-	...34%
-	...35%
-	...36%
-	...37%
-	...38%
-	...39%
-	...40%
-	...41%
-	...42%
-	...43%
-	...44%
-	...45%
-	...46%
-	...47%
-	...48%
-	...49%
-	...50%
-	...51%
-	...52%
-	...53%
-	...54%
-	...55%
-	...56%
-	...57%
-	...58%
-	...59%
-	...60%
-	...61%
-	...62%
-	...63%
-	...64%
-	...65%
-	...66%
-	...67%
-	...68%
-	...69%
-	...70%
-	...71%
-	...72%
-	...73%
-	...74%
-	...75%
-	...76%
-	...77%
-	...78%
-	...79%
-	...80%
-	...81%
-	...82%
-	...83%
-	...84%
-	...85%
-	...86%
-	...87%
-	...88%
-	...89%
-	...90%
-	...91%
-	...92%
-	...93%
-	...94%
-	...95%
-	...96%
-	...97%
-	...98%
-	...99%
-	...100%
-
-Calling post-update helper scripts.
-Successfully installed 2 bundles
---2019-06-21 19:50:29--  http://phoronix-test-suite.com/benchmark-files/benchmark-octane-20181001.zip
-Resolving phoronix-test-suite.com... 162.252.83.89
-Connecting to phoronix-test-suite.com|162.252.83.89|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1986184 (1.9M) [application/zip]
-Saving to: 'benchmark-octane-20181001.zip'
-
-     0K .......... .......... .......... .......... ..........  2%  123K 15s
-    50K .......... .......... .......... .......... ..........  5%  247K 11s
-   100K .......... .......... .......... .......... ..........  7% 19.3M 7s
-   150K .......... .......... .......... .......... .......... 10% 18.9M 5s
-   200K .......... .......... .......... .......... .......... 12%  251K 5s
-   250K .......... .......... .......... .......... .......... 15% 17.2M 4s
-   300K .......... .......... .......... .......... .......... 18% 19.5M 4s
-   350K .......... .......... .......... .......... .......... 20% 19.9M 3s
-   400K .......... .......... .......... .......... .......... 23%  258K 3s
-   450K .......... .......... .......... .......... .......... 25% 15.1M 3s
-   500K .......... .......... .......... .......... .......... 28% 20.0M 3s
-   550K .......... .......... .......... .......... .......... 30% 19.8M 2s
-   600K .......... .......... .......... .......... .......... 33% 23.0M 2s
-   650K .......... .......... .......... .......... .......... 36% 31.8M 2s
-   700K .......... .......... .......... .......... .......... 38% 28.0M 2s
-   750K .......... .......... .......... .......... .......... 41% 29.0M 1s
-   800K .......... .......... .......... .......... .......... 43% 32.1M 1s
-   850K .......... .......... .......... .......... .......... 46%  269K 1s
-   900K .......... .......... .......... .......... .......... 48% 28.9M 1s
-   950K .......... .......... .......... .......... .......... 51% 27.5M 1s
-  1000K .......... .......... .......... .......... .......... 54% 30.2M 1s
-  1050K .......... .......... .......... .......... .......... 56% 32.6M 1s
-  1100K .......... .......... .......... .......... .......... 59% 45.4M 1s
-  1150K .......... .......... .......... .......... .......... 61% 36.2M 1s
-  1200K .......... .......... .......... .......... .......... 64% 42.3M 1s
-  1250K .......... .......... .......... .......... .......... 67% 34.3M 1s
-  1300K .......... .......... .......... .......... .......... 69% 54.9M 1s
-  1350K .......... .......... .......... .......... .......... 72% 49.2M 0s
-  1400K .......... .......... .......... .......... .......... 74% 52.7M 0s
-  1450K .......... .......... .......... .......... .......... 77% 42.5M 0s
-  1500K .......... .......... .......... .......... .......... 79% 61.9M 0s
-  1550K .......... .......... .......... .......... .......... 82% 50.7M 0s
-  1600K .......... .......... .......... .......... .......... 85% 49.7M 0s
-  1650K .......... .......... .......... .......... .......... 87% 51.8M 0s
-  1700K .......... .......... .......... .......... .......... 90% 92.6M 0s
-  1750K .......... .......... .......... .......... .......... 92%  274K 0s
-  1800K .......... .......... .......... .......... .......... 95% 94.8M 0s
-  1850K .......... .......... .......... .......... .......... 97% 53.0M 0s
-  1900K .......... .......... .......... .........            100% 57.9M=1.4s
-
-2019-06-21 19:50:31 (1.33 MB/s) - 'benchmark-octane-20181001.zip' saved [1986184/1986184]
-
-Archive:  benchmark-octane-20181001.zip
-ecbfa1b33ddc294401f97f2cf87c94434fefb097
-   creating: benchmark-octane-master/
- extracting: benchmark-octane-master/.gitignore  
-  inflating: benchmark-octane-master/README.md  
-   creating: benchmark-octane-master/bin/
- extracting: benchmark-octane-master/bin/benchmark-octane  
- extracting: benchmark-octane-master/index.js  
-   creating: benchmark-octane-master/lib/
-  inflating: benchmark-octane-master/lib/octane.js  
-   creating: benchmark-octane-master/lib/octane/
-  inflating: benchmark-octane-master/lib/octane/base.js  
-  inflating: benchmark-octane-master/lib/octane/box2d.js  
-  inflating: benchmark-octane-master/lib/octane/code-load.js  
-  inflating: benchmark-octane-master/lib/octane/crypto.js  
-   creating: benchmark-octane-master/lib/octane/css/
-  inflating: benchmark-octane-master/lib/octane/css/bootstrap-responsive.css  
-  inflating: benchmark-octane-master/lib/octane/css/bootstrap.css  
-  inflating: benchmark-octane-master/lib/octane/css/docs.css  
-  inflating: benchmark-octane-master/lib/octane/deltablue.js  
-  inflating: benchmark-octane-master/lib/octane/earley-boyer.js  
-  inflating: benchmark-octane-master/lib/octane/gbemu-part1.js  
-  inflating: benchmark-octane-master/lib/octane/gbemu-part2.js  
-   creating: benchmark-octane-master/lib/octane/ico/
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-114-precomposed.png  
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-144-precomposed.png  
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-57-precomposed.png  
- extracting: benchmark-octane-master/lib/octane/ico/apple-touch-icon-72-precomposed.png  
-  inflating: benchmark-octane-master/lib/octane/ico/favicon.ico  
-  inflating: benchmark-octane-master/lib/octane/index.html  
-   creating: benchmark-octane-master/lib/octane/js/
-  inflating: benchmark-octane-master/lib/octane/js/bootstrap-collapse.js  
-  inflating: benchmark-octane-master/lib/octane/js/bootstrap-transition.js  
-  inflating: benchmark-octane-master/lib/octane/js/jquery.js  
-  inflating: benchmark-octane-master/lib/octane/mandreel.js  
-  inflating: benchmark-octane-master/lib/octane/navier-stokes.js  
-  inflating: benchmark-octane-master/lib/octane/pdfjs.js  
-  inflating: benchmark-octane-master/lib/octane/raytrace.js  
-  inflating: benchmark-octane-master/lib/octane/regexp.js  
-  inflating: benchmark-octane-master/lib/octane/richards.js  
-  inflating: benchmark-octane-master/lib/octane/run.js  
-  inflating: benchmark-octane-master/lib/octane/splay.js  
-  inflating: benchmark-octane-master/lib/octane/typescript-compiler.js  
-  inflating: benchmark-octane-master/lib/octane/typescript-input.js  
-  inflating: benchmark-octane-master/lib/octane/typescript.js  
-  inflating: benchmark-octane-master/lib/octane/zlib-data.js  
-  inflating: benchmark-octane-master/lib/octane/zlib.js  
-  inflating: benchmark-octane-master/package.json  
-  inflating: benchmark-octane-master/run.js  
-    hostname     : d37acfdf7172
-    node version : v10.16.0
-      V8 version : 6.8.275.32-node.52
- platform & arch : linux x64
-
- config : { target_defaults:
-   { cflags: [],
-     default_configuration: [32m'Release'[39m,
-     defines: [],
-     include_dirs: [],
-     libraries: [ [32m'-lz'[39m, [32m'-luv'[39m, [32m'-lnghttp2'[39m, [32m'-lcrypto'[39m, [32m'-lssl'[39m ] },
-  variables:
-   { asan: [33m-0[39m,
-     build_v8_with_gn: [33mfalse[39m,
-     coverage: [33mfalse[39m,
-     debug_nghttp2: [33mfalse[39m,
-     enable_lto: [33mtrue[39m,
-     enable_pgo_generate: [33mfalse[39m,
-     enable_pgo_use: [33mfalse[39m,
-     force_dynamic_crt: [33m-0[39m,
-     host_arch: [32m'x64'[39m,
-     icu_data_in: [32m'../../deps/icu-small/source/data/in/icudt64l.dat'[39m,
-     icu_endianness: [32m'l'[39m,
-     icu_gyp_path: [32m'tools/icu/icu-generic.gyp'[39m,
-     icu_locales: [32m'en,root'[39m,
-     icu_path: [32m'deps/icu-small'[39m,
-     icu_small: [33mtrue[39m,
-     icu_ver_major: [32m'64'[39m,
-     llvm_version: [33m-0[39m,
-     node_byteorder: [32m'little'[39m,
-     node_debug_lib: [33mfalse[39m,
-     node_enable_d8: [33mfalse[39m,
-     node_enable_v8_vtunejit: [33mfalse[39m,
-     node_install_npm: [33mtrue[39m,
-     node_module_version: [33m64[39m,
-     node_no_browser_globals: [33mfalse[39m,
-     node_prefix: [32m'/usr'[39m,
-     node_release_urlbase: [32m''[39m,
-     node_shared: [33mfalse[39m,
-     node_shared_cares: [33mfalse[39m,
-     node_shared_http_parser: [33mfalse[39m,
-     node_shared_libuv: [33mtrue[39m,
-     node_shared_nghttp2: [33mtrue[39m,
-     node_shared_openssl: [33mtrue[39m,
-     node_shared_zlib: [33mtrue[39m,
-     node_tag: [32m''[39m,
-     node_target_type: [32m'executable'[39m,
-     node_use_bundled_v8: [33mtrue[39m,
-     node_use_dtrace: [33mfalse[39m,
-     node_use_etw: [33mfalse[39m,
-     node_use_large_pages: [33mtrue[39m,
-     node_use_openssl: [33mtrue[39m,
-     node_use_pch: [33mfalse[39m,
-     node_use_perfctr: [33mfalse[39m,
-     node_use_v8_platform: [33mtrue[39m,
-     node_with_ltcg: [33mfalse[39m,
-     node_without_node_options: [33mfalse[39m,
-     openssl_fips: [32m''[39m,
-     openssl_no_asm: [33m-0[39m,
-     shlib_suffix: [32m'so.64'[39m,
-     target_arch: [32m'x64'[39m,
-     v8_enable_gdbjit: [33m-0[39m,
-     v8_enable_i18n_support: [33m1[39m,
-     v8_enable_inspector: [33m1[39m,
-     v8_no_strict_aliasing: [33m1[39m,
-     v8_optimized_debug: [33m-0[39m,
-     v8_promise_internal_field_count: [33m1[39m,
-     v8_random_seed: [33m-0[39m,
-     v8_trace_maps: [33m-0[39m,
-     v8_typed_array_max_size_in_heap: [33m-0[39m,
-     v8_use_snapshot: [33mtrue[39m,
-     want_separate_host_toolset: [33m-0[39m } }
-
-Richards            : 23857
-DeltaBlue           : 46362
-Crypto              : 25924
-RayTrace            : 55573
-EarleyBoyer         : 35943
-RegExp              : 5396
-Splay               : 15646
-SplayLatency        : 34369
-NavierStokes        : 24512
-PdfJS               : 20724
-Mandreel            : 26533
-MandreelLatency     : 66469
-Gameboy             : 35594
-CodeLoad            : 17212
-Box2D               : 55084
-zlib                : 55894
-Typescript          : 35262
-----
-Score (version 9): 29535
- duration  33.476  seconds
-(node:255) [DEP0016] DeprecationWarning: 'GLOBAL' is deprecated, use 'global'
-Clr-Node-Server

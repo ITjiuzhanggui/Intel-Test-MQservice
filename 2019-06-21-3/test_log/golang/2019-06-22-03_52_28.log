@@ -1,311 +1,0 @@
-golang/golang.sh
-[golang] 
-[golang] == golang unit test ==
-[golang] [INFO] Test docker hub official image first:
-[golang] 
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-# sections=/tmp/1.size.txt
-BenchmarkBuild-16        1	30081188042 ns/op	  14613633 binary-size	30081188042 build-ns/op	 221425664 build-peak-RSS-bytes	30444799000 build-user+sys-ns/op
-2019/06/21 19:53:00 Failed to execute 'perf record [go build -o goperf -a -p 1 cmd/go]': exec: "perf": executable file not found in $PATH
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-consumption=1733KB npkg=15
-2019/06/21 19:53:00 Benchmarking 1 iterations
-2019/06/21 19:53:01 Benchmarking 100 iterations
-2019/06/21 19:53:01 Benchmarking 5000 iterations
-# memprof=/tmp/11.prof.txt
-# cpuprof=/tmp/10.prof.txt
-BenchmarkGarbage/benchmem-MB=64-16     5000	   2110562 ns/op	  14260224 GC-bytes-from-system	    245835 STW-ns/GC	      6145 STW-ns/op	   2783331 allocated-bytes/op	     66275 allocs/op	 359432440 bytes-from-system	 332791808 heap-bytes-from-system	   9627896 other-bytes-from-system	 292679680 peak-RSS-bytes	 396021760 peak-VM-bytes	   2752512 stack-bytes-from-system	  32945594 user+sys-ns/op
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-2019/06/21 19:53:12 Benchmarking 1 iterations
-2019/06/21 19:53:12 Benchmarking 100 iterations
-2019/06/21 19:53:13 Benchmarking 10000 iterations
-2019/06/21 19:53:13 Benchmarking 1000000 iterations
-# memprof=/tmp/14.prof.txt
-# cpuprof=/tmp/13.prof.txt
-BenchmarkHTTP-16  1000000	      8114 ns/op	   2402304 GC-bytes-from-system	    125420 P50-ns/op	   2103755 P95-ns/op	   3393985 P99-ns/op	    153224 STW-ns/GC	        74 STW-ns/op	      4807 allocated-bytes/op	        61 allocs/op	  75432184 bytes-from-system	  63832064 heap-bytes-from-system	   5921016 other-bytes-from-system	  34947072 peak-RSS-bytes	1631735808 peak-VM-bytes	   3276800 stack-bytes-from-system	    108225 user+sys-ns/op
-2019/06/21 19:53:22 Benchmarking 1 iterations
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-2019/06/21 19:53:22 Benchmarking 100 iterations
-2019/06/21 19:53:23 Benchmarking 1000 iterations
-# memprof=/tmp/11.prof.txt
-# cpuprof=/tmp/10.prof.txt
-BenchmarkJSON-16     1000	   8445571 ns/op	  12556288 GC-bytes-from-system	    423098 STW-ns/GC	     41463 STW-ns/op	   8150060 allocated-bytes/op	     92690 allocs/op	 353919224 bytes-from-system	 334364672 heap-bytes-from-system	   5818616 other-bytes-from-system	 303374336 peak-RSS-bytes	 390463488 peak-VM-bytes	   1179648 stack-bytes-from-system	 133319547 user+sys-ns/op
-Default-Golang-Server
-[golang] [INFO] Test clear docker image:
-[golang] 
-Set upstream mirror to https://cdn-alt.download.clearlinux.org/update
-Installed version: 30010
-Version URL:       https://cdn-alt.download.clearlinux.org/update
-Content URL:       https://cdn-alt.download.clearlinux.org/update
-Loading required manifests...
-Downloading packs (177.53 Mb) for:
- - c-basic
- - perl-basic
- - nasm
- - binutils
- - bison
- - flex
- - glibc-locale
- - llvm
- - make
-	...0%
-	...1%
-	...2%
-	...3%
-	...4%
-	...5%
-	...6%
-	...7%
-	...8%
-	...9%
-	...10%
-	...11%
-	...12%
-	...13%
-	...14%
-	...15%
-	...16%
-	...17%
-	...18%
-	...19%
-	...20%
-	...21%
-	...22%
-	...23%
-	...24%
-	...25%
-	...26%
-	...27%
-	...28%
-	...29%
-	...30%
-	...31%
-	...32%
-	...33%
-	...34%
-	...35%
-	...36%
-	...37%
-	...38%
-	...39%
-	...40%
-	...41%
-	...42%
-	...43%
-	...44%
-	...45%
-	...46%
-	...47%
-	...48%
-	...49%
-	...50%
-	...51%
-	...52%
-	...53%
-	...54%
-	...55%
-	...56%
-	...57%
-	...58%
-	...59%
-	...60%
-	...61%
-	...62%
-	...63%
-	...64%
-	...65%
-	...66%
-	...67%
-	...68%
-	...69%
-	...70%
-	...71%
-	...72%
-	...73%
-	...74%
-	...75%
-	...76%
-	...77%
-	...78%
-	...79%
-	...80%
-	...81%
-	...82%
-	...83%
-	...84%
-	...85%
-	...86%
-	...87%
-	...88%
-	...89%
-	...90%
-	...91%
-	...92%
-	...93%
-	...94%
-	...95%
-	...96%
-	...97%
-	...98%
-	...99%
-	...100%
-
-Finishing packs extraction...
-No extra files need to be downloaded
-Installing bundle(s) files...
-	...0%
-	...1%
-	...2%
-	...3%
-	...4%
-	...5%
-	...6%
-	...7%
-	...8%
-	...9%
-	...10%
-	...11%
-	...12%
-	...13%
-	...14%
-	...15%
-	...16%
-	...17%
-	...18%
-	...19%
-	...20%
-	...21%
-	...22%
-	...23%
-	...24%
-	...25%
-	...26%
-	...27%
-	...28%
-	...29%
-	...30%
-	...31%
-	...32%
-	...33%
-	...34%
-	...35%
-	...36%
-	...37%
-	...38%
-	...39%
-	...40%
-	...41%
-	...42%
-	...43%
-	...44%
-	...45%
-	...46%
-	...47%
-	...48%
-	...49%
-	...50%
-	...51%
-	...52%
-	...53%
-	...54%
-	...55%
-	...56%
-	...57%
-	...58%
-	...59%
-	...60%
-	...61%
-	...62%
-	...63%
-	...64%
-	...65%
-	...66%
-	...67%
-	...68%
-	...69%
-	...70%
-	...71%
-	...72%
-	...73%
-	...74%
-	...75%
-	...76%
-	...77%
-	...78%
-	...79%
-	...80%
-	...81%
-	...82%
-	...83%
-	...84%
-	...85%
-	...86%
-	...87%
-	...88%
-	...89%
-	...90%
-	...91%
-	...92%
-	...93%
-	...94%
-	...95%
-	...96%
-	...97%
-	...98%
-	...99%
-	...100%
-
-Calling post-update helper scripts.
-Successfully installed 1 bundle
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-2019/06/21 19:55:04 Failed to execute 'perf record [go build -o goperf -a -p 1 cmd/go]': exec: "perf": executable file not found in $PATH
-# sections=/tmp/1.size.txt
-BenchmarkBuild-16        1	29900059938 ns/op	  14617823 binary-size	29900059938 build-ns/op	 221859840 build-peak-RSS-bytes	30274121000 build-user+sys-ns/op
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-consumption=1733KB npkg=15
-2019/06/21 19:55:05 Benchmarking 1 iterations
-2019/06/21 19:55:05 Benchmarking 100 iterations
-2019/06/21 19:55:05 Benchmarking 5000 iterations
-# memprof=/tmp/11.prof.txt
-# cpuprof=/tmp/10.prof.txt
-BenchmarkGarbage/benchmem-MB=64-16     5000	   2110327 ns/op	  14403584 GC-bytes-from-system	    246679 STW-ns/GC	      6117 STW-ns/op	   2783336 allocated-bytes/op	     66275 allocs/op	 360087800 bytes-from-system	 332726272 heap-bytes-from-system	  10139896 other-bytes-from-system	 299298816 peak-RSS-bytes	 396677120 peak-VM-bytes	   2818048 stack-bytes-from-system	  32972694 user+sys-ns/op
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-2019/06/21 19:55:17 Benchmarking 1 iterations
-2019/06/21 19:55:17 Benchmarking 100 iterations
-2019/06/21 19:55:17 Benchmarking 10000 iterations
-2019/06/21 19:55:17 Benchmarking 1000000 iterations
-# memprof=/tmp/14.prof.txt
-# cpuprof=/tmp/13.prof.txt
-BenchmarkHTTP-16  1000000	      8396 ns/op	   2402304 GC-bytes-from-system	    127783 P50-ns/op	   2180238 P95-ns/op	   3501854 P99-ns/op	    157568 STW-ns/GC	        76 STW-ns/op	      4807 allocated-bytes/op	        61 allocs/op	  75432184 bytes-from-system	  63668224 heap-bytes-from-system	   5921016 other-bytes-from-system	  36077568 peak-RSS-bytes	2835894272 peak-VM-bytes	   3440640 stack-bytes-from-system	    111342 user+sys-ns/op
-pkg: golang.org/x/benchmarks
-goos: linux
-goarch: amd64
-
-2019/06/21 19:55:26 Benchmarking 1 iterations
-2019/06/21 19:55:27 Benchmarking 100 iterations
-2019/06/21 19:55:28 Benchmarking 1000 iterations
-# memprof=/tmp/11.prof.txt
-# cpuprof=/tmp/10.prof.txt
-BenchmarkJSON-16     1000	   8378456 ns/op	  10113024 GC-bytes-from-system	    416432 STW-ns/GC	     41226 STW-ns/op	   8154615 allocated-bytes/op	     92690 allocs/op	 284383480 bytes-from-system	 267321344 heap-bytes-from-system	   5835000 other-bytes-from-system	 269066240 peak-RSS-bytes	 320958464 peak-VM-bytes	   1114112 stack-bytes-from-system	 132509668 user+sys-ns/op
-Clr-Golang-Server
