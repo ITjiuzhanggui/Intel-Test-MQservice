@@ -1,0 +1,134 @@
+mariadb/mariadb.sh
+[mariadb]
+[mariadb] == mariadb unit test ==
+employees_db/._load_departments.dump
+employees_db/load_departments.dump
+employees_db/load_dept_emp.dump
+employees_db/._load_dept_manager.dump
+employees_db/load_dept_manager.dump
+employees_db/._load_employees.dump
+employees_db/load_employees.dump
+employees_db/._load_salaries.dump
+employees_db/load_salaries.dump
+employees_db/._load_titles.dump
+employees_db/load_titles.dump
+employees_db/._employees.sql
+employees_db/employees.sql
+employees_db/employees_partitioned.sql
+employees_db/._employees_partitioned2.sql
+employees_db/employees_partitioned2.sql
+employees_db/employees_partitioned3.sql
+employees_db/objects.sql
+employees_db/test_employees_md5.sql
+employees_db/test_employees_sha.sql
+employees_db/Changelog
+employees_db/._README
+employees_db/README
+[mariadb] [INFO] Test docker hub official image first:
+[mariadb]
+47d222322d5cd9b5de24cec6b16a55ffceeb52f8468eadd0ef64367d512cc5d5
++-----------------------------+
+| INFO                        |
++-----------------------------+
+| CREATING DATABASE STRUCTURE |
++-----------------------------+
++------------------------+
+| INFO                   |
++------------------------+
+| storage engine: InnoDB |
++------------------------+
++---------------------+
+| INFO                |
++---------------------+
+| LOADING departments |
++---------------------+
++-------------------+
+| INFO              |
++-------------------+
+| LOADING employees |
++-------------------+
++------------------+
+| INFO             |
++------------------+
+| LOADING dept_emp |
++------------------+
++----------------------+
+| INFO                 |
++----------------------+
+| LOADING dept_manager |
++----------------------+
++----------------+
+| INFO           |
++----------------+
+| LOADING titles |
++----------------+
++------------------+
+| INFO             |
++------------------+
+| LOADING salaries |
++------------------+
+[mariadb] [INFO] Starting the mysqlslap test, it may take a while, please be patient ...:
+[mariadb]
+Benchmark
+        Average number of seconds to run all queries: 0.970 seconds
+        Minimum number of seconds to run all queries: 0.886 seconds
+        Maximum number of seconds to run all queries: 1.146 seconds
+        Number of clients running queries: 1
+        Average number of queries per client: 1000
+
+mariadbtest
+Default-Mariadb
+[mariadb] [INFO] Test clear docker image:
+[mariadb]
+97322f9837b0a2ac7acbcefbe46fdc6ce469df61035e46e12fb24f75927c5c47
++-----------------------------+
+| INFO                        |
++-----------------------------+
+| CREATING DATABASE STRUCTURE |
++-----------------------------+
++------------------------+
+| INFO                   |
++------------------------+
+| storage engine: InnoDB |
++------------------------+
++---------------------+
+| INFO                |
++---------------------+
+| LOADING departments |
++---------------------+
++-------------------+
+| INFO              |
++-------------------+
+| LOADING employees |
++-------------------+
++------------------+
+| INFO             |
++------------------+
+| LOADING dept_emp |
++------------------+
++----------------------+
+| INFO                 |
++----------------------+
+| LOADING dept_manager |
++----------------------+
++----------------+
+| INFO           |
++----------------+
+| LOADING titles |
++----------------+
++------------------+
+| INFO             |
++------------------+
+| LOADING salaries |
++------------------+
+[mariadb] [INFO] Starting the mysqlslap test, it may take a while, please be patient ...:
+[mariadb]
+Benchmark
+        Average number of seconds to run all queries: 0.999 seconds
+        Minimum number of seconds to run all queries: 0.851 seconds
+        Maximum number of seconds to run all queries: 1.232 seconds
+        Number of clients running queries: 1
+        Average number of queries per client: 1000
+
+mariadbtest
+Clr-Mariadb
