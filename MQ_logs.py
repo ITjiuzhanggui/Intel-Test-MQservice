@@ -622,7 +622,10 @@ def default_from_mariadb(lines):
 
 def clr_from_httpd(lines):
     """clearlinux unit tests analysis"""
-    for i in lines[lines.index("[httpd] [INFO] Test clear docker image:\n"):lines.index("clr-httpd-server\n")]:
+    for i in lines[
+             lines.index("[httpd] [INFO] Test clear docker image:\n"):
+             lines.index("Clr-Httpd-Server\n")]:
+
         if i.startswith("Time taken for tests"):
             num = re.findall("\d+\.?\d*", i)
             data.get("clear").get("httpd").update(
@@ -980,44 +983,55 @@ def clr_from_nodejs(lines):
 
 def clr_from_openjdk(lines):
     """perl unit tests analysis"""
-    for i in lines[
-             lines.index("[openjdk] [INFO] Test clear docker image:\n"):
-             lines.index("clr-openjdk\n")]:
-
-        if i.startswith("MyBenchmark.testMethod"):
-            num = re.findall("\d+\.?\d*", i)
-            data.get("clear").get("openjdk").update(
-                {"MyBenchmark.testMethod.Score": num[-2]})
-
-        if i.startswith("MyBenchmark.testMethod"):
-            num = re.findall("\d+\.?\d*", i)
-            data.get("clear").get("openjdk").update(
-                {"MyBenchmark.testMethod.Error": num[-1]})
+    # for i in lines[
+    #          lines.index("[openjdk] [INFO] Test clear docker image:\n"):
+    #          lines.index("clr-openjdk\n")]:
+    #
+    #     if i.startswith("MyBenchmark.testMethod"):
+    #         num = re.findall("\d+\.?\d*", i)
+    #         data.get("clear").get("openjdk").update(
+    #             {"MyBenchmark.testMethod.Score": num[-2]})
+    #
+    #     if i.startswith("MyBenchmark.testMethod"):
+    #         num = re.findall("\d+\.?\d*", i)
+    #         data.get("clear").get("openjdk").update(
+    #             {"MyBenchmark.testMethod.Error": num[-1]})
 
     # for item in lines:
     #     if item.startswith("[openjdk] [INFO] Test clear docker image:\n"):
-    #         # print(item)
     #         start = lines.index(item)
-    #         # print(start)
+    #
     # for i in lines[start:]:
-    #     # print(i)
-    #     if i.startswith("MyBenchmark.testMethod"):
+    #     if i.startswith("Benchmark"):
     #         end = lines[start:].index(i) + start
-    #         print(end)
-    # if item in lines[start:end + 2]:
-    #     # print(item)
-    #     if item.startswith("MyBenchmark.testMethod"):
-    #         num = re.findall("\d+\.?\d*", item)
-    #         # print(num)
+    #
+    # if i in lines[start:end]:
+    #     if i.startswith("MyBenchmark.testMethod"):
+    #         num = re.findall("\d+\.?\d*", i)
     #         data.get("clear").get("openjdk").update(
     #             {"MyBenchmark.testMethod.Score": num[-2]}
     #         )
+    #
+    #     if i.startswith("MyBenchmark.testMethod"):
+    #         num = re.findall("\d+\.?\d*", i)
+    #         data.get("clear").get("openjdk").update(
+    #             {"MyBenchmark.testMethod.Error": num[-1]}
+    #         )
+    for i in lines[lines.index("[openjdk] [INFO] Test clear docker image:\n"):]:
 
-        # if item.startswith("MyBenchmark.testMethod"):
-        #     num = re.findall("\d+\.?\d*", item)
-        #     data.get("clear").get("openjdk").update(
-        #         {"MyBenchmark.testMethod.Error": num[-1]}
-        #     )
+        i.strip()
+
+        if i.startswith("MyBenchmark.testMethod"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("openjdk").update(
+                {"MyBenchmark.testMethod.Score": num[-2]}
+            )
+
+        if i.startswith("MyBenchmark.testMethod"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("openjdk").update(
+                {"MyBenchmark.testMethod.Error": num[-1]}
+            )
 
 
 def clr_from_ruby(lines):
@@ -1806,6 +1820,14 @@ def StaClrHttpd(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/httpd version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("httpd").update(
+                {"VERSION_ID": num[0]}
+            )
+
 
 def StaClrNginx(lines):
     """clearlinux test_status_nginx long analysis"""
@@ -1841,6 +1863,14 @@ def StaClrNginx(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("status_Clr").get("nginx").update(
                 {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/nginx version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("nginx").update(
+                {"VERSION_ID": num[0]}
             )
 
 
@@ -1880,6 +1910,14 @@ def StaClrMemcached(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/memcached version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("memcached").update(
+                {"VERSION_ID": num[0]}
+            )
+
 
 def StaClrRedis(lines):
     """default test_status_redis long analysis"""
@@ -1915,6 +1953,14 @@ def StaClrRedis(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("status_Clr").get("redis").update(
                 {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/redis version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("redis").update(
+                {"VERSION_ID": num[0]}
             )
 
 
@@ -1954,6 +2000,14 @@ def StaClrPhp(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/php version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("php").update(
+                {"VERSION_ID": num[0]}
+            )
+
 
 def StaClrPython(lines):
     """clearlinux test_status_python long analysis"""
@@ -1989,6 +2043,14 @@ def StaClrPython(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("status_Clr").get("python").update(
                 {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/python version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("python").update(
+                {"VERSION_ID": num[0]}
             )
 
 
@@ -2028,6 +2090,14 @@ def StaClrGolang(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/golang version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("golang").update(
+                {"VERSION_ID": num[0]}
+            )
+
 
 def StaClrNode(lines):
     """default test_status_node long analysis"""
@@ -2063,6 +2133,14 @@ def StaClrNode(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("status_Clr").get("node").update(
                 {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/node version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("node").update(
+                {"VERSION_ID": num[0]}
             )
 
 
@@ -2102,6 +2180,14 @@ def StaClrOpenjdk(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/openjdk version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("openjdk").update(
+                {"VERSION_ID": num[0]}
+            )
+
 
 def StaClrRuby(lines):
     """clearlinux test_status_openjdk long analysis"""
@@ -2137,6 +2223,14 @@ def StaClrRuby(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("status_Clr").get("ruby").update(
                 {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/ruby version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("ruby").update(
+                {"VERSION_ID": num[0]}
             )
 
 
@@ -2176,6 +2270,14 @@ def StaClrPerl(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/perl version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("perl").update(
+                {"VERSION_ID": num[0]}
+            )
+
 
 def StaClrTensorflow(lines):
     """clearlinux test_status_tensorflow log analysis"""
@@ -2211,6 +2313,14 @@ def StaClrTensorflow(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("status_Clr").get("tensorflow").update(
                 {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/tensorflow version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("tensorflow").update(
+                {"VERSION_ID": num[0]}
             )
 
 
@@ -2250,6 +2360,16 @@ def StaClrPostgres(lines):
                 {"MicroService_layer": num[0]}
             )
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/postgres version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("postgres").update(
+                {"VERSION_ID": num[0]}
+            )
+
+
+
 
 def StaClrMariadb(lines):
     """default test_status_mariadb long analysis"""
@@ -2259,6 +2379,7 @@ def StaClrMariadb(lines):
         if i.startswith("mariadb"):
             if "latest" in i:
                 start = lines.index(i)
+                # print(start)
 
     while if_n:
         for i in lines[start:]:
@@ -2286,12 +2407,23 @@ def StaClrMariadb(lines):
             data.get("status_Clr").get("mariadb").update(
                 {"MicroService_layer": num[0]})
 
+    for i in lines[start:]:
+        if i.startswith("clearlinux/mariadb version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("mariadb").update(
+                {"VERSION_ID": num[0]}
+            )
+
+
+
+
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\LBJ_script\mariadb.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-21-3\test_log\perl\2019-06-22-15_45_11.log"
     test = read_logs(file_name)
 
-    status_log = 'status_LOG.log'
+    status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-21-3\status_log\2019-06-22-02_08_47.log"
     status = read_status_logs(status_log)
 
     # default_from_httpd(test)
@@ -2307,7 +2439,7 @@ def main():
     # default_from_perl(test)
     # default_from_postgres(test)
     # default_from_tensorflow(test)
-    default_from_mariadb(test)
+    # default_from_mariadb(test)
 
     # clr_from_httpd(test)
     # clr_from_nginx(test)
@@ -2322,7 +2454,7 @@ def main():
     # clr_from_perl(test)
     # clr_from_postgres(test)
     # clr_from_tensorflow(test)
-    clr_from_mariadb(test)
+    # clr_from_mariadb(test)
 
     # StaDefHttpd(status)
     # StaDefRuby(status)
@@ -2340,7 +2472,7 @@ def main():
     # StaDefMariadb(status)
 
 
-    # StaClrHttpd(status)
+    StaClrHttpd(status)
     # StaClrNginx(status)
     # StaClrMemcached(status)
     # StaClrRedis(status)
@@ -2363,3 +2495,12 @@ def main():
 if __name__ == '__main__':
     main()
     pprint(data)
+
+
+"""
+test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
+            "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
+            "make ruby"]
+
+
+"""

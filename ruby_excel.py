@@ -14,11 +14,10 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\python_Code\MQ_script\2019-06-21\json\status\1561204784.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-25\json\status\1561460822.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
-
 
     x_status = ["Total", "Base_Layer", "MicroService_layer"]
 
@@ -97,23 +96,23 @@ def Nginx(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["Time taken for tests"],
+    default_nginx_list = [default_dict["Time taken for tests"],
                           default_dict["Time per request"],
                           default_dict["Time per request(all)"],
                           default_dict["Requests per second"],
                           default_dict["Transfer rate"]
                           ]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_nginx_list)
 
-    clear_httpd_list = [clear_dict["Time taken for tests"],
+    clear_nginx_list = [clear_dict["Time taken for tests"],
                         clear_dict["Time per request"],
                         clear_dict["Time per request(all)"],
                         clear_dict["Requests per second"],
                         clear_dict["Transfer rate"]
                         ]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_nginx_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col, "Default docker": default_col,
                        "clear docker": clear_col}
@@ -141,28 +140,28 @@ def Memcached(writer, df_json, loop_count):
     set_values = default_dict["Sets"]
     get_values = default_dict["Gets"]
     total_values = default_dict["Totals"]
-    default_httpd_list = [set_values[0].split(":")[-1],
-                          set_values[1].split()[0],
-                          get_values[0].split(":")[-1],
-                          get_values[1].split()[0],
-                          total_values[0].split(":")[-1],
-                          total_values[1].split()[0]
-                          ]
+    default_memcached_list = [set_values[0].split(":")[-1],
+                              set_values[1].split()[0],
+                              get_values[0].split(":")[-1],
+                              get_values[1].split()[0],
+                              total_values[0].split(":")[-1],
+                              total_values[1].split()[0]
+                              ]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_memcached_list)
 
     set_values = clear_dict["Sets"]
     get_values = clear_dict["Gets"]
     total_values = clear_dict["Totals"]
-    clear_httpd_list = [set_values[0].split(":")[-1],
-                        set_values[1].split()[0],
-                        get_values[0].split(":")[-1],
-                        get_values[1].split()[0],
-                        total_values[0].split(":")[-1],
-                        total_values[1].split()[0]
-                        ]
+    clear_memcached_list = [set_values[0].split(":")[-1],
+                            set_values[1].split()[0],
+                            get_values[0].split(":")[-1],
+                            get_values[1].split()[0],
+                            total_values[0].split(":")[-1],
+                            total_values[1].split()[0]
+                            ]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_memcached_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -202,7 +201,7 @@ def Redis(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["PING_INLINE"],
+    default_redis_list = [default_dict["PING_INLINE"],
                           default_dict["PING_BULK"],
                           default_dict["SET"],
                           default_dict["GET"],
@@ -222,9 +221,9 @@ def Redis(writer, df_json, loop_count):
                           default_dict["MSET (10 keys)"]
                           ]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_redis_list)
 
-    clear_httpd_list = [clear_dict["PING_INLINE"],
+    clear_redis_list = [clear_dict["PING_INLINE"],
                         clear_dict["PING_BULK"],
                         clear_dict["SET"],
                         clear_dict["GET"],
@@ -244,7 +243,7 @@ def Redis(writer, df_json, loop_count):
                         clear_dict["MSET (10 keys)"]
                         ]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_redis_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -266,13 +265,13 @@ def Php(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["Score"]]
+    default_php_list = default_dict.get("Score")
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_php_list)
 
-    clear_httpd_list = [clear_dict["Score"]]
+    clear_php_list = clear_dict.get("Score")
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_php_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -290,14 +289,14 @@ def Python(writer, df_json, loop_count):
     default_dict = df_json.loc["python"].loc["default"]
     clear_dict = df_json.loc["python"].loc["clear"]
 
-    x_test = ["minimum","average"]
+    x_test = ["minimum", "average"]
     test_col = pd.Series(x_test)
 
     # default
     default_minimum_value = default_dict["Totals"][0].get("minimum")
     default_avg_value = default_dict["Totals"][1].get("average")
-    default_httpd_list = [default_minimum_value, default_avg_value]
-    default_col = pd.Series(default_httpd_list)
+    default_python_list = [default_minimum_value, default_avg_value]
+    default_col = pd.Series(default_python_list)
     # clear
     clear_minimum_value = clear_dict["Totals"][0].get("minimum")
     clear_avg_value = clear_dict["Totals"][1].get("average")
@@ -324,13 +323,13 @@ def Node(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["benchmark-node-octane"],]
+    default_node_list = [default_dict["benchmark-node-octane"], ]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_node_list)
 
-    clear_httpd_list = [clear_dict["benchmark-node-octane"],]
+    clear_node_list = [clear_dict["benchmark-node-octane"], ]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_node_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -351,23 +350,23 @@ def Golang(writer, df_json, loop_count):
     x_test = ["BenchmarkBuild",
               "BenchmarkGarbage",
               "BenchmarkHTTP",
-              "BenchmarkJSON",]
+              "BenchmarkJSON", ]
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["BenchmarkBuild"],
-                          default_dict["BenchmarkGarbage"],
-                          default_dict["BenchmarkHTTP"],
-                          default_dict["BenchmarkJSON"]]
+    default_golang_list = [default_dict["BenchmarkBuild"],
+                           default_dict["BenchmarkGarbage"],
+                           default_dict["BenchmarkHTTP"],
+                           default_dict["BenchmarkJSON"]]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_golang_list)
 
-    clear_httpd_list = [clear_dict["BenchmarkBuild"],
-                        clear_dict["BenchmarkGarbage"],
-                        clear_dict["BenchmarkHTTP"],
-                        clear_dict["BenchmarkJSON"],]
+    clear_golang_list = [clear_dict["BenchmarkBuild"],
+                         clear_dict["BenchmarkGarbage"],
+                         clear_dict["BenchmarkHTTP"],
+                         clear_dict["BenchmarkJSON"], ]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_golang_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -394,25 +393,27 @@ def Postgres(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["BUFFER_TEST&SINGLE_THREAD&READ_WRITE"],
-                          default_dict["BUFFER_TEST&SINGLE_THREAD&READ_ONLY"],
-                          default_dict["BUFFER_TEST&NORMAL_LOAD&READ_WRITE"],
-                          default_dict["BUFFER_TEST&NORMAL_LOAD&READ_ONLY"],
-                          default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
-                          default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"]
-                          ]
+    default_postgres_list = [
+        default_dict["BUFFER_TEST&SINGLE_THREAD&READ_WRITE"],
+        default_dict["BUFFER_TEST&SINGLE_THREAD&READ_ONLY"],
+        default_dict["BUFFER_TEST&NORMAL_LOAD&READ_WRITE"],
+        default_dict["BUFFER_TEST&NORMAL_LOAD&READ_ONLY"],
+        default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
+        default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"]
+    ]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_postgres_list)
 
-    clear_httpd_list = [clear_dict["BUFFER_TEST&SINGLE_THREAD&READ_WRITE"],
-                        clear_dict["BUFFER_TEST&SINGLE_THREAD&READ_ONLY"],
-                        clear_dict["BUFFER_TEST&NORMAL_LOAD&READ_WRITE"],
-                        clear_dict["BUFFER_TEST&NORMAL_LOAD&READ_ONLY"],
-                        clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
-                        clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"],
-                        ]
+    clear_postgres_list = [
+        clear_dict["BUFFER_TEST&SINGLE_THREAD&READ_WRITE"],
+        clear_dict["BUFFER_TEST&SINGLE_THREAD&READ_ONLY"],
+        clear_dict["BUFFER_TEST&NORMAL_LOAD&READ_WRITE"],
+        clear_dict["BUFFER_TEST&NORMAL_LOAD&READ_ONLY"],
+        clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
+        clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"],
+    ]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_postgres_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -433,13 +434,13 @@ def Tensorflow(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["Total duration"]]
+    default_tensorflow_list = [default_dict["Total duration"]]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_tensorflow_list)
 
-    clear_httpd_list = [clear_dict["Total duration"]]
+    clear_tensorflow_list = [clear_dict["Total duration"]]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_tensorflow_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -462,17 +463,19 @@ def Mariadb(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["Average number of seconds to run all queries"],
-                          default_dict["Minimum number of seconds to run all queries"],
-                          default_dict["Maximum number of seconds to run all queries"]]
+    default_mariadb_list = [
+        default_dict["Average number of seconds to run all queries"],
+        default_dict["Minimum number of seconds to run all queries"],
+        default_dict["Maximum number of seconds to run all queries"]]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_mariadb_list)
 
-    clear_httpd_list = [clear_dict["Average number of seconds to run all queries"],
-                        clear_dict["Minimum number of seconds to run all queries"],
-                        clear_dict["Maximum number of seconds to run all queries"]]
+    clear_mariadb_list = [
+        clear_dict["Average number of seconds to run all queries"],
+        clear_dict["Minimum number of seconds to run all queries"],
+        clear_dict["Maximum number of seconds to run all queries"]]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_mariadb_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -495,15 +498,15 @@ def Perl(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["podhtml.b"],
-                          default_dict["noprog.b"]]
+    default_perl_list = [default_dict["podhtml.b"],
+                         default_dict["noprog.b"]]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_perl_list)
 
-    clear_httpd_list = [clear_dict["podhtml.b"],
-                        clear_dict["noprog.b"]]
+    clear_perl_list = [clear_dict["podhtml.b"],
+                       clear_dict["noprog.b"]]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_perl_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -526,15 +529,17 @@ def Openjdk(writer, df_json, loop_count):
 
     test_col = pd.Series(x_test)
 
-    default_httpd_list = [default_dict["MyBenchmark.testMethod.Score"],
-                          default_dict["MyBenchmark.testMethod.Error"]]
+    default_openjdk_list = [
+        default_dict["MyBenchmark.testMethod.Score"],
+        default_dict["MyBenchmark.testMethod.Error"]]
 
-    default_col = pd.Series(default_httpd_list)
+    default_col = pd.Series(default_openjdk_list)
 
-    clear_httpd_list = [clear_dict["MyBenchmark.testMethod.Score"],
-                        clear_dict["MyBenchmark.testMethod.Error"]]
+    clear_openjdk_list = [
+        clear_dict["MyBenchmark.testMethod.Score"],
+        clear_dict["MyBenchmark.testMethod.Error"]]
 
-    clear_col = pd.Series(clear_httpd_list)
+    clear_col = pd.Series(clear_openjdk_list)
 
     data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
                        "Default docker": default_col,
@@ -1325,8 +1330,8 @@ def Ruby(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\python_Code\MQ_script\2019-06-21\json\test"
-    xlsx = r"C:\Users\xinhuizx\python_Code\MQ_script\MQ_tset.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-25\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1340,15 +1345,17 @@ def main():
             Httpd(writer, df_json, loop_count)
             Nginx(writer, df_json, loop_count)
             Memcached(writer, df_json, loop_count)
-            Redis(writer, df_json, loop_count)
+            # Redis(writer, df_json, loop_count)
             Php(writer, df_json, loop_count)
-            Python(writer, df_json, loop_count)
+            # Python(writer, df_json, loop_count)
             Node(writer, df_json, loop_count)
             Golang(writer, df_json, loop_count)
-            Perl(writer, df_json, loop_count)
-            Openjdk(writer, df_json, loop_count)
-
-            Ruby(writer, df_json, loop_count)
+            Postgres(writer, df_json, loop_count)
+            Tensorflow(writer, df_json, loop_count)
+            # Mariadb(writer, df_json, loop_count)
+            # Perl(writer, df_json, loop_count)
+            # Openjdk(writer, df_json, loop_count)
+            # Ruby(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
@@ -1381,6 +1388,4 @@ Traceback (most recent call last):
 json.decoder.JSONDecodeError: Expecting ',' delimiter: line 63 column 13 (char 964)
 """
 
-
 """Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running"""
-
