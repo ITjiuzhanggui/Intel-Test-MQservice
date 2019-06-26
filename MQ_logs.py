@@ -9,26 +9,29 @@ data = {
     "default":
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
-            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {}
+            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {} ,
+            "rabbitmq": {}
         },
 
     "clear":
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
-            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {}
+            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
+            "rabbitmq": {}
         },
 
     "status_def":
         {
             "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {},
-            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {}
+            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
+            "rabbitmq": {}
         },
 
     "status_Clr":
         {
             "clearlinux_version": {}, "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {},
             "php": {}, "python": {}, "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {},
-            "postgres": {}, "mariadb": {}
+            "postgres": {}, "mariadb": {}, "rabbitmq": {}
         }
 }
 
@@ -1781,6 +1784,43 @@ def StaDefMariadb(lines):
             )
 
 
+def StaDefRabbitmq(lines):
+    """default test_status_perl log analysis"""
+
+    if_n = True
+    for i in lines:
+        if i.startswith("rabbitmq"):
+            if "latest" in i:
+                start = lines.index(i)
+
+    while if_n:
+        for i in lines[start:]:
+            if i == "\n":
+                if_n = False
+                end = lines[start:].index(i)
+
+    for i in lines[start:end + start]:
+
+        if i.startswith("rabbitmq"):
+            if "latest" in i:
+                num = re.findall("\d+\.?\d*", i)
+                data.get("status_def").get("rabbitmq").update(
+                    {"Total": num[-1] + "MB"}
+                )
+
+        if i.startswith("default base layer Size:"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("status_def").get("rabbitmq").update(
+                {"Base_Layer": num[0]}
+            )
+
+        if i.startswith("default microservice added layer Size:"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("status_def").get("rabbitmq").update(
+                {"MicroService_layer": num[0]}
+            )
+
+
 """STATUS_clearlinux_log"""
 
 
@@ -1827,7 +1867,7 @@ def StaClrHttpd(lines):
             data.get("status_Clr").get("httpd").update(
                 {"VERSION_ID": num[0]}
             )
-
+    
 
 def StaClrNginx(lines):
     """clearlinux test_status_nginx long analysis"""
@@ -2369,8 +2409,6 @@ def StaClrPostgres(lines):
             )
 
 
-
-
 def StaClrMariadb(lines):
     """default test_status_mariadb long analysis"""
 
@@ -2416,7 +2454,50 @@ def StaClrMariadb(lines):
             )
 
 
+def StaClrRabbitmq(lines):
+    """clearlinux test_status_perl log analysis"""
 
+    if_n = True
+    for i in lines:
+        if i.startswith("rabbitmq"):
+            if "latest" in i:
+                start = lines.index(i)
+
+    while if_n:
+        for i in lines[start:]:
+            if i == "\n":
+                if_n = False
+                end = lines[start:].index(i)
+
+    for i in lines[start:end + start]:
+
+        if i.startswith("clearlinux/rabbitmq"):
+            if "latest" in i:
+                num = re.findall("\d+\.?\d*", i)
+                data.get("status_Clr").get("rabbitmq").update(
+                    {"Total": num[-1] + "GB"}
+
+                )
+
+        if i.startswith("clearlinux base layer Size:"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("status_Clr").get("rabbitmq").update(
+                {"Base_Layer": num[0]}
+            )
+
+        if i.startswith("clearlinux microservice added layer Size:"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("status_Clr").get("rabbitmq").update(
+                {"MicroService_layer": num[0]}
+            )
+
+    for i in lines[start:]:
+        if i.startswith("clearlinux/perl version:\n"):
+            end = lines[start:].index(i) + 1
+            num = re.findall("\d+\.?\d*", lines[start:][end])
+            data.get("status_Clr").get("rabbitmq").update(
+                {"VERSION_ID": num[0]}
+            )
 
 
 def main():
@@ -2470,9 +2551,9 @@ def main():
     # StaDefTensorflow(status)
     # StaDefPostgres(status)
     # StaDefMariadb(status)
+    StaDefRabbitmq(status)
 
-
-    StaClrHttpd(status)
+    # StaClrHttpd(status)
     # StaClrNginx(status)
     # StaClrMemcached(status)
     # StaClrRedis(status)
@@ -2486,6 +2567,7 @@ def main():
     # StaClrTensorflow(status)
     # StaClrPostgres(status)
     # StaClrMariadb(status)
+    StaClrRabbitmq(status)
 
 
 # with open('data_NEW.json', 'w') as f:

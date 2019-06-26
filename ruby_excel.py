@@ -14,32 +14,39 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-25\json\status\1561460822.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
+    version_ID = status_clr_dict["VERSION_ID"]
+    clearlinux_version = df_json.loc["clearlinux_version"].loc["status_Clr"]
 
     x_status = ["Total", "Base_Layer", "MicroService_layer"]
-
     status_col = pd.Series(x_status)
+
     default_total = status_def_dict.get("Total")
     default_base_layer = status_def_dict.get("Base_Layer")
     default_microService_layer = status_def_dict.get("MicroService_layer")
     status_def_list = [default_total, default_base_layer, default_microService_layer]
-
     status_def_col = pd.Series(status_def_list)
+
     clear_total = status_clr_dict.get("Total")
     clear_base_layer = status_clr_dict.get("Base_Layer")
     clear_microService_layer = status_clr_dict.get("MicroService_layer")
-    status_clr_list = [clear_total, clear_base_layer, clear_microService_layer]
 
+    status_clr_list = [clear_total, clear_base_layer, clear_microService_layer]
     status_clr_col = pd.Series(status_clr_list)
 
-    data_frame_status = {"Performance": status_col, "Default docker": status_def_col, "clear docker": status_clr_col}
+    data_frame_status = {"Performance": status_col,
+                         "Default docker": status_def_col,
+                         "clear docker": status_clr_col,
+                         "VERSION_ID": version_ID,
+                         "clearl_linux_version": clearlinux_version}
+
     df_exce_status = pd.DataFrame(data_frame_status)
-    # df_exce_status.to_excel(writer, sheet_name="ruby", index=False, startrow=0)
     df_exce_status.to_excel(writer, sheet_name=service_name, index=False, startrow=0)
-    # df_exce_status.to_excel(writer, sheet_name="golang", index=False, startrow=0)
+
+    print("Successfully status!!!")
 
 
 def Httpd(writer, df_json, loop_count):
@@ -1330,7 +1337,7 @@ def Ruby(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-25\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-21-3\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1340,7 +1347,7 @@ def main():
         for json_filename in files:
             full_file_name = os.path.join(root_dir, json_filename)
             df_json = pd.read_json(full_file_name)
-            # df_json = pd.read_json(r"C:\Users\xinhuizx\python_Code\MQ_scr\data_LOG.json")
+            # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
             Httpd(writer, df_json, loop_count)
             Nginx(writer, df_json, loop_count)
@@ -1350,12 +1357,12 @@ def main():
             # Python(writer, df_json, loop_count)
             Node(writer, df_json, loop_count)
             Golang(writer, df_json, loop_count)
-            Postgres(writer, df_json, loop_count)
-            Tensorflow(writer, df_json, loop_count)
+            # Postgres(writer, df_json, loop_count)
+            # Tensorflow(writer, df_json, loop_count)
             # Mariadb(writer, df_json, loop_count)
-            # Perl(writer, df_json, loop_count)
+            Perl(writer, df_json, loop_count)
             # Openjdk(writer, df_json, loop_count)
-            # Ruby(writer, df_json, loop_count)
+            Ruby(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
