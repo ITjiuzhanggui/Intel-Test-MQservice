@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-29\json\status\1561825951.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -1337,7 +1337,7 @@ def Ruby(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-21-3\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-29\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1352,16 +1352,16 @@ def main():
             Httpd(writer, df_json, loop_count)
             Nginx(writer, df_json, loop_count)
             Memcached(writer, df_json, loop_count)
-            # Redis(writer, df_json, loop_count)
+            Redis(writer, df_json, loop_count)
             Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
             Node(writer, df_json, loop_count)
             Golang(writer, df_json, loop_count)
-            # Postgres(writer, df_json, loop_count)
+            Postgres(writer, df_json, loop_count)
             # Tensorflow(writer, df_json, loop_count)
-            # Mariadb(writer, df_json, loop_count)
-            Perl(writer, df_json, loop_count)
-            # Openjdk(writer, df_json, loop_count)
+            Mariadb(writer, df_json, loop_count)
+            # Perl(writer, df_json, loop_count)
+            Openjdk(writer, df_json, loop_count)
             Ruby(writer, df_json, loop_count)
             loop_count += 1
 

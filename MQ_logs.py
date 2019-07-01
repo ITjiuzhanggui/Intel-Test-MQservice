@@ -9,7 +9,7 @@ data = {
     "default":
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
-            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {} ,
+            "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
             "rabbitmq": {}
         },
 
@@ -34,6 +34,17 @@ data = {
             "postgres": {}, "mariadb": {}, "rabbitmq": {}
         }
 }
+
+# !/usr/bin/env python3
+# import time
+# import os
+#
+# cmd = "make memcached"
+# logs_path = "/home/log"
+# for i in range(5):
+#     os.system("{} > {}/{}.log 2>&1 ".format(cmd, logs_path,\
+#         time.strftime("%Y-%m-%d-%H:%M:%S", \
+#         time.localtime()).replace(' ',':').replace(':', ':')))
 
 """default test_long"""
 
@@ -195,35 +206,50 @@ def default_from_redis(lines):
                 {"PING_BULK": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== SET ======\n"):influs_defaut.index("====== GET ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== SET ======\n"):
+             influs_defaut.index("====== GET ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"SET": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== GET ======\n"):influs_defaut.index("====== INCR ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== GET ======\n"):
+             influs_defaut.index("====== INCR ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"GET": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== INCR ======\n"):influs_defaut.index("====== LPUSH ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== INCR ======\n"):
+             influs_defaut.index("====== LPUSH ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"INCR": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== LPUSH ======\n"):influs_defaut.index("====== RPUSH ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== LPUSH ======\n"):
+             influs_defaut.index("====== RPUSH ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"LPUSH": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== RPUSH ======\n"):influs_defaut.index("====== LPOP ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== RPUSH ======\n"):
+             influs_defaut.index("====== LPOP ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
@@ -301,18 +327,18 @@ def default_from_redis(lines):
 
     for i in influs_defaut[
              influs_defaut.index("====== LRANGE_600 (first 600 elements) ======\n"):
-             influs_defaut.index(
-                 "====== MSET (10 keys) ======\n")]:
+             influs_defaut.index("====== MSET (10 keys) ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"LRANGE_600 (first 600 elements)": num[0]}
             )
 
-    influs_defaut.append("some-redis\n")
+    influs_defaut.append("Default-Redis-Server\n")
     for i in influs_defaut[
              influs_defaut.index("====== MSET (10 keys) ======\n"):
              influs_defaut.index("[redis] [INFO] memtier_benchmark test:\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
@@ -590,7 +616,7 @@ def default_from_tensorflow(lines):
         if i.startswith("Total duration"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("tensorflow").update(
-                 {"Total duration": num[0]})
+                {"Total duration": num[0]})
 
 
 def default_from_mariadb(lines):
@@ -732,6 +758,7 @@ def clr_from_redis(lines):
              lines.index("[redis] [INFO] Test clear docker image:\n"):
              lines.index("Clr-Redis-Server\n")]:
         influs_defaut.append(i)
+        print(influs_defaut)
 
     for i in influs_defaut[
              influs_defaut.index("====== PING_INLINE ======\n"):
@@ -900,7 +927,7 @@ def clr_from_redis(lines):
                 {"LRANGE_600 (first 600 elements)": num[0]}
             )
 
-    # influs_defaut.append("some-redis\n")
+    influs_defaut.append("Clr-Redis-Server\n")
     for i in influs_defaut[
              influs_defaut.index("====== MSET (10 keys) ======\n"):
              influs_defaut.index("[redis] [INFO] memtier_benchmark test:\n")]:
@@ -1238,7 +1265,7 @@ def clr_from_tensorflow(lines):
         if i.startswith("Total duration"):
             num = re.findall("\d+\.?\d*", i)
             data.get("clear").get("tensorflow").update(
-                 {"Total duration": num[0]})
+                {"Total duration": num[0]})
 
 
 def clr_from_mariadb(lines):
@@ -1265,6 +1292,7 @@ def clr_from_mariadb(lines):
             data.get("clear").get("mariadb").update(
                 {"Maximum number of seconds to run all queries": num[0]}
             )
+
 
 """STATUS_default_log"""
 
@@ -1867,7 +1895,7 @@ def StaClrHttpd(lines):
             data.get("status_Clr").get("httpd").update(
                 {"VERSION_ID": num[0]}
             )
-    
+
 
 def StaClrNginx(lines):
     """clearlinux test_status_nginx long analysis"""
@@ -2501,15 +2529,15 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-21-3\test_log\perl\2019-06-22-15_45_11.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-01\2019-07-01-05_25_14.log"
     test = read_logs(file_name)
 
-    status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-21-3\status_log\2019-06-22-02_08_47.log"
+    status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-26\json\status\1561582617.json"
     status = read_status_logs(status_log)
 
     # default_from_httpd(test)
     # default_from_nginx(test)
-    # default_from_memcached(test)
+    default_from_memcached(test)
     # default_from_redis(test)
     # default_from_php(test)
     # default_from_python(test)
@@ -2524,7 +2552,7 @@ def main():
 
     # clr_from_httpd(test)
     # clr_from_nginx(test)
-    # clr_from_memcached(test)
+    clr_from_memcached(test)
     # clr_from_redis(test)
     # clr_from_php(test)
     # clr_from_golang(test)
@@ -2551,7 +2579,7 @@ def main():
     # StaDefTensorflow(status)
     # StaDefPostgres(status)
     # StaDefMariadb(status)
-    StaDefRabbitmq(status)
+    # StaDefRabbitmq(status)
 
     # StaClrHttpd(status)
     # StaClrNginx(status)
@@ -2567,17 +2595,16 @@ def main():
     # StaClrTensorflow(status)
     # StaClrPostgres(status)
     # StaClrMariadb(status)
-    StaClrRabbitmq(status)
+    # StaClrRabbitmq(status)
 
 
-# with open('data_NEW.json', 'w') as f:
+# with open('data_NEW_1.json', 'w') as f:
 #     json.dump(data, f)
 
 
 if __name__ == '__main__':
     main()
     pprint(data)
-
 
 """
 test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
