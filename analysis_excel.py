@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-29\json\status\1561825951.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-05\json\status\1562371383.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -661,14 +661,6 @@ def Ruby(writer, df_json, loop_count):
               "(1..1_000_000).last(100)",
               "(1..1_000_000).last(1000)",
               "(1..1_000_000).last(10000)",
-              "capitalize-1",
-              "capitalize-10",
-              "capitalize-100",
-              "capitalize-1000",
-              "downcase-1",
-              "downcase-10",
-              "downcase-100",
-              "downcase-1000",
               "require",
               "require_thread",
               "securerandom",
@@ -696,6 +688,14 @@ def Ruby(writer, df_json, loop_count):
               "so_reverse_complementpreparing",
               "so_sieve",
               "so_spectralnorm",
+              "capitalize-1",
+              "capitalize-10",
+              "capitalize-100",
+              "capitalize-1000",
+              "downcase-1",
+              "downcase-10",
+              "downcase-100",
+              "downcase-1000",
               "string_index",
               "string_scan_re",
               "string_scan_str",
@@ -915,14 +915,6 @@ def Ruby(writer, df_json, loop_count):
                          default_dict["(1..1_000_000).last(100)"],
                          default_dict["(1..1_000_000).last(1000)"],
                          default_dict["(1..1_000_000).last(10000)"],
-                         default_dict["capitalize-1"],
-                         default_dict["capitalize-10"],
-                         default_dict["capitalize-100"],
-                         default_dict["capitalize-1000"],
-                         default_dict["downcase-1"],
-                         default_dict["downcase-10"],
-                         default_dict["downcase-100"],
-                         default_dict["downcase-1000"],
                          default_dict["require"],
                          default_dict["require_thread"],
                          default_dict["securerandom"],
@@ -950,6 +942,14 @@ def Ruby(writer, df_json, loop_count):
                          default_dict["so_reverse_complementpreparing"],
                          default_dict["so_sieve"],
                          default_dict["so_spectralnorm"],
+                         default_dict["capitalize-1"],
+                         default_dict["capitalize-10"],
+                         default_dict["capitalize-100"],
+                         default_dict["capitalize-1000"],
+                         default_dict["downcase-1"],
+                         default_dict["downcase-10"],
+                         default_dict["downcase-100"],
+                         default_dict["downcase-1000"],
                          default_dict["string_index"],
                          default_dict["string_scan_re"],
                          default_dict["string_scan_str"],
@@ -1168,14 +1168,6 @@ def Ruby(writer, df_json, loop_count):
                        clear_dict["(1..1_000_000).last(100)"],
                        clear_dict["(1..1_000_000).last(1000)"],
                        clear_dict["(1..1_000_000).last(10000)"],
-                       clear_dict["capitalize-1"],
-                       clear_dict["capitalize-10"],
-                       clear_dict["capitalize-100"],
-                       clear_dict["capitalize-1000"],
-                       clear_dict["downcase-1"],
-                       clear_dict["downcase-10"],
-                       clear_dict["downcase-100"],
-                       clear_dict["downcase-1000"],
                        clear_dict["require"],
                        clear_dict["require_thread"],
                        clear_dict["securerandom"],
@@ -1203,6 +1195,14 @@ def Ruby(writer, df_json, loop_count):
                        clear_dict["so_reverse_complementpreparing"],
                        clear_dict["so_sieve"],
                        clear_dict["so_spectralnorm"],
+                       clear_dict["capitalize-1"],
+                       clear_dict["capitalize-10"],
+                       clear_dict["capitalize-100"],
+                       clear_dict["capitalize-1000"],
+                       clear_dict["downcase-1"],
+                       clear_dict["downcase-10"],
+                       clear_dict["downcase-100"],
+                       clear_dict["downcase-1000"],
                        clear_dict["string_index"],
                        clear_dict["string_scan_re"],
                        clear_dict["string_scan_str"],
@@ -1337,7 +1337,7 @@ def Ruby(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-06-29\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-05\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1351,16 +1351,16 @@ def main():
 
             Httpd(writer, df_json, loop_count)
             Nginx(writer, df_json, loop_count)
-            Memcached(writer, df_json, loop_count)
             Redis(writer, df_json, loop_count)
+            Memcached(writer, df_json, loop_count)
             Php(writer, df_json, loop_count)
-            # Python(writer, df_json, loop_count)
+            Python(writer, df_json, loop_count)
             Node(writer, df_json, loop_count)
             Golang(writer, df_json, loop_count)
             Postgres(writer, df_json, loop_count)
-            # Tensorflow(writer, df_json, loop_count)
+            Tensorflow(writer, df_json, loop_count)
             Mariadb(writer, df_json, loop_count)
-            # Perl(writer, df_json, loop_count)
+            Perl(writer, df_json, loop_count)
             Openjdk(writer, df_json, loop_count)
             Ruby(writer, df_json, loop_count)
             loop_count += 1
@@ -1371,9 +1371,9 @@ def main():
 if __name__ == '__main__':
     main()
 
-# test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
-#             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
-#             "make ruby"]
+test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
+            "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
+            "make ruby"]
 
 """
 
@@ -1393,6 +1393,13 @@ Traceback (most recent call last):
   File "/usr/lib/python3.7/json/decoder.py", line 353, in raw_decode
     obj, end = self.scan_once(s, idx)
 json.decoder.JSONDecodeError: Expecting ',' delimiter: line 63 column 13 (char 964)
+
+
+--privileged
+
+--privileged
+
+
 """
 
 """Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running"""
