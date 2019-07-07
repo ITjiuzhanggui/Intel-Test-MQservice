@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-05\json\status\1562371383.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-05\json\status\1562478693.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -387,6 +387,7 @@ def Golang(writer, df_json, loop_count):
 
 
 def Postgres(writer, df_json, loop_count):
+    read_status_log("postgres", writer)
     default_dict = df_json.loc["postgres"].loc["default"]
     clear_dict = df_json.loc["postgres"].loc["clear"]
 
@@ -434,6 +435,7 @@ def Postgres(writer, df_json, loop_count):
 
 
 def Tensorflow(writer, df_json, loop_count):
+    read_status_log("tensorflow", writer)
     default_dict = df_json.loc["tensorflow"].loc["default"]
     clear_dict = df_json.loc["tensorflow"].loc["clear"]
 
@@ -461,6 +463,7 @@ def Tensorflow(writer, df_json, loop_count):
 
 
 def Mariadb(writer, df_json, loop_count):
+    read_status_log("mariadb", writer)
     default_dict = df_json.loc["mariadb"].loc["default"]
     clear_dict = df_json.loc["mariadb"].loc["clear"]
 
@@ -559,13 +562,44 @@ def Openjdk(writer, df_json, loop_count):
     print("Round %d Save Successfully Openjdk!!!" % (loop_count + int(1)))
 
 
+def Rabbitmq(writer, df_json, loop_count):
+    read_status_log("rabbitmq", writer)
+    default_dict = df_json.loc["rabbitmq"].loc["default"]
+    clear_dict = df_json.loc["rabbitmq"].loc["clear"]
+
+    x_test = ["sending rate avg",
+              "receiving rate avg"]
+
+    test_col = pd.Series(x_test)
+
+    default_tensorflow_list = [default_dict["sending rate avg"],
+                               default_dict["receiving rate avg"]]
+
+    default_col = pd.Series(default_tensorflow_list)
+
+    clear_tensorflow_list = [clear_dict["sending rate avg"],
+                             clear_dict["receiving rate avg"]]
+
+    clear_col = pd.Series(clear_tensorflow_list)
+
+    data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
+                       "Default docker": default_col,
+                       "clear docker": clear_col}
+
+    df_exce_test = pd.DataFrame(data_frame_test)
+
+    df_exce_test.to_excel(writer, sheet_name="rabbitmq", index=False, startrow=9, startcol=4 * loop_count)
+
+    print("Round %d Save Successfully Rabbitmq!!!" % (loop_count + int(1)))
+
+
 def Ruby(writer, df_json, loop_count):
     read_status_log("ruby", writer)
     default_dict = df_json.loc["ruby"].loc["default"]
     clear_dict = df_json.loc["ruby"].loc["clear"]
 
     x_test = ["app_answer",
-              "app_answer",
+              "app_aobench",
               "app_erb",
               "app_factorial",
               "app_fib",
@@ -819,7 +853,7 @@ def Ruby(writer, df_json, loop_count):
     test_col = pd.Series(x_test)
 
     default_ruby_list = [default_dict["app_answer"],
-                         default_dict["app_answer"],
+                         default_dict["app_aobench"],
                          default_dict["app_erb"],
                          default_dict["app_factorial"],
                          default_dict["app_fib"],
@@ -1072,7 +1106,7 @@ def Ruby(writer, df_json, loop_count):
     default_col = pd.Series(default_ruby_list)
 
     clear_ruby_list = [clear_dict["app_answer"],
-                       clear_dict["app_answer"],
+                       clear_dict["app_aobench"],
                        clear_dict["app_erb"],
                        clear_dict["app_factorial"],
                        clear_dict["app_fib"],
@@ -1362,6 +1396,7 @@ def main():
             Mariadb(writer, df_json, loop_count)
             Perl(writer, df_json, loop_count)
             Openjdk(writer, df_json, loop_count)
+            Rabbitmq(writer, df_json, loop_count)
             Ruby(writer, df_json, loop_count)
             loop_count += 1
 
@@ -1373,7 +1408,7 @@ if __name__ == '__main__':
 
 test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
-            "make ruby"]
+            "make rabbitmq","make ruby"]
 
 """
 
