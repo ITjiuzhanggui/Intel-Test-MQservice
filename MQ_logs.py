@@ -438,7 +438,8 @@ def default_from_openjdk(lines):
 
 def default_from_postgres(lines):
     """postgres unit tests analysis"""
-    lines_a = lines[1:lines.index("[postgres] [INFO] Test clear docker image:\n")].copy()
+    lines_a = lines[
+              1:lines.index("[postgres] [INFO] Test clear docker image:\n")].copy()
     line_nu = []
     for i in lines_a:
         if re.search(r"excluding", i) != None:
@@ -3004,7 +3005,7 @@ def main():
     # default_from_nodejs(test)
     # default_from_openjdk(test)
     # default_from_ruby(test)
-    # default_from_postgres(test)
+    default_from_postgres(test)
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)

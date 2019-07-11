@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-07\json\status\1562515220.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-09\json\status\1562707905.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -1371,7 +1371,7 @@ def Ruby(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-07\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-09\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
