@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-09\json\status\1562707905.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-15\json\status\1563167934.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -203,7 +203,13 @@ def Redis(writer, df_json, loop_count):
               "LRANGE_300 (first 300 elements)",
               "LRANGE_500 (first 450 elements)",
               "LRANGE_600 (first 600 elements)",
-              "MSET (10 keys)"
+              "MSET (10 keys)",
+              "Sets-Latency",
+              "Sets-KB/sec",
+              "Gets-Latency",
+              "Gets-KB/sec",
+              "Totals-Latency",
+              "Totals-KB/sec"
               ]
 
     test_col = pd.Series(x_test)
@@ -225,7 +231,13 @@ def Redis(writer, df_json, loop_count):
                           default_dict["LRANGE_300 (first 300 elements)"],
                           default_dict["LRANGE_500 (first 450 elements)"],
                           default_dict["LRANGE_600 (first 600 elements)"],
-                          default_dict["MSET (10 keys)"]
+                          default_dict["MSET (10 keys)"],
+                          default_dict["Sets-Latency"],
+                          default_dict["Sets-KB/sec"],
+                          default_dict["Gets-Latency"],
+                          default_dict["Gets-KB/sec"],
+                          default_dict["Totals-Latency"],
+                          default_dict["Totals-KB/sec"]
                           ]
 
     default_col = pd.Series(default_redis_list)
@@ -247,7 +259,13 @@ def Redis(writer, df_json, loop_count):
                         clear_dict["LRANGE_300 (first 300 elements)"],
                         clear_dict["LRANGE_500 (first 450 elements)"],
                         clear_dict["LRANGE_600 (first 600 elements)"],
-                        clear_dict["MSET (10 keys)"]
+                        clear_dict["MSET (10 keys)"],
+                        clear_dict["Sets-Latency"],
+                        clear_dict["Sets-KB/sec"],
+                        clear_dict["Gets-Latency"],
+                        clear_dict["Gets-KB/sec"],
+                        clear_dict["Totals-Latency"],
+                        clear_dict["Totals-KB/sec"]
                         ]
 
     clear_col = pd.Series(clear_redis_list)
@@ -1371,7 +1389,7 @@ def Ruby(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-09\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-16\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1383,21 +1401,21 @@ def main():
             df_json = pd.read_json(full_file_name)
             # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
-            Httpd(writer, df_json, loop_count)
-            Nginx(writer, df_json, loop_count)
+            # Httpd(writer, df_json, loop_count)
+            # Nginx(writer, df_json, loop_count)
             Redis(writer, df_json, loop_count)
-            Memcached(writer, df_json, loop_count)
-            Php(writer, df_json, loop_count)
-            Python(writer, df_json, loop_count)
-            Node(writer, df_json, loop_count)
-            Golang(writer, df_json, loop_count)
-            Postgres(writer, df_json, loop_count)
-            Tensorflow(writer, df_json, loop_count)
-            Mariadb(writer, df_json, loop_count)
-            Perl(writer, df_json, loop_count)
-            Openjdk(writer, df_json, loop_count)
-            Rabbitmq(writer, df_json, loop_count)
-            Ruby(writer, df_json, loop_count)
+            # Memcached(writer, df_json, loop_count)
+            # Php(writer, df_json, loop_count)
+            # Python(writer, df_json, loop_count)
+            # Node(writer, df_json, loop_count)
+            # Golang(writer, df_json, loop_count)
+            # Postgres(writer, df_json, loop_count)
+            # Tensorflow(writer, df_json, loop_count)
+            # Mariadb(writer, df_json, loop_count)
+            # Perl(writer, df_json, loop_count)
+            # Openjdk(writer, df_json, loop_count)
+            # Rabbitmq(writer, df_json, loop_count)
+            # Ruby(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()

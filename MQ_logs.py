@@ -256,36 +256,47 @@ def default_from_redis(lines):
                 {"RPUSH": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== LPOP ======\n"):influs_defaut.index("====== RPOP ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== LPOP ======\n"):
+             influs_defaut.index("====== RPOP ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"LPOP": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== RPOP ======\n"):influs_defaut.index("====== SADD ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== RPOP ======\n"):
+             influs_defaut.index("====== SADD ======\n")]:
+
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"RPOP": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== SADD ======\n"):influs_defaut.index("====== HSET ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== SADD ======\n"):
+             influs_defaut.index("====== HSET ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"SADD": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== HSET ======\n"):influs_defaut.index("====== SPOP ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== HSET ======\n"):
+             influs_defaut.index("====== SPOP ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"HSET": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== SPOP ======\n"):influs_defaut.index(
-            "====== LPUSH (needed to benchmark LRANGE) ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== SPOP ======\n"):
+             influs_defaut.index("====== LPUSH (needed to benchmark LRANGE) ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
@@ -293,32 +304,35 @@ def default_from_redis(lines):
             )
 
     for i in influs_defaut[
-             influs_defaut.index("====== LPUSH (needed to benchmark LRANGE) ======\n"):influs_defaut.index(
-                 "====== LRANGE_100 (first 100 elements) ======\n")]:
+             influs_defaut.index("====== LPUSH (needed to benchmark LRANGE) ======\n"):
+             influs_defaut.index("====== LRANGE_100 (first 100 elements) ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"LPUSH (needed to benchmark LRANGE)": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== LRANGE_100 (first 100 elements) ======\n"):influs_defaut.index(
-            "====== LRANGE_300 (first 300 elements) ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== LRANGE_100 (first 100 elements) ======\n"):
+             influs_defaut.index("====== LRANGE_300 (first 300 elements) ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"LRANGE_100 (first 100 elements)": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== LRANGE_300 (first 300 elements) ======\n"):influs_defaut.index(
-            "====== LRANGE_500 (first 450 elements) ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== LRANGE_300 (first 300 elements) ======\n"):
+             influs_defaut.index("====== LRANGE_500 (first 450 elements) ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"LRANGE_300 (first 300 elements)": num[0]}
             )
 
-    for i in influs_defaut[influs_defaut.index("====== LRANGE_500 (first 450 elements) ======\n"):influs_defaut.index(
-            "====== LRANGE_600 (first 600 elements) ======\n")]:
+    for i in influs_defaut[
+             influs_defaut.index("====== LRANGE_500 (first 450 elements) ======\n"):
+             influs_defaut.index("====== LRANGE_600 (first 600 elements) ======\n")]:
         if i.endswith("requests per second\n"):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
@@ -343,6 +357,37 @@ def default_from_redis(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("redis").update(
                 {"MSET (10 keys)": num[0]}
+            )
+
+    for i in influs_defaut[
+             influs_defaut.index("[redis] [INFO] memtier_benchmark test:\n"):
+             influs_defaut.index("Default-Redis-Server\n")]:
+
+        if i.startswith("Sets"):
+            num = re.findall("---|\d+\.?\d*", i)
+
+            data.get("default").get("redis").update(
+                {"Sets-Latency:": num[-2]})
+            data.get("default").get("redis").update(
+                {"Sets-KB/sec": num[-1]}
+            )
+
+        if i.startswith("Gets"):
+            num = re.findall("---|\d+\.?\d*", i)
+
+            data.get("default").get("redis").update(
+                {"Gets-Latency:": num[-2]})
+            data.get("default").get("redis").update(
+                {"Gets-KB/sec": num[-1]}
+            )
+
+        if i.startswith("Totals"):
+            num = re.findall("---|\d+\.?\d*", i)
+
+            data.get("default").get("redis").update(
+                {"Totals-Latency:": num[-2]})
+            data.get("default").get("redis").update(
+                {"Totals-KB/sec": num[-1]}
             )
 
 
@@ -1156,6 +1201,37 @@ def clr_from_redis(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("clear").get("redis").update(
                 {"MSET (10 keys)": num[0]}
+            )
+
+    for i in influs_defaut[
+             influs_defaut.index("[redis] [INFO] Test clear docker image:\n"):
+             influs_defaut.index("Clr-Redis-Server\n")]:
+
+        if i.startswith("Sets"):
+            num = re.findall("---|\d+\.?\d*", i)
+
+            data.get("clear").get("redis").update(
+                {"Sets-Latency:": num[-2]})
+            data.get("clear").get("redis").update(
+                {"Sets-KB/sec": num[-1]}
+            )
+
+        if i.startswith("Gets"):
+            num = re.findall("---|\d+\.?\d*", i)
+
+            data.get("clear").get("redis").update(
+                {"Gets-Latency:": num[-2]})
+            data.get("clear").get("redis").update(
+                {"Gets-KB/sec": num[-1]}
+            )
+
+        if i.startswith("Totals"):
+            num = re.findall("---|\d+\.?\d*", i)
+
+            data.get("clear").get("redis").update(
+                {"Totals-Latency:": num[-2]})
+            data.get("clear").get("redis").update(
+                {"Totals-KB/sec": num[-1]}
             )
 
 
@@ -2989,7 +3065,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-07\test_log\tensorflow\2019-07-07-18_28_20.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-16\json\test"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-07\status_log\2019-07-07-14_01_35.log"
@@ -2998,14 +3074,14 @@ def main():
     # default_from_httpd(test)
     # default_from_nginx(test)
     # default_from_memcached(test)
-    # default_from_redis(test)
+    default_from_redis(test)
     # default_from_php(test)
     # default_from_python(test)
     # default_from_golang(test)
     # default_from_nodejs(test)
     # default_from_openjdk(test)
     # default_from_ruby(test)
-    default_from_postgres(test)
+    # default_from_postgres(test)
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)
@@ -3013,7 +3089,7 @@ def main():
     # clr_from_httpd(test)
     # clr_from_nginx(test)
     # clr_from_memcached(test)
-    # clr_from_redis(test)
+    clr_from_redis(test)
     # clr_from_php(test)
     # clr_from_golang(test)
     # clr_from_python(test)
@@ -3059,6 +3135,7 @@ def main():
     # StaClrRabbitmq(status)
     # StaClrRuby(status)
 
+
 # with open('data_NEW_1.json', 'w') as f:
 #     json.dump(data, f)
 
@@ -3070,7 +3147,8 @@ if __name__ == '__main__':
 """
 test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
-            "make ruby"]
+            "make rabbitmq", "make ruby"]
 
+test_cmd = ["make rabbitmq", "make flink", "make perl", "make tensorflow"]
 
 """
