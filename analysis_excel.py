@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-15\json\status\1563167934.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-19\json\status\1563523802.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -1386,10 +1386,101 @@ def Ruby(writer, df_json, loop_count):
     print("Round %d Save Successfully Ruby!!!" % (loop_count + int(1)))
 
 
+def Flink(writer, df_json, loop_count):
+    read_status_log("flink", writer)
+    default_dict = df_json.loc["flink"].loc["default"]
+    clear_dict = df_json.loc["flink"].loc["clear"]
+    
+    x_test = ["KeyByBenchmarks.arrayKeyBy",
+              "KeyByBenchmarks.tupleKeyBy",
+              "MemoryStateBackendBenchmark.stateBackends-FS",
+              "MemoryStateBackendBenchmark.stateBackends-FS_ASYNC",
+              "MemoryStateBackendBenchmark.stateBackends-MEMORY",
+              "RocksStateBackendBenchmark.stateBackends-ROCKS",
+              "RocksStateBackendBenchmark.stateBackends-ROCKS_INC",
+              "SerializationFrameworkMiniBenchmarks.serializerAvro",
+              "SerializationFrameworkMiniBenchmarks.serializerKryo",
+              "SerializationFrameworkMiniBenchmarks.serializerPojo",
+              "SerializationFrameworkMiniBenchmarks.serializerRow",
+              "SerializationFrameworkMiniBenchmarks.serializerTuple",
+              "StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1",
+              "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms",
+              "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms",
+              "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms",
+              "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,1ms",
+              "SumLongsBenchmark.benchmarkCount",
+              "WindowBenchmarks.globalWindow",
+              "WindowBenchmarks.sessionWindow",
+              "WindowBenchmarks.slidingWindow",
+              "WindowBenchmarks.tumblingWindow"
+             ]
+
+    test_col = pd.Series(x_test)
+    
+    default_flink_list =[ default_dict["KeyByBenchmarks.arrayKeyBy"],
+                          default_dict["KeyByBenchmarks.tupleKeyBy"],
+                          default_dict["MemoryStateBackendBenchmark.stateBackends-FS"],
+                          default_dict["MemoryStateBackendBenchmark.stateBackends-FS_ASYNC"],
+                          default_dict["MemoryStateBackendBenchmark.stateBackends-MEMORY"],
+                          default_dict["RocksStateBackendBenchmark.stateBackends-ROCKS"],
+                          default_dict["RocksStateBackendBenchmark.stateBackends-ROCKS_INC"],
+                          default_dict["SerializationFrameworkMiniBenchmarks.serializerAvro"],
+                          default_dict["SerializationFrameworkMiniBenchmarks.serializerKryo"],
+                          default_dict["SerializationFrameworkMiniBenchmarks.serializerPojo"],
+                          default_dict["SerializationFrameworkMiniBenchmarks.serializerRow"],
+                          default_dict["SerializationFrameworkMiniBenchmarks.serializerTuple"],
+                          default_dict["StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"],
+                          default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms"],
+                          default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms"],
+                          default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms"],
+                          default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,1ms"],
+                          default_dict["SumLongsBenchmark.benchmarkCount"],
+                          default_dict["WindowBenchmarks.globalWindow"],
+                          default_dict["WindowBenchmarks.sessionWindow"],
+                          default_dict["WindowBenchmarks.slidingWindow"],
+                          default_dict["WindowBenchmarks.tumblingWindow"]]
+
+    default_col = pd.Series(default_flink_list)
+
+    clear_flink_list = [clear_dict["KeyByBenchmarks.arrayKeyBy"],
+                        clear_dict["KeyByBenchmarks.tupleKeyBy"],
+                        clear_dict["MemoryStateBackendBenchmark.stateBackends-FS"],
+                        clear_dict["MemoryStateBackendBenchmark.stateBackends-FS_ASYNC"],
+                        clear_dict["MemoryStateBackendBenchmark.stateBackends-MEMORY"],
+                        clear_dict["RocksStateBackendBenchmark.stateBackends-ROCKS"],
+                        clear_dict["RocksStateBackendBenchmark.stateBackends-ROCKS_INC"],
+                        clear_dict["SerializationFrameworkMiniBenchmarks.serializerAvro"],
+                        clear_dict["SerializationFrameworkMiniBenchmarks.serializerKryo"],
+                        clear_dict["SerializationFrameworkMiniBenchmarks.serializerPojo"],
+                        clear_dict["SerializationFrameworkMiniBenchmarks.serializerRow"],
+                        clear_dict["SerializationFrameworkMiniBenchmarks.serializerTuple"],
+                        clear_dict["StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"],
+                        clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms"],
+                        clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms"],
+                        clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms"],
+                        clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,1ms"],
+                        clear_dict["SumLongsBenchmark.benchmarkCount"],
+                        clear_dict["WindowBenchmarks.globalWindow"],
+                        clear_dict["WindowBenchmarks.sessionWindow"],
+                        clear_dict["WindowBenchmarks.slidingWindow"],
+                        clear_dict["WindowBenchmarks.tumblingWindow"]]
+
+    clear_col = pd.Series(clear_flink_list)
+
+    data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
+                       "Default docker": default_col,
+                       "clear docker": clear_col}
+
+    df_exce_test = pd.DataFrame(data_frame_test)
+
+    df_exce_test.to_excel(writer, sheet_name="flink", index=False, startrow=9, startcol=4 * loop_count)
+
+    print("Round %d Save Successfully flink!!!" % (loop_count + int(1)))
+
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-16\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-19\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1403,7 +1494,7 @@ def main():
 
             # Httpd(writer, df_json, loop_count)
             # Nginx(writer, df_json, loop_count)
-            Redis(writer, df_json, loop_count)
+            # Redis(writer, df_json, loop_count)
             # Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
@@ -1416,6 +1507,7 @@ def main():
             # Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
+            Flink(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
@@ -1427,9 +1519,10 @@ if __name__ == '__main__':
 """
 test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
-            "make rabbitmq","make ruby"]
+            "make rabbitmq","make ruby"，"make flink"]
 """
 """
+test_cmd = ["make postgres", "make openjdk", "make ruby", "make flink"]
 
 Traceback (most recent call last):
   File "./run_script.py", line 226, in <module>

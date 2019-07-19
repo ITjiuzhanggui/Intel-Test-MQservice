@@ -3306,7 +3306,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\flink-07-18.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-19\test_log\flink\flink-07-18.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-07\status_log\2019-07-07-14_01_35.log"
