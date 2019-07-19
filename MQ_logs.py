@@ -10,28 +10,28 @@ data = {
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}
         },
 
     "clear":
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}
         },
 
     "status_def":
         {
             "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}
         },
 
     "status_Clr":
         {
             "clearlinux_version": {}, "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {},
             "php": {}, "python": {}, "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {},
-            "postgres": {}, "mariadb": {}, "rabbitmq": {}
+            "postgres": {}, "mariadb": {}, "rabbitmq": {}, "flink": {}, "cassandra": {}
         }
 }
 
@@ -679,8 +679,9 @@ def default_from_ruby(lines):
             num = re.findall("\d+\.?\d* s", so_reverse_complementpreparing)
             data_ruby.update({"so_k_nucleotidepreparing": num[-1][:-1]})
 
-    lines = lines[lines.index("[ruby] [INFO] Test docker hub official image first:\n"):lines.index(
-        "Default-Ruby-Server\n")]
+    lines = lines[
+            lines.index("[ruby] [INFO] Test docker hub official image first:\n"):
+            lines.index("Default-Ruby-Server\n")]
 
     for item in lines:
         if item.startswith("Warming up --------------------------------------\n"):
@@ -910,6 +911,128 @@ def default_from_ruby(lines):
             data_ruby.update({"""Time.strptime("2018-091", "%Y-%j")""": num[-4]})
 
     data.get("default").get("ruby").update(data_ruby)
+
+
+def default_from_flink(lines):
+    """flink unit tests analysis"""
+
+    for i in lines[
+             lines.index("[flink] [INFO] Test docker hub official image first:\n"):
+             lines.index("Default-Flink-Server\n")]:
+
+        if i.startswith("KeyByBenchmarks.arrayKeyBy"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"KeyByBenchmarks.arrayKeyBy": num[-2]})
+
+        if i.startswith("KeyByBenchmarks.tupleKeyBy"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"KeyByBenchmarks.tupleKeyBy": num[-2]})
+
+        if i.startswith("MemoryStateBackendBenchmark.stateBackends") and "MEMORY" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"MemoryStateBackendBenchmark.stateBackends-MEMORY": num[-2]})
+
+        if i.startswith("MemoryStateBackendBenchmark.stateBackends") and " FS " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"MemoryStateBackendBenchmark.stateBackends-FS": num[-2]})
+
+        if i.startswith("MemoryStateBackendBenchmark.stateBackends") and "_ASYNC " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"MemoryStateBackendBenchmark.stateBackends-FS_ASYNC": num[-2]})
+
+        if i.startswith("RocksStateBackendBenchmark.stateBackends") and " ROCKS " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"RocksStateBackendBenchmark.stateBackends-ROCKS": num[-2]})
+
+        if i.startswith("RocksStateBackendBenchmark.stateBackends") and "_INC " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"RocksStateBackendBenchmark.stateBackends-ROCKS_INC": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerAvro"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerAvro": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerKryo"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerKryo": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerPojo"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerPojo": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerRow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerRow": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerTuple"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerTuple": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "1,100ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "100,1ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "1000,1ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,1ms": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "1000,100ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms": num[-2]})
+
+        if i.startswith("SumLongsBenchmark.benchmarkCount"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"SumLongsBenchmark.benchmarkCount": num[-2]})
+
+        if i.startswith("WindowBenchmarks.globalWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"WindowBenchmarks.globalWindow": num[-2]})
+
+        if i.startswith("WindowBenchmarks.sessionWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"WindowBenchmarks.sessionWindow": num[-2]})
+
+        if i.startswith("WindowBenchmarks.slidingWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"WindowBenchmarks.slidingWindow": num[-2]})
+
+        if i.startswith("WindowBenchmarks.tumblingWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"WindowBenchmarks.tumblingWindow": num[-2]})
+
+        if i.startswith("StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("flink").update(
+                {"StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1": num[-2]})
+
+
+
+
 
 
 """clearlinux test_log"""
@@ -1828,6 +1951,124 @@ def clr_from_mariadb(lines):
             data.get("clear").get("mariadb").update(
                 {"Maximum number of seconds to run all queries": num[0]}
             )
+
+
+def clr_from_flink(lines):
+    """flink unit tests analysis"""
+
+    for i in lines[
+             lines.index("[flink] [INFO] Test clear docker image:\n"):
+             lines.index("Clr-Flink-Server\n")]:
+
+        if i.startswith("KeyByBenchmarks.arrayKeyBy"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"KeyByBenchmarks.arrayKeyBy": num[-2]})
+
+        if i.startswith("KeyByBenchmarks.tupleKeyBy"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"KeyByBenchmarks.tupleKeyBy": num[-2]})
+
+        if i.startswith("MemoryStateBackendBenchmark.stateBackends") and "MEMORY" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"MemoryStateBackendBenchmark.stateBackends-MEMORY": num[-2]})
+
+        if i.startswith("MemoryStateBackendBenchmark.stateBackends") and " FS " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"MemoryStateBackendBenchmark.stateBackends-FS": num[-2]})
+
+        if i.startswith("MemoryStateBackendBenchmark.stateBackends") and "_ASYNC " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"MemoryStateBackendBenchmark.stateBackends-FS_ASYNC": num[-2]})
+
+        if i.startswith("RocksStateBackendBenchmark.stateBackends") and " ROCKS " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"RocksStateBackendBenchmark.stateBackends-ROCKS": num[-2]})
+
+        if i.startswith("RocksStateBackendBenchmark.stateBackends") and "_INC " in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"RocksStateBackendBenchmark.stateBackends-ROCKS_INC": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerAvro"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerAvro": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerKryo"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerKryo": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerPojo"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerPojo": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerRow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerRow": num[-2]})
+
+        if i.startswith("SerializationFrameworkMiniBenchmarks.serializerTuple"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"SerializationFrameworkMiniBenchmarks.serializerTuple": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "1,100ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "100,1ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "1000,1ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,1ms": num[-2]})
+
+        if i.startswith("StreamNetworkThroughputBenchmarkExecutor.networkThroughput") and "1000,100ms" in i:
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms": num[-2]})
+
+        if i.startswith("SumLongsBenchmark.benchmarkCount"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"SumLongsBenchmark.benchmarkCount": num[-2]})
+
+        if i.startswith("WindowBenchmarks.globalWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"WindowBenchmarks.globalWindow": num[-2]})
+
+        if i.startswith("WindowBenchmarks.sessionWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"WindowBenchmarks.sessionWindow": num[-2]})
+
+        if i.startswith("WindowBenchmarks.slidingWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"WindowBenchmarks.slidingWindow": num[-2]})
+
+        if i.startswith("WindowBenchmarks.tumblingWindow"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"WindowBenchmarks.tumblingWindow": num[-2]})
+
+        if i.startswith("StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("flink").update(
+                {"StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1": num[-2]})
 
 
 """STATUS_default_log"""
@@ -3065,7 +3306,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-16\json\test"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\flink-07-18.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-07\status_log\2019-07-07-14_01_35.log"
@@ -3074,7 +3315,7 @@ def main():
     # default_from_httpd(test)
     # default_from_nginx(test)
     # default_from_memcached(test)
-    default_from_redis(test)
+    # default_from_redis(test)
     # default_from_php(test)
     # default_from_python(test)
     # default_from_golang(test)
@@ -3085,11 +3326,13 @@ def main():
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)
+    default_from_flink(test)
+
 
     # clr_from_httpd(test)
     # clr_from_nginx(test)
     # clr_from_memcached(test)
-    clr_from_redis(test)
+    # clr_from_redis(test)
     # clr_from_php(test)
     # clr_from_golang(test)
     # clr_from_python(test)
@@ -3100,6 +3343,7 @@ def main():
     # clr_from_tensorflow(test)
     # clr_from_mariadb(test)
     # clr_from_ruby(test)
+    clr_from_flink(test)
 
     # StaDefHttpd(status)
     # StaDefRuby(status)
@@ -3149,6 +3393,6 @@ test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make ph
             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
             "make rabbitmq", "make ruby"]
 
-test_cmd = ["make rabbitmq", "make flink", "make perl", "make tensorflow"]
+test_cmd = ["make rabbitmq", "make flink-2019-07-18.log", "make perl", "make tensorflow"]
 
 """
