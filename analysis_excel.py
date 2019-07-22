@@ -14,7 +14,7 @@ pd.set_option("expand_frame_repr", False)
 
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-19\json\status\1563523802.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-20-AWS\json\status\1563686517.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -1477,10 +1477,82 @@ def Flink(writer, df_json, loop_count):
 
     print("Round %d Save Successfully flink!!!" % (loop_count + int(1)))
 
+
+def Cassandra(writer, df_json, loop_count):
+    read_status_log("cassandra", writer)
+    default_dict = df_json.loc["cassandra"].loc["default"]
+    clear_dict = df_json.loc["cassandra"].loc["clear"]
+
+    x_test = ["cassandra-stress write test - Op rate(op/s)",
+              "cassandra-stress write test - Latency mean(ms)",
+              "cassandra-stress read test - 4 threads - Op rate(op/s)",
+              "cassandra-stress read test - 4 threads - Latency mean(ms)",
+              "cassandra-stress read test - 8 threads - Op rate(op/s)",
+              "cassandra-stress read test - 8 threads - Latency mean(ms)",
+              "cassandra-stress read test - 16 threads - Op rate(op/s)",
+              "cassandra-stress read test - 16 threads - Latency mean(ms)",
+              "cassandra-stress read test - 24 threads - Op rate(op/s)",
+              "cassandra-stress read test - 24 threads - Latency mean(ms)",
+              "cassandra-stress read test - 36 threads - Op rate(op/s)",
+              "cassandra-stress read test - 36 threads - Latency mean(ms)",
+              "cassandra-stress read test - 54 threads - Op rate(op/s)",
+              "cassandra-stress read test - 54 threads - Latency mean(ms)"
+              ]
+
+    test_col = pd.Series(x_test)
+
+    default_cassandra_list = [
+        default_dict["cassandra-stress write test - Op rate(op/s)"],
+        default_dict["cassandra-stress write test - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 8 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 8 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 16 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 16 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 24 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 24 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 36 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 36 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 54 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 54 threads - Latency mean(ms)"]]
+
+
+    default_col = pd.Series(default_cassandra_list)
+
+    clear_cassandra_list = [
+        clear_dict["cassandra-stress write test - Op rate(op/s)"],
+        clear_dict["cassandra-stress write test - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 8 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 8 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 16 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 16 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 24 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 24 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 36 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 36 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 54 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 54 threads - Latency mean(ms)"]]
+
+    clear_col = pd.Series(clear_cassandra_list)
+
+    data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
+                       "Default docker": default_col,
+                       "clear docker": clear_col}
+
+    df_exce_test = pd.DataFrame(data_frame_test)
+
+    df_exce_test.to_excel(writer, sheet_name="cassandra", index=False, startrow=9, startcol=4 * loop_count)
+
+    print("Round %d Save Successfully Cassandra!!!" % (loop_count + int(1)))
+
+
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-19\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-20-AWS\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1507,7 +1579,8 @@ def main():
             # Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
-            Flink(writer, df_json, loop_count)
+            # Flink(writer, df_json, loop_count)
+            Cassandra(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
@@ -1522,7 +1595,7 @@ test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make ph
             "make rabbitmq","make ruby"，"make flink"]
 """
 """
-test_cmd = ["make postgres", "make openjdk", "make ruby", "make flink"]
+test_cmd = ["make postgres", "make openjdk", "make ruby", "make flink", "make cassandra"]
 
 Traceback (most recent call last):
   File "./run_script.py", line 226, in <module>
