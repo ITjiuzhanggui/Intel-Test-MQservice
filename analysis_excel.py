@@ -1552,7 +1552,7 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-20-AWS\json\test"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-23\json\test"
     xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
@@ -1566,7 +1566,7 @@ def main():
 
             # Httpd(writer, df_json, loop_count)
             # Nginx(writer, df_json, loop_count)
-            # Redis(writer, df_json, loop_count)
+            Redis(writer, df_json, loop_count)
             # Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
@@ -1580,7 +1580,7 @@ def main():
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
             # Flink(writer, df_json, loop_count)
-            Cassandra(writer, df_json, loop_count)
+            # Cassandra(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
