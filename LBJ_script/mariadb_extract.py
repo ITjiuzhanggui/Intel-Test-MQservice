@@ -19,11 +19,14 @@ def open_logs(file_name):
 
 def extract_logs(lines):
     """Test docker hub official image"""
-    for i in lines[1:lines.index(
-            "[mariadb] [INFO] Test clear docker image:\n")]:
+    for i in lines[1:
+             lines.index("[mariadb] [INFO] Test clear docker image:\n")]:
+
         i = i.strip()
+
         if i.startswith("Average number of seconds"):
             average = i.split()
+            print(average)
             data.get("Default_docker").update(
                 {"Average number of seconds to run all queries": average[-2]}
             )
@@ -61,17 +64,18 @@ def extract_logs(lines):
 
 def main():
     # log_file = sys.argv[1]
-    log_file = "mariadb.log"
-    extract_logs(log_file)
+    log_file = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-24\test_log\mariadb\2019-07-25-11_39_32.log"
+    log_list = open_logs(log_file)
+    extract_logs(log_list)
 
 
 if __name__ == '__main__':
     main()
-    # pprint(data)
+    pprint(data)
     df_temp = pd.DataFrame(data)
     df = df_temp.reindex(
         ['Average number of seconds to run all queries',
          'Minimum number of seconds to run all queries',
          'Maximum number of seconds to run all queries']
     )
-    pprint(df)
+    # pprint(df)

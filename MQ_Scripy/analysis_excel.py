@@ -12,9 +12,14 @@ pd.set_option("expand_frame_repr", False)
 #     with open(status_log, "r", encoding="utf-8")as f:
 #         return f.read()
 
+# def exect_contest(fun):
+#     try:
+#         return fun()
+#     except Exception as e:
+#         pass
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-20-AWS\json\status\1563686517.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-07-20-AWS\json\status\1563686517.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -314,7 +319,8 @@ def Python(writer, df_json, loop_count):
     default_dict = df_json.loc["python"].loc["default"]
     clear_dict = df_json.loc["python"].loc["clear"]
 
-    x_test = ["minimum", "average"]
+    x_test = ["minimum",
+              "average"]
     test_col = pd.Series(x_test)
 
     # default
@@ -1390,7 +1396,7 @@ def Flink(writer, df_json, loop_count):
     read_status_log("flink", writer)
     default_dict = df_json.loc["flink"].loc["default"]
     clear_dict = df_json.loc["flink"].loc["clear"]
-    
+
     x_test = ["KeyByBenchmarks.arrayKeyBy",
               "KeyByBenchmarks.tupleKeyBy",
               "MemoryStateBackendBenchmark.stateBackends-FS",
@@ -1403,7 +1409,6 @@ def Flink(writer, df_json, loop_count):
               "SerializationFrameworkMiniBenchmarks.serializerPojo",
               "SerializationFrameworkMiniBenchmarks.serializerRow",
               "SerializationFrameworkMiniBenchmarks.serializerTuple",
-              "StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1",
               "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms",
               "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms",
               "StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms",
@@ -1412,12 +1417,13 @@ def Flink(writer, df_json, loop_count):
               "WindowBenchmarks.globalWindow",
               "WindowBenchmarks.sessionWindow",
               "WindowBenchmarks.slidingWindow",
-              "WindowBenchmarks.tumblingWindow"
-             ]
+              "WindowBenchmarks.tumblingWindow",
+              "StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1",
+              ]
 
     test_col = pd.Series(x_test)
-    
-    default_flink_list =[ default_dict["KeyByBenchmarks.arrayKeyBy"],
+
+    default_flink_list = [default_dict["KeyByBenchmarks.arrayKeyBy"],
                           default_dict["KeyByBenchmarks.tupleKeyBy"],
                           default_dict["MemoryStateBackendBenchmark.stateBackends-FS"],
                           default_dict["MemoryStateBackendBenchmark.stateBackends-FS_ASYNC"],
@@ -1429,7 +1435,6 @@ def Flink(writer, df_json, loop_count):
                           default_dict["SerializationFrameworkMiniBenchmarks.serializerPojo"],
                           default_dict["SerializationFrameworkMiniBenchmarks.serializerRow"],
                           default_dict["SerializationFrameworkMiniBenchmarks.serializerTuple"],
-                          default_dict["StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"],
                           default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms"],
                           default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms"],
                           default_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms"],
@@ -1438,7 +1443,8 @@ def Flink(writer, df_json, loop_count):
                           default_dict["WindowBenchmarks.globalWindow"],
                           default_dict["WindowBenchmarks.sessionWindow"],
                           default_dict["WindowBenchmarks.slidingWindow"],
-                          default_dict["WindowBenchmarks.tumblingWindow"]]
+                          default_dict["WindowBenchmarks.tumblingWindow"],
+                          default_dict["StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"]]
 
     default_col = pd.Series(default_flink_list)
 
@@ -1454,7 +1460,6 @@ def Flink(writer, df_json, loop_count):
                         clear_dict["SerializationFrameworkMiniBenchmarks.serializerPojo"],
                         clear_dict["SerializationFrameworkMiniBenchmarks.serializerRow"],
                         clear_dict["SerializationFrameworkMiniBenchmarks.serializerTuple"],
-                        clear_dict["StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"],
                         clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1,100ms"],
                         clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-100,1ms"],
                         clear_dict["StreamNetworkThroughputBenchmarkExecutor.networkThroughput-1000,100ms"],
@@ -1463,7 +1468,8 @@ def Flink(writer, df_json, loop_count):
                         clear_dict["WindowBenchmarks.globalWindow"],
                         clear_dict["WindowBenchmarks.sessionWindow"],
                         clear_dict["WindowBenchmarks.slidingWindow"],
-                        clear_dict["WindowBenchmarks.tumblingWindow"]]
+                        clear_dict["WindowBenchmarks.tumblingWindow"],
+                        clear_dict["StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1"]]
 
     clear_col = pd.Series(clear_flink_list)
 
@@ -1485,56 +1491,48 @@ def Cassandra(writer, df_json, loop_count):
 
     x_test = ["cassandra-stress write test - Op rate(op/s)",
               "cassandra-stress write test - Latency mean(ms)",
+              "cassandra-stress read test - 5 threads - Op rate(op/s)",
+              "cassandra-stress read test - 5 threads - Latency mean(ms)",
               "cassandra-stress read test - 4 threads - Op rate(op/s)",
               "cassandra-stress read test - 4 threads - Latency mean(ms)",
-              "cassandra-stress read test - 8 threads - Op rate(op/s)",
-              "cassandra-stress read test - 8 threads - Latency mean(ms)",
-              "cassandra-stress read test - 16 threads - Op rate(op/s)",
-              "cassandra-stress read test - 16 threads - Latency mean(ms)",
-              "cassandra-stress read test - 24 threads - Op rate(op/s)",
-              "cassandra-stress read test - 24 threads - Latency mean(ms)",
-              "cassandra-stress read test - 36 threads - Op rate(op/s)",
-              "cassandra-stress read test - 36 threads - Latency mean(ms)",
-              "cassandra-stress read test - 54 threads - Op rate(op/s)",
-              "cassandra-stress read test - 54 threads - Latency mean(ms)"
-              ]
+              "cassandra-stress read test - 3 threads - Op rate(op/s)",
+              "cassandra-stress read test - 3 threads - Latency mean(ms)",
+              "cassandra-stress read test - 2 threads - Op rate(op/s)",
+              "cassandra-stress read test - 2 threads - Latency mean(ms)",
+              "cassandra-stress read test - 1 threads - Op rate(op/s)",
+              "cassandra-stress read test - 1 threads - Latency mean(ms)"]
 
     test_col = pd.Series(x_test)
 
     default_cassandra_list = [
         default_dict["cassandra-stress write test - Op rate(op/s)"],
         default_dict["cassandra-stress write test - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 5 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 5 threads - Latency mean(ms)"],
         default_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
         default_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 8 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 8 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 16 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 16 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 24 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 24 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 36 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 36 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 54 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 54 threads - Latency mean(ms)"]]
-
+        default_dict["cassandra-stress read test - 3 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 3 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 2 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 2 threads - Latency mean(ms)"],
+        default_dict["cassandra-stress read test - 1 threads - Op rate(op/s)"],
+        default_dict["cassandra-stress read test - 1 threads - Latency mean(ms)"]]
 
     default_col = pd.Series(default_cassandra_list)
 
     clear_cassandra_list = [
         clear_dict["cassandra-stress write test - Op rate(op/s)"],
         clear_dict["cassandra-stress write test - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 5 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 5 threads - Latency mean(ms)"],
         clear_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
         clear_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 8 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 8 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 16 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 16 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 24 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 24 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 36 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 36 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 54 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 54 threads - Latency mean(ms)"]]
+        clear_dict["cassandra-stress read test - 3 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 3 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 2 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 2 threads - Latency mean(ms)"],
+        clear_dict["cassandra-stress read test - 1 threads - Op rate(op/s)"],
+        clear_dict["cassandra-stress read test - 1 threads - Latency mean(ms)"]]
 
     clear_col = pd.Series(clear_cassandra_list)
 
@@ -1552,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-23\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\MQ_tset.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-07-24\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_tset_ALY_cloud_0729.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1564,23 +1562,23 @@ def main():
             df_json = pd.read_json(full_file_name)
             # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
-            # Httpd(writer, df_json, loop_count)
-            # Nginx(writer, df_json, loop_count)
+            Httpd(writer, df_json, loop_count)
+            Nginx(writer, df_json, loop_count)
             Redis(writer, df_json, loop_count)
-            # Memcached(writer, df_json, loop_count)
-            # Php(writer, df_json, loop_count)
-            # Python(writer, df_json, loop_count)
-            # Node(writer, df_json, loop_count)
-            # Golang(writer, df_json, loop_count)
-            # Postgres(writer, df_json, loop_count)
-            # Tensorflow(writer, df_json, loop_count)
-            # Mariadb(writer, df_json, loop_count)
-            # Perl(writer, df_json, loop_count)
-            # Openjdk(writer, df_json, loop_count)
-            # Rabbitmq(writer, df_json, loop_count)
-            # Ruby(writer, df_json, loop_count)
-            # Flink(writer, df_json, loop_count)
-            # Cassandra(writer, df_json, loop_count)
+            Memcached(writer, df_json, loop_count)
+            Php(writer, df_json, loop_count)
+            Python(writer, df_json, loop_count)
+            Node(writer, df_json, loop_count)
+            Golang(writer, df_json, loop_count)
+            Postgres(writer, df_json, loop_count)
+            Tensorflow(writer, df_json, loop_count)
+            Mariadb(writer, df_json, loop_count)
+            Perl(writer, df_json, loop_count)
+            Openjdk(writer, df_json, loop_count)
+            Rabbitmq(writer, df_json, loop_count)
+            Ruby(writer, df_json, loop_count)
+            Flink(writer, df_json, loop_count)
+            Cassandra(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
@@ -1613,13 +1611,4 @@ Traceback (most recent call last):
   File "/usr/lib/python3.7/json/decoder.py", line 353, in raw_decode
     obj, end = self.scan_once(s, idx)
 json.decoder.JSONDecodeError: Expecting ',' delimiter: line 63 column 13 (char 964)
-
-
---privileged
-
---privileged
-
-
 """
-
-"""Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running"""
