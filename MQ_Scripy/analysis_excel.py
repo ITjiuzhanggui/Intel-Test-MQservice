@@ -19,7 +19,7 @@ pd.set_option("expand_frame_repr", False)
 #         pass
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-07-20-AWS\json\status\1563686517.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Azure\json\status\1565014733.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -1550,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-07-24\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_tset_ALY_cloud_0729.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Azure\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_tset_Azure_08_05.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1562,7 +1562,7 @@ def main():
             df_json = pd.read_json(full_file_name)
             # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
-            Httpd(writer, df_json, loop_count)
+            # Httpd(writer, df_json, loop_count)
             Nginx(writer, df_json, loop_count)
             Redis(writer, df_json, loop_count)
             Memcached(writer, df_json, loop_count)
@@ -1570,15 +1570,15 @@ def main():
             Python(writer, df_json, loop_count)
             Node(writer, df_json, loop_count)
             Golang(writer, df_json, loop_count)
-            Postgres(writer, df_json, loop_count)
+            # Postgres(writer, df_json, loop_count)
             Tensorflow(writer, df_json, loop_count)
-            Mariadb(writer, df_json, loop_count)
+            # Mariadb(writer, df_json, loop_count)
             Perl(writer, df_json, loop_count)
             Openjdk(writer, df_json, loop_count)
             Rabbitmq(writer, df_json, loop_count)
-            Ruby(writer, df_json, loop_count)
-            Flink(writer, df_json, loop_count)
-            Cassandra(writer, df_json, loop_count)
+            # Ruby(writer, df_json, loop_count)
+            # Flink(writer, df_json, loop_count)
+            # Cassandra(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()

@@ -406,8 +406,11 @@ def default_from_php(lines):
 def default_from_python(lines):
     """python unit tests analysis"""
 
-    for i in lines[lines.index("python/python.sh\n"):lines.index("Default-Python-Server\n")]:
+    # for i in lines[lines.index("python/python.sh\n"):lines.index("Default-Python-Server\n")]:
+    lines = lines[lines.index("python/python.sh\n"):
+                  lines.index("[python] [INFO] Test clear docker image:\n")].copy()
 
+    for i in lines:
         if i.startswith("Totals"):
             num = re.findall("\d+\.?\d*", i)
             num[0] = {"minimum": num[0]}
@@ -1421,11 +1424,11 @@ def clr_from_php(lines):
 
 def clr_from_python(lines):
     """clearlinux unit tests analysis"""
-
-    for i in lines[
-             lines.index("[python] [INFO] Test clear docker image:\n"):
-             lines.index("Clr-Python-Server\n")]:
-
+    lines = lines[lines.index("[python] [INFO] Test clear docker image:\n"):].copy()
+    # for i in lines[
+    #          lines.index("[python] [INFO] Test clear docker image:\n"):
+    #          lines.index("Clr-Python-Server\n")]:
+    for i in lines:
         if i.startswith("Totals"):
             num = re.findall("\d+\.?\d*", i)
             print(num)
@@ -3465,10 +3468,10 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-20-AWS\test_log\ruby\2019-07-20-05_10_21.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\test_log\python\2019-08-05-19_20_49.log"
     test = read_logs(file_name)
 
-    status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-24\status_log\2019-07-24-17_40_04.log"
+    status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
     status = read_status_logs(status_log)
 
     # default_from_httpd(test)
@@ -3476,7 +3479,7 @@ def main():
     # default_from_memcached(test)
     # default_from_redis(test)
     # default_from_php(test)
-    # default_from_python(test)
+    default_from_python(test)
     # default_from_golang(test)
     # default_from_nodejs(test)
     # default_from_openjdk(test)
@@ -3484,7 +3487,7 @@ def main():
     # default_from_postgres(test)
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
-    default_from_ruby(test)
+    # default_from_ruby(test)
     # default_from_flink(test)
     # DEFAULT_RUBY(test)
 
@@ -3494,14 +3497,14 @@ def main():
     # clr_from_redis(test)
     # clr_from_php(test)
     # clr_from_golang(test)
-    # clr_from_python(test)
+    clr_from_python(test)
     # clr_from_nodejs(test)
     # clr_from_openjdk(test)
     # clr_from_ruby(test)
     # clr_from_postgres(test)
     # clr_from_tensorflow(test)
     # clr_from_mariadb(test)
-    clr_from_ruby(test)
+    # clr_from_ruby(test)
     # clr_from_flink(test)
 
     # StaDefHttpd(status)
@@ -3538,8 +3541,8 @@ def main():
     # StaClrRabbitmq(status)
     # StaClrRuby(status)
 
-    with open(r'C:\Users\xinhuizx\Intel-Test-MQservice\json\data_New_4.json', "w") as f:
-        json.dump(data, f)
+    # with open(r'C:\Users\xinhuizx\Intel-Test-MQservice\json\data_New_4.json', "w") as f:
+    #     json.dump(data, f)
 
 
 if __name__ == '__main__':
@@ -3551,6 +3554,7 @@ test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make ph
             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
             "make rabbitmq", "make flink", "make cassandra","make ruby"]
 
-test_cmd = ["make rabbitmq", "make flink-2019-07-18.log", "make perl", "make tensorflow"]
 
+
+test_cmd = ["make golang", "make tensorflow", "make perl", "make postgres", "make ruby", "make flink"]
 """
