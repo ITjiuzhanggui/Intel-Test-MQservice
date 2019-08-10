@@ -137,7 +137,7 @@ def extract_logs(lines):
     for j in lines_b:
         if re.search(r"Latency mean", j) != None:
             line_nu22.append(lines_b.index(j))
-    #    pprint(line_nu21)
+    pprint(line_nu21)
     wo = lines_b[int(line_nu21[0])].split()
     #    pprint(wo)
     r4o = lines_b[int(line_nu21[1])].split()
@@ -196,7 +196,7 @@ def extract_logs(lines):
     # )
     # data.get("clear").get("cassandra").update(
     #     {"cassandra-stress read test - 36 threads - Latency mean(ms)": r36l[3]}
-    )
+    # )
     # data.get("clear").get("cassandra").update(
     #     {"cassandra-stress read test - 54 threads - Op rate(op/s)": r54o[3]}
     # )
@@ -224,7 +224,7 @@ def extract_logs(lines):
 
 def main():
     # log_file = sys.argv[1]
-    log_file = r'C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-26\test_log\cassandra\2019-07-24-21_45_18.log'
+    log_file = r'C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-07-20-AWS\test_log\cassandra\2019-07-21-09_31_20.log'
     log_list = open_logs(log_file)
     extract_logs(log_list)
     df_temp = pd.DataFrame(data)

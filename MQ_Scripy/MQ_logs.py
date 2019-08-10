@@ -467,10 +467,9 @@ def default_from_nodejs(lines):
 
 def default_from_openjdk(lines):
     """openjdk unit tests analysis"""
-    for i in lines[
-             lines.index("[openjdk] [INFO] Test docker hub official image first:\n"):
-             lines.index("[openjdk] [INFO] Test clear docker image:\n")]:
+    lines = lines[1:lines.index("[openjdk] [INFO] Test clear docker image:\n"):].copy()
 
+    for i in lines:
         if i.startswith("MyBenchmark.testMethod"):
             num = re.findall("\d+\.?\d+", i)
             data.get("default").get("openjdk").update(
@@ -1487,10 +1486,12 @@ def clr_from_nodejs(lines):
 
 def clr_from_openjdk(lines):
     """perl unit tests analysis"""
-    for i in lines[
-             lines.index("[openjdk] [INFO] Test clear docker image:\n"):
-             lines.index("[openjdk] [INFO] Test extra official docker image, official latest image:\n")]:
+    # for i in lines[
+    #          lines.index("[openjdk] [INFO] Test clear docker image:\n"):
+    #          lines.index("[openjdk] [INFO] Test extra official docker image, official latest image:\n")]:
+    lines = lines[lines.index("[openjdk] [INFO] Test clear docker image:\n"):].copy()
 
+    for i in lines:
         if i.startswith("MyBenchmark.testMethod"):
             num = re.findall("\d+\.?\d*", i)
             data.get("clear").get("openjdk").update(
@@ -3468,7 +3469,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\test_log\python\2019-08-05-19_20_49.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-Cloud\test_log\flink\2019-08-08-07_50_28.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
@@ -3479,7 +3480,7 @@ def main():
     # default_from_memcached(test)
     # default_from_redis(test)
     # default_from_php(test)
-    default_from_python(test)
+    # default_from_python(test)
     # default_from_golang(test)
     # default_from_nodejs(test)
     # default_from_openjdk(test)
@@ -3488,7 +3489,7 @@ def main():
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)
-    # default_from_flink(test)
+    default_from_flink(test)
     # DEFAULT_RUBY(test)
 
     # clr_from_httpd(test)
@@ -3497,7 +3498,7 @@ def main():
     # clr_from_redis(test)
     # clr_from_php(test)
     # clr_from_golang(test)
-    clr_from_python(test)
+    # clr_from_python(test)
     # clr_from_nodejs(test)
     # clr_from_openjdk(test)
     # clr_from_ruby(test)
@@ -3505,7 +3506,7 @@ def main():
     # clr_from_tensorflow(test)
     # clr_from_mariadb(test)
     # clr_from_ruby(test)
-    # clr_from_flink(test)
+    clr_from_flink(test)
 
     # StaDefHttpd(status)
     # StaDefRuby(status)

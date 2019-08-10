@@ -19,7 +19,7 @@ pd.set_option("expand_frame_repr", False)
 #         pass
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Azure\json\status\1565014733.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-Cloud\json\status\1565328516.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -55,7 +55,7 @@ def read_status_log(service_name, writer):
 
 
 def Httpd(writer, df_json, loop_count):
-    read_status_log("httpd", writer)
+    # read_status_log("httpd", writer)
     default_dict = df_json.loc["httpd"].loc["default"]
     clear_dict = df_json.loc["httpd"].loc["clear"]
 
@@ -96,7 +96,7 @@ def Httpd(writer, df_json, loop_count):
 
 
 def Nginx(writer, df_json, loop_count):
-    read_status_log("nginx", writer)
+    # read_status_log("nginx", writer)
     default_dict = df_json.loc["nginx"].loc["default"]
     clear_dict = df_json.loc["nginx"].loc["clear"]
 
@@ -137,7 +137,7 @@ def Nginx(writer, df_json, loop_count):
 
 
 def Memcached(writer, df_json, loop_count):
-    read_status_log("memcached", writer)
+    # read_status_log("memcached", writer)
     default_dict = df_json.loc["memcached"].loc["default"]
     clear_dict = df_json.loc["memcached"].loc["clear"]
 
@@ -187,7 +187,7 @@ def Memcached(writer, df_json, loop_count):
 
 
 def Redis(writer, df_json, loop_count):
-    read_status_log("redis", writer)
+    # read_status_log("redis", writer)
     default_dict = df_json.loc["redis"].loc["default"]
     clear_dict = df_json.loc["redis"].loc["clear"]
 
@@ -287,7 +287,7 @@ def Redis(writer, df_json, loop_count):
 
 
 def Php(writer, df_json, loop_count):
-    read_status_log("php", writer)
+    # read_status_log("php", writer)
     default_dict = df_json.loc["php"].loc["default"]
     clear_dict = df_json.loc["php"].loc["clear"]
 
@@ -315,7 +315,7 @@ def Php(writer, df_json, loop_count):
 
 
 def Python(writer, df_json, loop_count):
-    read_status_log("python", writer)
+    # read_status_log("python", writer)
     default_dict = df_json.loc["python"].loc["default"]
     clear_dict = df_json.loc["python"].loc["clear"]
 
@@ -346,7 +346,7 @@ def Python(writer, df_json, loop_count):
 
 
 def Node(writer, df_json, loop_count):
-    read_status_log("node", writer)
+    # read_status_log("node", writer)
     default_dict = df_json.loc["node"].loc["default"]
     clear_dict = df_json.loc["node"].loc["clear"]
 
@@ -374,7 +374,7 @@ def Node(writer, df_json, loop_count):
 
 
 def Golang(writer, df_json, loop_count):
-    read_status_log("golang", writer)
+    # read_status_log("golang", writer)
     default_dict = df_json.loc["golang"].loc["default"]
     clear_dict = df_json.loc["golang"].loc["clear"]
 
@@ -411,7 +411,7 @@ def Golang(writer, df_json, loop_count):
 
 
 def Postgres(writer, df_json, loop_count):
-    read_status_log("postgres", writer)
+    # read_status_log("postgres", writer)
     default_dict = df_json.loc["postgres"].loc["default"]
     clear_dict = df_json.loc["postgres"].loc["clear"]
 
@@ -459,7 +459,7 @@ def Postgres(writer, df_json, loop_count):
 
 
 def Tensorflow(writer, df_json, loop_count):
-    read_status_log("tensorflow", writer)
+    # read_status_log("tensorflow", writer)
     default_dict = df_json.loc["tensorflow"].loc["default"]
     clear_dict = df_json.loc["tensorflow"].loc["clear"]
 
@@ -487,7 +487,7 @@ def Tensorflow(writer, df_json, loop_count):
 
 
 def Mariadb(writer, df_json, loop_count):
-    read_status_log("mariadb", writer)
+    # read_status_log("mariadb", writer)
     default_dict = df_json.loc["mariadb"].loc["default"]
     clear_dict = df_json.loc["mariadb"].loc["clear"]
 
@@ -523,7 +523,7 @@ def Mariadb(writer, df_json, loop_count):
 
 
 def Perl(writer, df_json, loop_count):
-    read_status_log("perl", writer)
+    # read_status_log("perl", writer)
     default_dict = df_json.loc["perl"].loc["default"]
     clear_dict = df_json.loc["perl"].loc["clear"]
 
@@ -554,7 +554,7 @@ def Perl(writer, df_json, loop_count):
 
 
 def Openjdk(writer, df_json, loop_count):
-    read_status_log("openjdk", writer)
+    # read_status_log("openjdk", writer)
     default_dict = df_json.loc["openjdk"].loc["default"]
     clear_dict = df_json.loc["openjdk"].loc["clear"]
 
@@ -587,7 +587,7 @@ def Openjdk(writer, df_json, loop_count):
 
 
 def Rabbitmq(writer, df_json, loop_count):
-    read_status_log("rabbitmq", writer)
+    # read_status_log("rabbitmq", writer)
     default_dict = df_json.loc["rabbitmq"].loc["default"]
     clear_dict = df_json.loc["rabbitmq"].loc["clear"]
 
@@ -618,7 +618,7 @@ def Rabbitmq(writer, df_json, loop_count):
 
 
 def Ruby(writer, df_json, loop_count):
-    read_status_log("ruby", writer)
+    # read_status_log("ruby", writer)
     default_dict = df_json.loc["ruby"].loc["default"]
     clear_dict = df_json.loc["ruby"].loc["clear"]
 
@@ -1393,7 +1393,7 @@ def Ruby(writer, df_json, loop_count):
 
 
 def Flink(writer, df_json, loop_count):
-    read_status_log("flink", writer)
+    # read_status_log("flink", writer)
     default_dict = df_json.loc["flink"].loc["default"]
     clear_dict = df_json.loc["flink"].loc["clear"]
 
@@ -1485,7 +1485,7 @@ def Flink(writer, df_json, loop_count):
 
 
 def Cassandra(writer, df_json, loop_count):
-    read_status_log("cassandra", writer)
+    # read_status_log("cassandra", writer)
     default_dict = df_json.loc["cassandra"].loc["default"]
     clear_dict = df_json.loc["cassandra"].loc["clear"]
 
@@ -1550,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Azure\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_tset_Azure_08_05.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-Cloud\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_service_ALY_Cloud_0809.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1562,7 +1562,7 @@ def main():
             df_json = pd.read_json(full_file_name)
             # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
-            # Httpd(writer, df_json, loop_count)
+            Httpd(writer, df_json, loop_count)
             Nginx(writer, df_json, loop_count)
             Redis(writer, df_json, loop_count)
             Memcached(writer, df_json, loop_count)
@@ -1570,13 +1570,13 @@ def main():
             Python(writer, df_json, loop_count)
             Node(writer, df_json, loop_count)
             Golang(writer, df_json, loop_count)
-            # Postgres(writer, df_json, loop_count)
+            Postgres(writer, df_json, loop_count)
             Tensorflow(writer, df_json, loop_count)
-            # Mariadb(writer, df_json, loop_count)
+            Mariadb(writer, df_json, loop_count)
             Perl(writer, df_json, loop_count)
             Openjdk(writer, df_json, loop_count)
             Rabbitmq(writer, df_json, loop_count)
-            # Ruby(writer, df_json, loop_count)
+            Ruby(writer, df_json, loop_count)
             # Flink(writer, df_json, loop_count)
             # Cassandra(writer, df_json, loop_count)
             loop_count += 1
@@ -1595,20 +1595,4 @@ test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make ph
 """
 test_cmd = ["make postgres", "make openjdk", "make ruby", "make flink", "make cassandra"]
 
-Traceback (most recent call last):
-  File "./run_script.py", line 226, in <module>
-    status_anlies(num)
-  File "./run_script.py", line 92, in status_anlies
-    exect_contest(StaDefHttpd().serialization)
-  File "/home/auto_latest/core/statusDef.py", line 17, in __init__
-    self.data = json.load(f)
-  File "/usr/lib/python3.7/json/__init__.py", line 296, in load
-    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
-  File "/usr/lib/python3.7/json/__init__.py", line 348, in loads
-    return _default_decoder.decode(s)
-  File "/usr/lib/python3.7/json/decoder.py", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "/usr/lib/python3.7/json/decoder.py", line 353, in raw_decode
-    obj, end = self.scan_once(s, idx)
-json.decoder.JSONDecodeError: Expecting ',' delimiter: line 63 column 13 (char 964)
 """
