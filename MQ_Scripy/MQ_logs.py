@@ -2119,9 +2119,13 @@ def clr_from_mariadb(lines):
 def clr_from_flink(lines):
     """flink unit tests analysis"""
 
+    # for i in lines[
+    #          lines.index("[flink] [INFO] Test clear docker image:\n"):
+    #          lines.index("Clr-Flink-Server\n")]:
+
     for i in lines[
-             lines.index("[flink] [INFO] Test clear docker image:\n"):
-             lines.index("Clr-Flink-Server\n")]:
+             lines.index("[flink] [INFO] use openjdk12:\n"):
+             lines.index("Clr-Flink-Server-jdk12\n")]:
 
         if i.startswith("KeyByBenchmarks.arrayKeyBy"):
             num = re.findall("\d+\.?\d*", i)
@@ -3469,7 +3473,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-Cloud\test_log\flink\2019-08-08-07_50_28.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-flink-ALY-Clr\test_log\flink\2019-08-09-16_14_53.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
@@ -3489,7 +3493,7 @@ def main():
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)
-    default_from_flink(test)
+    # default_from_flink(test)
     # DEFAULT_RUBY(test)
 
     # clr_from_httpd(test)
@@ -3506,7 +3510,7 @@ def main():
     # clr_from_tensorflow(test)
     # clr_from_mariadb(test)
     # clr_from_ruby(test)
-    clr_from_flink(test)
+    # clr_from_flink(test)
 
     # StaDefHttpd(status)
     # StaDefRuby(status)
@@ -3544,6 +3548,33 @@ def main():
 
     # with open(r'C:\Users\xinhuizx\Intel-Test-MQservice\json\data_New_4.json', "w") as f:
     #     json.dump(data, f)
+
+
+# def Link():
+#     lines = lines[lines.index("[openjdk] [INFO] Test clear docker image:\n"):].copy()
+#
+#                 for i in lines:
+#                     if i.startswith("MyBenchmark.testMethod"):
+#                         num = re.findall("\d+\.?\d*", i)
+#                         data.get("clear").get("openjdk").update(
+#                             {"MyBenchmark.testMethod.Score": num[-2]})
+#
+#                     if i.startswith("MyBenchmark.testMethod"):
+#                         num = re.findall("\d+\.?\d*", i)
+#                         data.get("clear").get("openjdk").update(
+#                             {"MyBenchmark.testMethod.Error": num[-1]})
+
+#
+# def main():
+#     loop_count = 0
+#     file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-Cloud\test_log\flink"
+#     writer = r"C:\Users\xinhuizx\Intel-Test-MQservice\11111111"
+#     for root_dir, _, files in os.walk(file_name):
+#         # full_file_name = os.path.join(root_dir, file_name)
+#         for lines in files:
+#             return lines
+
+
 
 
 if __name__ == '__main__':
