@@ -1550,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-flink-Azure\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_service_flink-ALY-Azure_0809.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-13-Azure-Ubuntu-Nginx\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_service_0814_Azure-Ubuntu-Nginx.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1563,7 +1563,7 @@ def main():
             # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
             # Httpd(writer, df_json, loop_count)
-            # Nginx(writer, df_json, loop_count)
+            Nginx(writer, df_json, loop_count)
             # Redis(writer, df_json, loop_count)
             # Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
@@ -1577,7 +1577,7 @@ def main():
             # Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
-            Flink(writer, df_json, loop_count)
+            # Flink(writer, df_json, loop_count)
             # Cassandra(writer, df_json, loop_count)
             loop_count += 1
 
@@ -1591,8 +1591,7 @@ if __name__ == '__main__':
 test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
             "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
             "make rabbitmq","make ruby"，"make flink"]
-"""
-"""
-test_cmd = ["make postgres", "make openjdk", "make ruby", "make flink", "make cassandra"]
 
+
+test_cmd = ["make postgres", "make openjdk", "make ruby", "make flink", "make cassandra"]
 """
