@@ -17,7 +17,7 @@ def ruby(lines):
     ret_lines = []
     for i in range(0, len(newlines)):
         line_dict[i] = newlines[i].split("\n")[0]
-
+        # print(i)
     for lineno, line_str in line_dict.items():
         if line_str.startswith(line_str_key):
             # print(lineno, ":", line_str)
@@ -38,6 +38,7 @@ def ruby(lines):
     for line in ret_lines:
         # print(line)
         line_split = line.split()
+        print(line_split)
         key_str = line_split[0]
         value = line_split[1]
         if "Time" in line:
@@ -56,10 +57,10 @@ def ruby(lines):
                 line_dict.update(tmp_dict)
 
     for key, value in line_dict.items():
-        print(key, ": ", value)
+        # print(key, ": ", value)
         pass
-    print("value len:", len(line_dict.values()))
-    print("key len:", len(line_dict.keys()))
+    # print("value len:", len(line_dict.values()))
+    # print("key len:", len(line_dict.keys()))
 
 
 if __name__ == '__main__':

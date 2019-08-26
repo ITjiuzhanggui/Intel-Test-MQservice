@@ -1550,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-16-Azure-Ubuntu-postgres\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_service_0816_Azure-Ubuntu-postgres.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-25-ALY-Cloud\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_service_2019-08-25-ALY-Cloud.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1564,7 +1564,7 @@ def main():
 
             # Httpd(writer, df_json, loop_count)
             # Nginx(writer, df_json, loop_count)
-            # Redis(writer, df_json, loop_count)
+            Redis(writer, df_json, loop_count)
             # Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)

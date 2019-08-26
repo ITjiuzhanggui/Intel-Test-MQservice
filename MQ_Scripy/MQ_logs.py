@@ -485,8 +485,11 @@ def default_from_openjdk(lines):
 
 def default_from_postgres(lines):
     """postgres unit tests analysis"""
+    # lines_a = lines[
+    #           1:lines.index("[postgres] [INFO] Test clear docker image:\n")].copy()
     lines_a = lines[
-              1:lines.index("[postgres] [INFO] Test clear docker image:\n")].copy()
+              lines.index("[postgres] [INFO] Test extra official docker image, postgres9.6:\n"):
+              lines.index("Extra Test on postgres9.6\n")].copy()
     line_nu = []
     for i in lines_a:
         if re.search(r"excluding", i) != None:
@@ -496,8 +499,8 @@ def default_from_postgres(lines):
     bsr = lines_a[int(line_nu[1])].split()
     bnw = lines_a[int(line_nu[2])].split()
     bnr = lines_a[int(line_nu[3])].split()
-    bhw = lines_a[int(line_nu[4])].split()
-    bhr = lines_a[int(line_nu[5])].split()
+    # bhw = lines_a[int(line_nu[4])].split()
+    # bhr = lines_a[int(line_nu[5])].split()
     data.get("default").get("postgres").update(
         {"BUFFER_TEST&SINGLE_THREAD&READ_WRITE": bsw[2]}
     )
@@ -510,12 +513,12 @@ def default_from_postgres(lines):
     data.get("default").get("postgres").update(
         {"BUFFER_TEST&NORMAL_LOAD&READ_ONLY": bnr[2]}
     )
-    data.get("default").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw[2]}
-    )
-    data.get("default").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr[2]}
-    )
+    # data.get("default").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw[2]}
+    # )
+    # data.get("default").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr[2]}
+    # )
 
 
 def default_from_tensorflow(lines):
@@ -1082,6 +1085,29 @@ def default_from_flink(lines):
             num = re.findall("\d+\.?\d*", i)
             data.get("default").get("flink").update(
                 {"StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1": num[-2]})
+
+
+# def default_from_glibc(lines):
+#     """clearlinux unit tests analysis"""
+#     newlines = lines[
+#                lines.index("ubuntu glibc benchmark starts running\n"):
+#                lines.index("ubuntu cases are over\n")].copy()
+#
+#     line_str_key = "implement ./"
+#     line_dict = {}
+#     ret_lines = []
+#     for i in range(0, len(newlines)):
+#         line_dict[i] = newlines[i].split("\n")[0]
+#
+#     for lineno, line_str in line_dict.items():
+#         if line_str.startswith(line_str_key):
+#             print(lineno, ":", line_str)
+#             tmp_line_no = lineno + 1
+#
+#     line_dict = {}
+#     for line in ret_lines:
+
+
 
 
 """clearlinux test_log"""
@@ -2041,10 +2067,10 @@ def DEFAULT_RUBY(lines):
 
 def clr_from_postgres(lines):
     """perl unit test analysis"""
-    lines_b = lines[lines.index("[postgres] [INFO] Test clear docker image:\n"):].copy()
-    # lines_b = lines[
-    #           lines.index("[postgres] [INFO] Test clear docker image:\n"):
-    #           lines.index("[postgres] [INFO] Test extra official docker image, postgres9.6:\n")].copy()
+    # lines_b = lines[lines.index("[postgres] [INFO] Test clear docker image:\n"):].copy()
+    lines_b = lines[
+              lines.index("[postgres] [INFO] Test clear docker image:\n"):
+              lines.index("Clr-Node-Server\n")].copy()
 
     line_nu2 = []
     for i in lines_b:
@@ -2055,8 +2081,8 @@ def clr_from_postgres(lines):
     bsr2 = lines_b[int(line_nu2[1])].split()
     bnw2 = lines_b[int(line_nu2[2])].split()
     bnr2 = lines_b[int(line_nu2[3])].split()
-    bhw2 = lines_b[int(line_nu2[4])].split()
-    bhr2 = lines_b[int(line_nu2[5])].split()
+    # bhw2 = lines_b[int(line_nu2[4])].split()
+    # bhr2 = lines_b[int(line_nu2[5])].split()
     data.get("clear").get("postgres").update(
         {"BUFFER_TEST&SINGLE_THREAD&READ_WRITE": bsw2[2]}
     )
@@ -2069,12 +2095,12 @@ def clr_from_postgres(lines):
     data.get("clear").get("postgres").update(
         {"BUFFER_TEST&NORMAL_LOAD&READ_ONLY": bnr2[2]}
     )
-    data.get("clear").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw2[2]}
-    )
-    data.get("clear").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr2[2]}
-    )
+    # data.get("clear").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw2[2]}
+    # )
+    # data.get("clear").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr2[2]}
+    # )
 
 
 def clr_from_tensorflow(lines):
@@ -3473,7 +3499,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-flink-ALY-Clr\test_log\flink\2019-08-09-16_14_53.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-25-ALY-Clr\test_log\postgres\2019-08-23-15_32_17.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
@@ -3489,11 +3515,12 @@ def main():
     # default_from_nodejs(test)
     # default_from_openjdk(test)
     # default_from_ruby(test)
-    # default_from_postgres(test)
+    default_from_postgres(test)
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)
     # default_from_flink(test)
+    # default_from_glibc(test)
     # DEFAULT_RUBY(test)
 
     # clr_from_httpd(test)
@@ -3506,7 +3533,7 @@ def main():
     # clr_from_nodejs(test)
     # clr_from_openjdk(test)
     # clr_from_ruby(test)
-    # clr_from_postgres(test)
+    clr_from_postgres(test)
     # clr_from_tensorflow(test)
     # clr_from_mariadb(test)
     # clr_from_ruby(test)
