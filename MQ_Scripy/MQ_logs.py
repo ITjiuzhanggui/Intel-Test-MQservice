@@ -10,28 +10,28 @@ data = {
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}, "flink": {}, "cassandra": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
         },
 
     "clear":
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}, "flink": {}, "cassandra": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
         },
 
     "status_def":
         {
             "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}, "flink": {}, "cassandra": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
         },
 
     "status_Clr":
         {
             "clearlinux_version": {}, "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {},
             "php": {}, "python": {}, "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {},
-            "postgres": {}, "mariadb": {}, "rabbitmq": {}, "flink": {}, "cassandra": {}
+            "postgres": {}, "mariadb": {}, "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
         }
 }
 
@@ -1087,6 +1087,17 @@ def default_from_flink(lines):
                 {"StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1": num[-2]})
 
 
+def default_from_wordpress(lines):
+    lines = lines[lines.index("[wordpress] [INFO] Test official docker image:\n"):
+                  lines.index("Official-Wordpress\n")].copy()
+    for i in lines:
+        i = i.strip()
+        if i.startswith("Throughput:"):
+            throughput = i.split()
+            data.get("default").get("wordpress").update(
+                {"Throughput": throughput[1]})
+
+
 # def default_from_glibc(lines):
 #     """clearlinux unit tests analysis"""
 #     newlines = lines[
@@ -1106,8 +1117,6 @@ def default_from_flink(lines):
 #
 #     line_dict = {}
 #     for line in ret_lines:
-
-
 
 
 """clearlinux test_log"""
@@ -2263,6 +2272,16 @@ def clr_from_flink(lines):
             data.get("clear").get("flink").update(
                 {"StreamNetworkLatencyBenchmarkExecutor.networkLatency1to1": num[-2]})
 
+
+def clr_from_wordpress(lines):
+    lines = lines[lines.index("[wordpress] [INFO] Test clear docker image:\n"):
+                  lines.index("Clear-Wordpress\n")].copy()
+    for i in lines:
+        i = i.strip()
+        if i.startswith("Throughput:"):
+            throughput = i.split()
+            data.get("clear").get("wordpress").update(
+                {"Throughput": throughput[1]})
 
 """STATUS_default_log"""
 
@@ -3499,7 +3518,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-25-ALY-Clr\test_log\postgres\2019-08-23-15_32_17.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-27-ALY-Ubuntu-wordpress\test_log\wordpress\2019-08-27-17_17_53.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
@@ -3515,11 +3534,12 @@ def main():
     # default_from_nodejs(test)
     # default_from_openjdk(test)
     # default_from_ruby(test)
-    default_from_postgres(test)
+    # default_from_postgres(test)
     # default_from_tensorflow(test)
     # default_from_mariadb(test)
     # default_from_ruby(test)
     # default_from_flink(test)
+    default_from_wordpress(test)
     # default_from_glibc(test)
     # DEFAULT_RUBY(test)
 
@@ -3533,11 +3553,12 @@ def main():
     # clr_from_nodejs(test)
     # clr_from_openjdk(test)
     # clr_from_ruby(test)
-    clr_from_postgres(test)
+    # clr_from_postgres(test)
     # clr_from_tensorflow(test)
     # clr_from_mariadb(test)
     # clr_from_ruby(test)
     # clr_from_flink(test)
+    clr_from_wordpress(test)
 
     # StaDefHttpd(status)
     # StaDefRuby(status)

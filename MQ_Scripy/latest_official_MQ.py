@@ -83,10 +83,11 @@ def Log_openjdk(lines):
     #         )
 
 
-def Log_postgres(lines):
+def Log_postgres(lines, loop_count):
     """analysis postgres test log"""
 
-    lines_a = lines[lines.index("[postgres] [INFO] Test extra official docker image, postgres9.6:\n"):].copy()
+    lines_a = lines[
+              1:lines.index("[postgres] [INFO] Test clear docker image:\n")].copy()
     line_nu = []
     for i in lines_a:
         if re.search(r"excluding", i) != None:
@@ -96,8 +97,8 @@ def Log_postgres(lines):
     bsr = lines_a[int(line_nu[1])].split()
     bnw = lines_a[int(line_nu[2])].split()
     bnr = lines_a[int(line_nu[3])].split()
-    bhw = lines_a[int(line_nu[4])].split()
-    bhr = lines_a[int(line_nu[5])].split()
+    # bhw = lines_a[int(line_nu[4])].split()
+    # bhr = lines_a[int(line_nu[5])].split()
     data.get("default").get("postgres").update(
         {"BUFFER_TEST&SINGLE_THREAD&READ_WRITE": bsw[2]}
     )
@@ -110,18 +111,18 @@ def Log_postgres(lines):
     data.get("default").get("postgres").update(
         {"BUFFER_TEST&NORMAL_LOAD&READ_ONLY": bnr[2]}
     )
-    data.get("default").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw[2]}
-    )
-    data.get("default").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr[2]}
-    )
+    # data.get("default").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw[2]}
+    # )
+    # data.get("default").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr[2]}
+    # )
 
     """clearlinux openjdk test log analysis"""
 
     lines_b = lines[
               lines.index("[postgres] [INFO] Test clear docker image:\n"):
-              lines.index("[postgres] [INFO] Test extra official docker image, postgres9.6:\n")].copy()
+              lines.index("Clr-Node-Server\n")].copy()
     line_nu2 = []
     for i in lines_b:
         if re.search(r"excluding", i) != None:
@@ -131,8 +132,8 @@ def Log_postgres(lines):
     bsr2 = lines_b[int(line_nu2[1])].split()
     bnw2 = lines_b[int(line_nu2[2])].split()
     bnr2 = lines_b[int(line_nu2[3])].split()
-    bhw2 = lines_b[int(line_nu2[4])].split()
-    bhr2 = lines_b[int(line_nu2[5])].split()
+    # bhw2 = lines_b[int(line_nu2[4])].split()
+    # bhr2 = lines_b[int(line_nu2[5])].split()
     data.get("clear").get("postgres").update(
         {"BUFFER_TEST&SINGLE_THREAD&READ_WRITE": bsw2[2]}
     )
@@ -145,12 +146,12 @@ def Log_postgres(lines):
     data.get("clear").get("postgres").update(
         {"BUFFER_TEST&NORMAL_LOAD&READ_ONLY": bnr2[2]}
     )
-    data.get("clear").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw2[2]}
-    )
-    data.get("clear").get("postgres").update(
-        {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr2[2]}
-    )
+    # data.get("clear").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE": bhw2[2]}
+    # )
+    # data.get("clear").get("postgres").update(
+    #     {"BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY": bhr2[2]}
+    # )
 
 
 def Log_ruby(lines):
@@ -513,6 +514,7 @@ def Log_ruby(lines):
 
 """clearlinux openjdk test log analysis"""
 
+
 def Clr_Log_ruby(lines):
     influs_list = ["app_answer", "app_aobench", "app_erb", "app_factorial",
                    "app_fib", "app_lc_fizzbuzz", "app_mandelbrot", "app_pentomino",
@@ -869,19 +871,25 @@ def Clr_Log_ruby(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\2019-07-20-AWS\test_log\openjdk\2019-07-20-01_08_52.log"
-    test = read_logs(file_name)
+    loop_count = 0
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-26-Azure-Ubuntu\test_log\postgres"
+    # test = read_logs(file_name)
 
     # status_log = r""
     # status = read_status_logs()
+    for root, _, files, in os.walk(file_name, topdown=False):
+        for file_name in files:
+            full_file_name = os.path.join(root, file_name)
+            test = read_logs(full_file_name)
 
-    Log_openjdk(test)
-    # Log_postgres(test)
+    # Log_openjdk(test)
+            Log_postgres(test, loop_count)
     # Log_ruby(test)
     # Clr_Log_ruby(test)
+            loop_count += 1
+    with open(r'C:\Users\xinhuizx\Intel-Test-MQservice\json', 'w')as f:
+        json.dump(data, f)
 
-    # with open('data_New.json', 'w')as f:
-    #     json.dump(data, f)
 
 if __name__ == '__main__':
     main()

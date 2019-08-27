@@ -419,8 +419,8 @@ def Postgres(writer, df_json, loop_count):
               "BUFFER_TEST&SINGLE_THREAD&READ_ONLY",
               "BUFFER_TEST&NORMAL_LOAD&READ_WRITE",
               "BUFFER_TEST&NORMAL_LOAD&READ_ONLY",
-              "BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE",
-              "BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"
+              # "BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE",
+              # "BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"
               ]
 
     test_col = pd.Series(x_test)
@@ -430,8 +430,8 @@ def Postgres(writer, df_json, loop_count):
         default_dict["BUFFER_TEST&SINGLE_THREAD&READ_ONLY"],
         default_dict["BUFFER_TEST&NORMAL_LOAD&READ_WRITE"],
         default_dict["BUFFER_TEST&NORMAL_LOAD&READ_ONLY"],
-        default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
-        default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"]
+        # default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
+        # default_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"]
     ]
 
     default_col = pd.Series(default_postgres_list)
@@ -441,8 +441,8 @@ def Postgres(writer, df_json, loop_count):
         clear_dict["BUFFER_TEST&SINGLE_THREAD&READ_ONLY"],
         clear_dict["BUFFER_TEST&NORMAL_LOAD&READ_WRITE"],
         clear_dict["BUFFER_TEST&NORMAL_LOAD&READ_ONLY"],
-        clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
-        clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"],
+        # clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_WRITE"],
+        # clear_dict["BUFFER_TEST&HEAVY_CONNECTION&READ_ONLY"],
     ]
 
     clear_col = pd.Series(clear_postgres_list)
@@ -1550,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-25-ALY-Cloud\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\MQ_service_2019-08-25-ALY-Cloud.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-ALY-Clr-27-openjdk\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-08-27-ALY-Clr-openjdk.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1559,22 +1559,23 @@ def main():
     for root_dir, _, files in os.walk(json_filename):
         for json_filename in files:
             full_file_name = os.path.join(root_dir, json_filename)
+            print(full_file_name)
             df_json = pd.read_json(full_file_name)
             # df_json = pd.read_json(r"C:\Users\xinhuizx\Intel-Test-MQservice\DATA_TEST.json")
 
             # Httpd(writer, df_json, loop_count)
             # Nginx(writer, df_json, loop_count)
-            Redis(writer, df_json, loop_count)
+            # Redis(writer, df_json, loop_count)
             # Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
             # Node(writer, df_json, loop_count)
             # Golang(writer, df_json, loop_count)
-            Postgres(writer, df_json, loop_count)
+            # Postgres(writer, df_json, loop_count)
             # Tensorflow(writer, df_json, loop_count)
             # Mariadb(writer, df_json, loop_count)
             # Perl(writer, df_json, loop_count)
-            # Openjdk(writer, df_json, loop_count)
+            Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
             # Flink(writer, df_json, loop_count)
