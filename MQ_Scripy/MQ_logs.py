@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import cmath
 import os, sys
 import re
 import json
@@ -470,17 +470,41 @@ def default_from_openjdk(lines):
     lines = lines[1:lines.index("[openjdk] [INFO] Test clear docker image:\n"):].copy()
 
     for i in lines:
-        if i.startswith("MyBenchmark.testMethod"):
-            num = re.findall("\d+\.?\d+", i)
-            data.get("default").get("openjdk").update(
-                {"MyBenchmark.testMethod.Score": num[-2]}
-            )
+            if i.startswith("MyBenchmark.testMethod") and "thrpt " in i:
+                num = re.findall("\d+\.?\d+", i)
+                data.get("default").get("openjdk").update(
+                    {"MyBenchmark.testMethod.Score": num[-2]}
+                )
 
-        if i.startswith("MyBenchmark.testMethod"):
-            num = re.findall("\d+\.?\d+", i)
-            data.get("default").get("openjdk").update(
-                {"MyBenchmark.testMethod.Error": num[-1]}
-            )
+            if i.startswith("MyBenchmark.testMethod")and "thrpt " in i:
+                num = re.findall("\d+\.?\d+", i)
+                data.get("default").get("openjdk").update(
+                    {"MyBenchmark.testMethod.Error": num[-1]}
+                )
+    # for i in lines:
+    #     if i.startswith("MyBenchmark.testMethod") and "avgt " in i:
+    #         i = i.split()
+    #         a = i[-2]
+    #         b = a[-1]
+    #         c = a[-2]
+    #         d = float(a[:-2])
+    #
+    #         print(a)
+    #         print(b)
+    #         print(c)
+    #         print(d)
+
+            # rest = (d**)
+
+
+            # num = re.search("\d+\.?\d*", i)
+            # print(num)
+            # num = cmath.sqrt(complex(num[1]))
+            # print(num)
+            # data.get("clear").get("flink").update(
+            #     {"": num[-2]})
+
+
 
 
 def default_from_postgres(lines):
@@ -3518,7 +3542,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-27-ALY-Ubuntu-wordpress\test_log\wordpress\2019-08-27-17_17_53.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\111\2019-09-11-19_17_36.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
@@ -3628,11 +3652,11 @@ if __name__ == '__main__':
     pprint(data)
 
 """
-test_cmd = ["make httpd", "make nginx", "make memcached", "make redis", "make php", "make python", "make node",
-            "make golang", "make postgres", "make tensorflow", "make mariadb", "make perl", "make openjdk",
-            "make rabbitmq", "make flink", "make cassandra","make ruby"]
+test_cmd = ["make httpd", "make nginx", "make memcached", "make php","make node","make golang", 
+            "make tensorflow", "make mariadb", "make perl","make rabbitmq", "make wordpress", 
+            "make flink", "make cassandra", "make ruby"]
 
 
 
-test_cmd = ["make golang", "make tensorflow", "make perl", "make postgres", "make ruby", "make flink"]
+test_cmd = ["make redis","make python","make openjdk","make postgres"]
 """

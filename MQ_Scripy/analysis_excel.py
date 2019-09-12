@@ -19,7 +19,7 @@ pd.set_option("expand_frame_repr", False)
 #         pass
 
 def read_status_log(service_name, writer):
-    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-flink-ALY-Clr\json\status\1565486000.json"
+    status_json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-02\json\status\1564725625.json"
     df_json = pd.read_json(status_json_filename)
     status_def_dict = df_json.loc[service_name].loc["status_def"]
     status_clr_dict = df_json.loc[service_name].loc["status_Clr"]
@@ -378,21 +378,21 @@ def Golang(writer, df_json, loop_count):
     default_dict = df_json.loc["golang"].loc["default"]
     clear_dict = df_json.loc["golang"].loc["clear"]
 
-    x_test = ["BenchmarkBuild",
+    x_test = [
               "BenchmarkGarbage",
               "BenchmarkHTTP",
               "BenchmarkJSON", ]
 
     test_col = pd.Series(x_test)
 
-    default_golang_list = [default_dict["BenchmarkBuild"],
+    default_golang_list = [
                            default_dict["BenchmarkGarbage"],
                            default_dict["BenchmarkHTTP"],
                            default_dict["BenchmarkJSON"]]
 
     default_col = pd.Series(default_golang_list)
 
-    clear_golang_list = [clear_dict["BenchmarkBuild"],
+    clear_golang_list = [
                          clear_dict["BenchmarkGarbage"],
                          clear_dict["BenchmarkHTTP"],
                          clear_dict["BenchmarkJSON"], ]
@@ -1550,8 +1550,8 @@ def Cassandra(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-ALY-Clr-27-openjdk\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-08-27-ALY-Clr-openjdk.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-09-12-ALY-Ubuntu\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-09-12-ALY-Ubuntu.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1570,12 +1570,12 @@ def main():
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
             # Node(writer, df_json, loop_count)
-            # Golang(writer, df_json, loop_count)
+            Golang(writer, df_json, loop_count)
             # Postgres(writer, df_json, loop_count)
             # Tensorflow(writer, df_json, loop_count)
             # Mariadb(writer, df_json, loop_count)
             # Perl(writer, df_json, loop_count)
-            Openjdk(writer, df_json, loop_count)
+            # Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
             # Flink(writer, df_json, loop_count)
