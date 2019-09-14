@@ -1607,6 +1607,7 @@ def main():
             # Ruby(writer, df_json, loop_count)
             Flink(writer, df_json, loop_count)
             Cassandra(writer, df_json, loop_count)
+            Wordpress(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()
