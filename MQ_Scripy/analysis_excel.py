@@ -1546,12 +1546,39 @@ def Cassandra(writer, df_json, loop_count):
 
     print("Round %d Save Successfully Cassandra!!!" % (loop_count + int(1)))
 
+def Wordpress(writer, df_json, loop_count):
+    # read_status_log("wordpress", writer)
+    default_dict = df_json.loc["wordpress"].loc["default"]
+    clear_dict = df_json.loc["wordpress"].loc["clear"]
+
+    x_test = ["Throughput"]
+
+    test_col = pd.Series(x_test)
+
+    default_tensorflow_list = [default_dict["Throughput"]]
+
+    default_col = pd.Series(default_tensorflow_list)
+
+    clear_tensorflow_list = [clear_dict["Throughput"]]
+
+    clear_col = pd.Series(clear_tensorflow_list)
+
+    data_frame_test = {"Performance %d" % (loop_count + 1): test_col,
+                       "Default docker": default_col,
+                       "clear docker": clear_col}
+
+    df_exce_test = pd.DataFrame(data_frame_test)
+
+    df_exce_test.to_excel(writer, sheet_name="wordpress", index=False, startrow=9, startcol=4 * loop_count)
+
+    print("Round %d Save Successfully Wordpress!!!" % (loop_count + int(1)))
+
 
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-09-12-ALY-Ubuntu\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-09-12-ALY-Ubuntu.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-09-12-ALY-Clr\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-09-12-ALY-Clr.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1570,7 +1597,7 @@ def main():
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
             # Node(writer, df_json, loop_count)
-            Golang(writer, df_json, loop_count)
+            # Golang(writer, df_json, loop_count)
             # Postgres(writer, df_json, loop_count)
             # Tensorflow(writer, df_json, loop_count)
             # Mariadb(writer, df_json, loop_count)
@@ -1578,8 +1605,8 @@ def main():
             # Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
-            # Flink(writer, df_json, loop_count)
-            # Cassandra(writer, df_json, loop_count)
+            Flink(writer, df_json, loop_count)
+            Cassandra(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()

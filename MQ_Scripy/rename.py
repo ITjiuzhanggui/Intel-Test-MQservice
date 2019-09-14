@@ -1,6 +1,6 @@
 import os
 # path=os.getcwd()+'\\github\\logExtract\\data\\log'
-path = r"C:\Users\xinhuizx\logExtract\data\log\2019-09-11\test_log"
+path = r"C:\Users\xinhuizx\logExtract\data\log"
 for parent, dirnames, filenames in os.walk(path):
     for filename in filenames:
         if filename.find('.log')!=-1:
