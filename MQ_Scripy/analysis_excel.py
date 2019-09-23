@@ -1492,15 +1492,15 @@ def Cassandra(writer, df_json, loop_count):
     x_test = ["cassandra-stress write test - Op rate(op/s)",
               "cassandra-stress write test - Latency mean(ms)",
               "cassandra-stress read test - 5 threads - Op rate(op/s)",
-              "cassandra-stress read test - 5 threads - Latency mean(ms)",
-              "cassandra-stress read test - 4 threads - Op rate(op/s)",
-              "cassandra-stress read test - 4 threads - Latency mean(ms)",
-              "cassandra-stress read test - 3 threads - Op rate(op/s)",
-              "cassandra-stress read test - 3 threads - Latency mean(ms)",
-              "cassandra-stress read test - 2 threads - Op rate(op/s)",
-              "cassandra-stress read test - 2 threads - Latency mean(ms)",
-              "cassandra-stress read test - 1 threads - Op rate(op/s)",
-              "cassandra-stress read test - 1 threads - Latency mean(ms)"]
+              "cassandra-stress read test - 5 threads - Latency mean(ms)"]
+              # "cassandra-stress read test - 4 threads - Op rate(op/s)",
+              # "cassandra-stress read test - 4 threads - Latency mean(ms)",
+              # "cassandra-stress read test - 3 threads - Op rate(op/s)",
+              # "cassandra-stress read test - 3 threads - Latency mean(ms)",
+              # "cassandra-stress read test - 2 threads - Op rate(op/s)",
+              # "cassandra-stress read test - 2 threads - Latency mean(ms)",
+              # "cassandra-stress read test - 1 threads - Op rate(op/s)",
+              # "cassandra-stress read test - 1 threads - Latency mean(ms)"]
 
     test_col = pd.Series(x_test)
 
@@ -1508,15 +1508,15 @@ def Cassandra(writer, df_json, loop_count):
         default_dict["cassandra-stress write test - Op rate(op/s)"],
         default_dict["cassandra-stress write test - Latency mean(ms)"],
         default_dict["cassandra-stress read test - 5 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 5 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 3 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 3 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 2 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 2 threads - Latency mean(ms)"],
-        default_dict["cassandra-stress read test - 1 threads - Op rate(op/s)"],
-        default_dict["cassandra-stress read test - 1 threads - Latency mean(ms)"]]
+        default_dict["cassandra-stress read test - 5 threads - Latency mean(ms)"]]
+        # default_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
+        # default_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
+        # default_dict["cassandra-stress read test - 3 threads - Op rate(op/s)"],
+        # default_dict["cassandra-stress read test - 3 threads - Latency mean(ms)"],
+        # default_dict["cassandra-stress read test - 2 threads - Op rate(op/s)"],
+        # default_dict["cassandra-stress read test - 2 threads - Latency mean(ms)"],
+        # default_dict["cassandra-stress read test - 1 threads - Op rate(op/s)"],
+        # default_dict["cassandra-stress read test - 1 threads - Latency mean(ms)"]]
 
     default_col = pd.Series(default_cassandra_list)
 
@@ -1524,15 +1524,15 @@ def Cassandra(writer, df_json, loop_count):
         clear_dict["cassandra-stress write test - Op rate(op/s)"],
         clear_dict["cassandra-stress write test - Latency mean(ms)"],
         clear_dict["cassandra-stress read test - 5 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 5 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 3 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 3 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 2 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 2 threads - Latency mean(ms)"],
-        clear_dict["cassandra-stress read test - 1 threads - Op rate(op/s)"],
-        clear_dict["cassandra-stress read test - 1 threads - Latency mean(ms)"]]
+        clear_dict["cassandra-stress read test - 5 threads - Latency mean(ms)"]]
+        # clear_dict["cassandra-stress read test - 4 threads - Op rate(op/s)"],
+        # clear_dict["cassandra-stress read test - 4 threads - Latency mean(ms)"],
+        # clear_dict["cassandra-stress read test - 3 threads - Op rate(op/s)"],
+        # clear_dict["cassandra-stress read test - 3 threads - Latency mean(ms)"],
+        # clear_dict["cassandra-stress read test - 2 threads - Op rate(op/s)"],
+        # clear_dict["cassandra-stress read test - 2 threads - Latency mean(ms)"],
+        # clear_dict["cassandra-stress read test - 1 threads - Op rate(op/s)"],
+        # clear_dict["cassandra-stress read test - 1 threads - Latency mean(ms)"]]
 
     clear_col = pd.Series(clear_cassandra_list)
 
@@ -1577,8 +1577,8 @@ def Wordpress(writer, df_json, loop_count):
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-09-12-ALY-Clr\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-09-12-ALY-Clr.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-09-14-ALY-Clr-memcached\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-09-14-ALY-Clr-memcached.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1593,7 +1593,7 @@ def main():
             # Httpd(writer, df_json, loop_count)
             # Nginx(writer, df_json, loop_count)
             # Redis(writer, df_json, loop_count)
-            # Memcached(writer, df_json, loop_count)
+            Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
             # Node(writer, df_json, loop_count)
@@ -1605,9 +1605,9 @@ def main():
             # Openjdk(writer, df_json, loop_count)
             # Rabbitmq(writer, df_json, loop_count)
             # Ruby(writer, df_json, loop_count)
-            Flink(writer, df_json, loop_count)
-            Cassandra(writer, df_json, loop_count)
-            Wordpress(writer, df_json, loop_count)
+            # Flink(writer, df_json, loop_count)
+            # Cassandra(writer, df_json, loop_count)
+            # Wordpress(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()

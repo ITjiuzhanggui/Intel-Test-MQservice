@@ -470,17 +470,17 @@ def default_from_openjdk(lines):
     lines = lines[1:lines.index("[openjdk] [INFO] Test clear docker image:\n"):].copy()
 
     for i in lines:
-            if i.startswith("MyBenchmark.testMethod") and "thrpt " in i:
-                num = re.findall("\d+\.?\d+", i)
-                data.get("default").get("openjdk").update(
-                    {"MyBenchmark.testMethod.Score": num[-2]}
-                )
+        if i.startswith("MyBenchmark.testMethod") and "thrpt " in i:
+            num = re.findall("\d+\.?\d+", i)
+            data.get("default").get("openjdk").update(
+                {"MyBenchmark.testMethod.Score": num[-2]}
+            )
 
-            if i.startswith("MyBenchmark.testMethod")and "thrpt " in i:
-                num = re.findall("\d+\.?\d+", i)
-                data.get("default").get("openjdk").update(
-                    {"MyBenchmark.testMethod.Error": num[-1]}
-                )
+        if i.startswith("MyBenchmark.testMethod") and "thrpt " in i:
+            num = re.findall("\d+\.?\d+", i)
+            data.get("default").get("openjdk").update(
+                {"MyBenchmark.testMethod.Error": num[-1]}
+            )
     # for i in lines:
     #     if i.startswith("MyBenchmark.testMethod") and "avgt " in i:
     #         i = i.split()
@@ -494,17 +494,14 @@ def default_from_openjdk(lines):
     #         print(c)
     #         print(d)
 
-            # rest = (d**)
+    # rest = (d**)
 
-
-            # num = re.search("\d+\.?\d*", i)
-            # print(num)
-            # num = cmath.sqrt(complex(num[1]))
-            # print(num)
-            # data.get("clear").get("flink").update(
-            #     {"": num[-2]})
-
-
+    # num = re.search("\d+\.?\d*", i)
+    # print(num)
+    # num = cmath.sqrt(complex(num[1]))
+    # print(num)
+    # data.get("clear").get("flink").update(
+    #     {"": num[-2]})
 
 
 def default_from_postgres(lines):
@@ -2307,6 +2304,7 @@ def clr_from_wordpress(lines):
             data.get("clear").get("wordpress").update(
                 {"Throughput": throughput[1]})
 
+
 """STATUS_default_log"""
 
 
@@ -3658,5 +3656,7 @@ test_cmd = ["make httpd", "make nginx", "make memcached", "make php","make node"
 
 
 
-test_cmd = ["make redis","make python","make openjdk","make postgres"]
+test_cmd = ["make cassandra", "make flink"]
 """
+
+"""snipaste截图工具"""
