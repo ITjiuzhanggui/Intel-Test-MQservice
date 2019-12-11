@@ -7,14 +7,16 @@ import pandas as pd
 from openpyxl import load_workbook
 
 data = {
-    "default":{
+    "default": {
         "cassandra": {}
     },
 
-    "clear":{
+    "clear": {
         "cassandra": {}
     }
 }
+
+
 # data = {
 #     "Default_docker": {},
 #     "Clear_docker": {}
@@ -124,7 +126,7 @@ def extract_logs(lines):
     #     {"cassandra-stress read test - 181 threads - Latency mean(ms)": r181l[3]}
     # )
 
-# Test clear docker image
+    # Test clear docker image
     lines_b = lines[
               lines.index("[cassandra] [INFO] Test clear docker image:\n"):].copy()
     line_nu21 = []
@@ -222,6 +224,7 @@ def extract_logs(lines):
     #     {"cassandra-stress read test - 181 threads - Latency mean(ms)": r181l[3]}
     # )
 
+
 def main():
     # log_file = sys.argv[1]
     log_file = r'C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-07-22\test_log\cassandra\2019-07-23-09_10_33.log'
@@ -244,7 +247,6 @@ def main():
          'cassandra-stress read test - 54 threads - Op rate(op/s)',
          'cassandra-stress read test - 54 threads - Latency mean(ms)'])
     # pprint(df)
-
 
     # json_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\data_New.json"
     # with open(json_log, 'w') as f:

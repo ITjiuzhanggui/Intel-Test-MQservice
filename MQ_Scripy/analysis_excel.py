@@ -1574,11 +1574,51 @@ def Wordpress(writer, df_json, loop_count):
     print("Round %d Save Successfully Wordpress!!!" % (loop_count + int(1)))
 
 
+def Tensorflow_serving(writer, df_json, loop_count):
+    # read_status_log("httpd", writer)
+    default_dict = df_json.loc["tensorflow-serving"].loc["default"]
+    clear_dict = df_json.loc["tensorflow-serving"].loc["clear"]
+
+    x_test = ["Time taken for tests",
+              "Time per request",
+              "Time per request(all)",
+              "Requests per second",
+              "Transfer rate"]
+
+    test_col = pd.Series(x_test)
+
+    default_httpd_list = [default_dict["Time taken for tests"],
+                          default_dict["Time per request"],
+                          default_dict["Time per request(all)"],
+                          default_dict["Requests per second"],
+                          default_dict["Transfer rate"]
+                          ]
+
+    default_col = pd.Series(default_httpd_list)
+
+    clear_httpd_list = [clear_dict["Time taken for tests"],
+                        clear_dict["Time per request"],
+                        clear_dict["Time per request(all)"],
+                        clear_dict["Requests per second"],
+                        clear_dict["Transfer rate"]
+                        ]
+
+    clear_col = pd.Series(clear_httpd_list)
+
+    data_frame_test = {"Performance %d" % (loop_count + 1): test_col, "Default docker": default_col,
+                       "clear docker": clear_col}
+
+    df_exce_test = pd.DataFrame(data_frame_test)
+
+    df_exce_test.to_excel(writer, sheet_name="tensorflow-serving", index=False, startrow=9, startcol=4 * loop_count)
+
+    print("Round %d Save Successfully Tensorflow-serving!!!" % (loop_count + int(1)))
+
 def main():
     loop_count = 0
 
-    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-09-14-ALY-Clr-memcached\json\test"
-    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-09-14-ALY-Clr-memcached.xlsx"
+    json_filename = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-12-02\json\test"
+    xlsx = r"C:\Users\xinhuizx\Intel-Test-MQservice\Xlsx\2019-12-02-r740-ubuntu-memcached.xlsx"
 
     writer = pd.ExcelWriter(xlsx)
     # read_status_log(writer, status_json_filename)
@@ -1593,7 +1633,7 @@ def main():
             # Httpd(writer, df_json, loop_count)
             # Nginx(writer, df_json, loop_count)
             # Redis(writer, df_json, loop_count)
-            Memcached(writer, df_json, loop_count)
+            # Memcached(writer, df_json, loop_count)
             # Php(writer, df_json, loop_count)
             # Python(writer, df_json, loop_count)
             # Node(writer, df_json, loop_count)
@@ -1608,6 +1648,7 @@ def main():
             # Flink(writer, df_json, loop_count)
             # Cassandra(writer, df_json, loop_count)
             # Wordpress(writer, df_json, loop_count)
+            Tensorflow_serving(writer, df_json, loop_count)
             loop_count += 1
 
     writer.save()

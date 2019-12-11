@@ -10,28 +10,29 @@ data = {
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}, "tensorflow-serving": {}
         },
 
     "clear":
         {
             "httpd": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {}, "golang": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}, "tensorflow-serving": {}
         },
 
     "status_def":
         {
             "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {}, "php": {}, "python": {},
             "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {}, "postgres": {}, "mariadb": {},
-            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
+            "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}, "tensorflow-serving": {}
         },
 
     "status_Clr":
         {
             "clearlinux_version": {}, "httpd": {}, "golang": {}, "nginx": {}, "memcached": {}, "redis": {},
             "php": {}, "python": {}, "node": {}, "openjdk": {}, "ruby": {}, "tensorflow": {}, "perl": {},
-            "postgres": {}, "mariadb": {}, "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {}
+            "postgres": {}, "mariadb": {}, "rabbitmq": {}, "flink": {}, "cassandra": {}, "wordpress": {},
+            "tensorflow-serving": {}
         }
 }
 
@@ -1139,6 +1140,41 @@ def default_from_wordpress(lines):
 #     line_dict = {}
 #     for line in ret_lines:
 
+def default_from_tensorflow_serving(lines):
+    """httpd unit tests analysis"""
+    for i in lines[lines.index("[tensorflow-serving] [INFO] Test docker hub official image first:\n"):
+             lines.index("Default-Tensorflow-Serving-Server\n")]:
+
+        if i.startswith("Time taken for tests"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("tensorflow-serving").update(
+                {"Time taken for tests": num[0]}
+            )
+
+        if i.endswith("[ms] (mean)\n"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("tensorflow-serving").update(
+                {"Time per request": num[0]}
+            )
+
+        if i.endswith("(mean, across all concurrent requests)\n"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("tensorflow-serving").update(
+                {"Time per request(all)": num[0]}
+            )
+
+        if i.startswith("Requests per second"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("tensorflow-serving").update(
+                {"Requests per second": num[0]}
+            )
+
+        if i.startswith("Transfer rate"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("default").get("tensorflow-serving").update(
+                {"Transfer rate": num[0]}
+            )
+
 
 """clearlinux test_log"""
 
@@ -2106,7 +2142,7 @@ def clr_from_postgres(lines):
     for i in lines_b:
         if re.search(r"excluding", i) != None:
             line_nu2.append(lines_b.index(i))
-    #    pprint(line_nu2)
+    pprint(line_nu2)
     bsw2 = lines_b[int(line_nu2[0])].split()
     bsr2 = lines_b[int(line_nu2[1])].split()
     bnw2 = lines_b[int(line_nu2[2])].split()
@@ -2304,7 +2340,41 @@ def clr_from_wordpress(lines):
             data.get("clear").get("wordpress").update(
                 {"Throughput": throughput[1]})
 
+def clr_from_tensorflow_serving(lines):
+    """httpd unit tests analysis"""
+    for i in lines[
+             lines.index("[tensorflow-serving] [INFO] Test clear docker image:\n"):
+             lines.index("Clr-Tensorflow-serving-Server\n")]:
 
+        if i.startswith("Time taken for tests"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("tensorflow-serving").update(
+                {"Time taken for tests": num[0]}
+            )
+
+        if i.endswith("[ms] (mean)\n"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("tensorflow-serving").update(
+                {"Time per request": num[0]}
+            )
+
+        if i.endswith("(mean, across all concurrent requests)\n"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("tensorflow-serving").update(
+                {"Time per request(all)": num[0]}
+            )
+
+        if i.startswith("Requests per second"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("tensorflow-serving").update(
+                {"Requests per second": num[0]}
+            )
+
+        if i.startswith("Transfer rate"):
+            num = re.findall("\d+\.?\d*", i)
+            data.get("clear").get("tensorflow-serving").update(
+                {"Transfer rate": num[0]}
+            )
 """STATUS_default_log"""
 
 
@@ -3540,7 +3610,7 @@ def StaClrRabbitmq(lines):
 
 
 def main():
-    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\111\2019-09-11-19_17_36.log"
+    file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-12-02\test_log\tensorflow-serving\2019-12-02-16_18_10.log"
     test = read_logs(file_name)
 
     status_log = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-05-Clr\status_log\2019-08-05-11_50_55.log"
@@ -3561,8 +3631,9 @@ def main():
     # default_from_mariadb(test)
     # default_from_ruby(test)
     # default_from_flink(test)
-    default_from_wordpress(test)
+    # default_from_wordpress(test)
     # default_from_glibc(test)
+    default_from_tensorflow_serving(test)
     # DEFAULT_RUBY(test)
 
     # clr_from_httpd(test)
@@ -3580,8 +3651,8 @@ def main():
     # clr_from_mariadb(test)
     # clr_from_ruby(test)
     # clr_from_flink(test)
-    clr_from_wordpress(test)
-
+    # clr_from_wordpress(test)
+    clr_from_tensorflow_serving(test)
     # StaDefHttpd(status)
     # StaDefRuby(status)
     # StaDefNginx(status)
@@ -3634,7 +3705,7 @@ def main():
 #                         data.get("clear").get("openjdk").update(
 #                             {"MyBenchmark.testMethod.Error": num[-1]})
 
-#
+
 # def main():
 #     loop_count = 0
 #     file_name = r"C:\Users\xinhuizx\Intel-Test-MQservice\log\2019-08-09-Cloud\test_log\flink"
@@ -3650,13 +3721,17 @@ if __name__ == '__main__':
     pprint(data)
 
 """
-test_cmd = ["make httpd", "make nginx", "make memcached", "make php","make node","make golang", 
-            "make tensorflow", "make mariadb", "make perl","make rabbitmq", "make wordpress", 
-            "make flink", "make cassandra", "make ruby"]
+test_cmd = ["make python", "make golang",  "make node", "make php", "make postgres", "make mariadb",
+            "make redis", "make tensorflow","make rabbitmq", "make nginx", "make memcached", 
+            "make perl", "make wordpress", "make tensorflow-serving", "make ruby","make openjdk"]
+,
+
+test_cmd = ["make rabbitmq", "make tensorflow","make nginx", "make ruby", "make perl", 
+            "make wordpress", "make mariadb", "make flink", "make cassandra", "make tomcat"]
 
 
-
-test_cmd = ["make cassandra", "make flink"]
+P2:tensorflow，rabbitmq，nginx，memcached，ruby，perl，wordpress，tensorflow-serving 
+P3:flink，cassandra，tomcat
 """
 
 """snipaste截图工具"""
